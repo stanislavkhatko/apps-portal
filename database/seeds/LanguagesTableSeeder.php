@@ -1,0 +1,151 @@
+<?php
+
+use App\Models\Language;
+use Illuminate\Database\Seeder;
+
+class LanguagesTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Language::create(['code' => 'en', 'name' => 'English']);
+        Language::create(['code' => 'aa', 'name' => 'Afar']);
+        Language::create(['code' => 'ab', 'name' => 'Abkhazian']);
+        Language::create(['code' => 'af', 'name' => 'Afrikaans']);
+        Language::create(['code' => 'am', 'name' => 'Amharic']);
+        Language::create(['code' => 'ar', 'name' => 'Arabic']);
+        Language::create(['code' => 'as', 'name' => 'Assamese']);
+        Language::create(['code' => 'ay', 'name' => 'Aymara']);
+        Language::create(['code' => 'az', 'name' => 'Azerbaijani']);
+        Language::create(['code' => 'ba', 'name' => 'Bashkir']);
+        Language::create(['code' => 'be', 'name' => 'Belarusian']);
+        Language::create(['code' => 'bg', 'name' => 'Bulgarian']);
+        Language::create(['code' => 'bh', 'name' => 'Bihari']);
+        Language::create(['code' => 'bi', 'name' => 'Bislama']);
+        Language::create(['code' => 'bn', 'name' => 'Bengali/Bangla']);
+        Language::create(['code' => 'bo', 'name' => 'Tibetan']);
+        Language::create(['code' => 'br', 'name' => 'Breton']);
+        Language::create(['code' => 'ca', 'name' => 'Catalan']);
+        Language::create(['code' => 'co', 'name' => 'Corsican']);
+        Language::create(['code' => 'cs', 'name' => 'Czech']);
+        Language::create(['code' => 'cy', 'name' => 'Welsh']);
+        Language::create(['code' => 'da', 'name' => 'Danish']);
+        Language::create(['code' => 'de', 'name' => 'German']);
+        Language::create(['code' => 'dz', 'name' => 'Bhutani']);
+        Language::create(['code' => 'el', 'name' => 'Greek']);
+        Language::create(['code' => 'eo', 'name' => 'Esperanto']);
+        Language::create(['code' => 'es', 'name' => 'Spanish']);
+        Language::create(['code' => 'et', 'name' => 'Estonian']);
+        Language::create(['code' => 'eu', 'name' => 'Basque']);
+        Language::create(['code' => 'fa', 'name' => 'Persian']);
+        Language::create(['code' => 'fi', 'name' => 'Finnish']);
+        Language::create(['code' => 'fj', 'name' => 'Fiji']);
+        Language::create(['code' => 'fo', 'name' => 'Faeroese']);
+        Language::create(['code' => 'fr', 'name' => 'French']);
+        Language::create(['code' => 'fy', 'name' => 'Frisian']);
+        Language::create(['code' => 'ga', 'name' => 'Irish']);
+        Language::create(['code' => 'gd', 'name' => 'Scots/Gaelic']);
+        Language::create(['code' => 'gl', 'name' => 'Galician']);
+        Language::create(['code' => 'gn', 'name' => 'Guarani']);
+        Language::create(['code' => 'gu', 'name' => 'Gujarati']);
+        Language::create(['code' => 'ha', 'name' => 'Hausa']);
+        Language::create(['code' => 'hi', 'name' => 'Hindi']);
+        Language::create(['code' => 'hr', 'name' => 'Croatian']);
+        Language::create(['code' => 'hu', 'name' => 'Hungarian']);
+        Language::create(['code' => 'hy', 'name' => 'Armenian']);
+        Language::create(['code' => 'ia', 'name' => 'Interlingua']);
+        Language::create(['code' => 'ie', 'name' => 'Interlingue']);
+        Language::create(['code' => 'ik', 'name' => 'Inupiak']);
+        Language::create(['code' => 'in', 'name' => 'Indonesian']);
+        Language::create(['code' => 'is', 'name' => 'Icelandic']);
+        Language::create(['code' => 'it', 'name' => 'Italian']);
+        Language::create(['code' => 'iw', 'name' => 'Hebrew']);
+        Language::create(['code' => 'ja', 'name' => 'Japanese']);
+        Language::create(['code' => 'ji', 'name' => 'Yiddish']);
+        Language::create(['code' => 'jw', 'name' => 'Javanese']);
+        Language::create(['code' => 'ka', 'name' => 'Georgian']);
+        Language::create(['code' => 'kk', 'name' => 'Kazakh']);
+        Language::create(['code' => 'kl', 'name' => 'Greenlandic']);
+        Language::create(['code' => 'km', 'name' => 'Cambodian']);
+        Language::create(['code' => 'kn', 'name' => 'Kannada']);
+        Language::create(['code' => 'ko', 'name' => 'Korean']);
+        Language::create(['code' => 'ks', 'name' => 'Kashmiri']);
+        Language::create(['code' => 'ku', 'name' => 'Kurdish']);
+        Language::create(['code' => 'ky', 'name' => 'Kirghiz']);
+        Language::create(['code' => 'la', 'name' => 'Latin']);
+        Language::create(['code' => 'ln', 'name' => 'Lingala']);
+        Language::create(['code' => 'lo', 'name' => 'Laothian']);
+        Language::create(['code' => 'lt', 'name' => 'Lithuanian']);
+        Language::create(['code' => 'lv', 'name' => 'Latvian/Lettish']);
+        Language::create(['code' => 'mg', 'name' => 'Malagasy']);
+        Language::create(['code' => 'mi', 'name' => 'Maori']);
+        Language::create(['code' => 'mk', 'name' => 'Macedonian']);
+        Language::create(['code' => 'ml', 'name' => 'Malayalam']);
+        Language::create(['code' => 'mn', 'name' => 'Mongolian']);
+        Language::create(['code' => 'mo', 'name' => 'Moldavian']);
+        Language::create(['code' => 'mr', 'name' => 'Marathi']);
+        Language::create(['code' => 'ms', 'name' => 'Malay']);
+        Language::create(['code' => 'mt', 'name' => 'Maltese']);
+        Language::create(['code' => 'my', 'name' => 'Burmese']);
+        Language::create(['code' => 'na', 'name' => 'Nauru']);
+        Language::create(['code' => 'ne', 'name' => 'Nepali']);
+        Language::create(['code' => 'nl', 'name' => 'Dutch']);
+        Language::create(['code' => 'no', 'name' => 'Norwegian']);
+        Language::create(['code' => 'oc', 'name' => 'Occitan']);
+        Language::create(['code' => 'om', 'name' => '(Afan)/Oromoor/Oriya']);
+        Language::create(['code' => 'pa', 'name' => 'Punjabi']);
+        Language::create(['code' => 'pl', 'name' => 'Polish']);
+        Language::create(['code' => 'ps', 'name' => 'Pashto/Pushto']);
+        Language::create(['code' => 'pt', 'name' => 'Portuguese']);
+        Language::create(['code' => 'qu', 'name' => 'Quechua']);
+        Language::create(['code' => 'rm', 'name' => 'Rhaeto-Romance']);
+        Language::create(['code' => 'rn', 'name' => 'Kirundi']);
+        Language::create(['code' => 'ro', 'name' => 'Romanian']);
+        Language::create(['code' => 'ru', 'name' => 'Russian']);
+        Language::create(['code' => 'rw', 'name' => 'Kinyarwanda']);
+        Language::create(['code' => 'sa', 'name' => 'Sanskrit']);
+        Language::create(['code' => 'sd', 'name' => 'Sindhi']);
+        Language::create(['code' => 'sg', 'name' => 'Sangro']);
+        Language::create(['code' => 'sh', 'name' => 'Serbo-Croatian']);
+        Language::create(['code' => 'si', 'name' => 'Singhalese']);
+        Language::create(['code' => 'sk', 'name' => 'Slovak']);
+        Language::create(['code' => 'sl', 'name' => 'Slovenian']);
+        Language::create(['code' => 'sm', 'name' => 'Samoan']);
+        Language::create(['code' => 'sn', 'name' => 'Shona']);
+        Language::create(['code' => 'so', 'name' => 'Somali']);
+        Language::create(['code' => 'sq', 'name' => 'Albanian']);
+        Language::create(['code' => 'sr', 'name' => 'Serbian']);
+        Language::create(['code' => 'ss', 'name' => 'Siswati']);
+        Language::create(['code' => 'st', 'name' => 'Sesotho']);
+        Language::create(['code' => 'su', 'name' => 'Sundanese']);
+        Language::create(['code' => 'sv', 'name' => 'Swedish']);
+        Language::create(['code' => 'sw', 'name' => 'Swahili']);
+        Language::create(['code' => 'ta', 'name' => 'Tamil']);
+        Language::create(['code' => 'te', 'name' => 'Telugu']);
+        Language::create(['code' => 'tg', 'name' => 'Tajik']);
+        Language::create(['code' => 'th', 'name' => 'Thai']);
+        Language::create(['code' => 'ti', 'name' => 'Tigrinya']);
+        Language::create(['code' => 'tk', 'name' => 'Turkmen']);
+        Language::create(['code' => 'tl', 'name' => 'Tagalog']);
+        Language::create(['code' => 'tn', 'name' => 'Setswana']);
+        Language::create(['code' => 'to', 'name' => 'Tonga']);
+        Language::create(['code' => 'tr', 'name' => 'Turkish']);
+        Language::create(['code' => 'ts', 'name' => 'Tsonga']);
+        Language::create(['code' => 'tt', 'name' => 'Tatar']);
+        Language::create(['code' => 'tw', 'name' => 'Twi']);
+        Language::create(['code' => 'uk', 'name' => 'Ukrainian']);
+        Language::create(['code' => 'ur', 'name' => 'Urdu']);
+        Language::create(['code' => 'uz', 'name' => 'Uzbek']);
+        Language::create(['code' => 'vi', 'name' => 'Vietnamese']);
+        Language::create(['code' => 'vo', 'name' => 'Volapuk']);
+        Language::create(['code' => 'wo', 'name' => 'Wolof']);
+        Language::create(['code' => 'xh', 'name' => 'Xhosa']);
+        Language::create(['code' => 'yo', 'name' => 'Yoruba']);
+        Language::create(['code' => 'zh', 'name' => 'Chinese']);
+        Language::create(['code' => 'zu', 'name' => 'Zulu']);
+    }
+}

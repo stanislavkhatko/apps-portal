@@ -1,0 +1,51 @@
+version: '2'
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    image: contentportal.io/app
+    volumes:
+     - ..:/var/www/html
+    ports:
+     - "80:80"
+    networks:
+     - contentportal_network
+  node:
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    image: contentportal.io/node
+    volumes:
+     - ..:/var/www/html
+    ports:
+     - "8080:8080"
+    networks:
+     - contentportal_network
+  mysql:
+    image: mysql:5.7
+    ports:
+     - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: "homestead"
+      MYSQL_USER: "homestead"
+      MYSQL_PASSWORD: "secret"
+    volumes:
+     - mysqldata:/var/lib/mysql
+    networks:
+     - contentportal_network
+  redis:
+    image: redis:alpine
+    volumes:
+     - redisdata:/data
+    networks:
+     - contentportal_network
+networks:
+  contentportal_network:
+    driver: "bridge"
+volumes:
+  mysqldata:
+    driver: "local"
+  redisdata:
+    driver: "local"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker build -f app/Dockerfile -t contentportal.io/app:latest ./app
+docker build -f node/Dockerfile -t contentportal.io/node:latest ./node
