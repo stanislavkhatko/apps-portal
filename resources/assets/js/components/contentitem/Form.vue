@@ -254,7 +254,7 @@
                             <!-- form-group -->
 
 
-                            <div class="form-group" v-if="contentItem.type == 'reference'">
+                            <div class="form-group" v-if="contentItem.type === 'reference'">
                                 <label class="col-sm-2 control-label">Download link</label>       
                                 <div class="col-sm-10">  
                                     <input class="form-control" type="text" v-model="contentItem.download.link" placeholder="Type a link/location where file/game can be found" />
@@ -262,7 +262,7 @@
                             </div>
                             <!-- form-group -->
 
-                            <div class="form-group" v-if="contentItem.type == 'upload'">
+                            <div class="form-group" v-if="contentItem.type === 'upload'">
                                 <label class="col-sm-2 control-label">File (e.g. APK)</label>       
                                 <div class="col-sm-10">  
 

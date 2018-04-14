@@ -98,7 +98,7 @@ class AuthController extends Controller
         $client = new \App\Subsyz\Client();
         $result = $client->validateMsisdn($msisdn);
 
-        if ($result->success == 'true') {
+        if ($result && $result->success == 'true') {
             \Cookie::queue(cookie('subscription', [
                 'subscription' => [
                     'msisdn' => $result->msisdn,

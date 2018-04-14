@@ -13,27 +13,20 @@ class ContentPortalTableSeeder extends Seeder
     public function run()
     {
         ContentPortal::create([
-            'title' => 'nu',
-            'host' => 'portal1.be',
+            'title' => 'Test portal 1',
+            'slug' => 'test1',
+            'host' => '',
+            'domain' => 'adportal.test',
             'languages' => ['en'],
         ]);
 
         ContentPortal::create([
-            'title' => 'apps',
-            'host' => 'portal2.be',
+            'title' => 'Test portal 2',
+            'slug' => 'test2',
+            'host' => '',
+            'domain' => 'adportal.test',
             'languages' => ['en'],
         ]);
 
-        ContentPortal::create([
-            'title' => 'apps',
-            'host' => 'portal1.be',
-            'languages' => ['en'],
-        ]);
-
-        ContentPortal::create([
-            'title' => 'test my slug',
-            'host' => 'portal1.be',
-            'languages' => ['en'],
-        ]);
     }
 }

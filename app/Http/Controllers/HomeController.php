@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function index()
     {
         // if (session()->has('subscription')) {
-            return redirect()->route('view.portal');
+        return redirect()->route('view.portal');
         //}
         $portal = Config::get('currentPortal');
         return view('frontend.page', ['page' => $portal->pages->first()]);
@@ -57,16 +57,16 @@ class HomeController extends Controller
     }
 
     public function showCategories(LocalContentType $localContentType)
-    {  
+    {
         return view('frontend.categories.index', compact('localContentType'));
     }
 
     public function showCategory($id, LocalCategory $localCategory)
-    {  
+    {
         return view('frontend.category.index', compact('localCategory'));
     }
 
-    public function showItem (ContentItem $item)
+    public function showItem(ContentItem $item)
     {
         $video = [];
         if ($item->provider == 'mobibase') {
@@ -83,7 +83,7 @@ class HomeController extends Controller
     }
 
     public function showItem2(LocalContentType $localContentType, LocalCategory $localCategory, ContentItem $item)
-    {   
+    {
         $video = $this->returnVideoInfo($item);
 
         return view('frontend.detail.index', compact('localContentType', 'localCategory', 'item', 'video'));
@@ -91,11 +91,11 @@ class HomeController extends Controller
 
     public function downloadItem(ContentItem $item)
     {
-        if($item->provider == 'melodimedia') {
+        if ($item->provider == 'melodimedia') {
             $melodi = app(\DevIT\MelodiMedia\ApiClient::class);
 
             try {
-                $download = $melodi->getDownloadUrlForContentId($item->remote_id, rand(2222222222,8888888888), '31');
+                $download = $melodi->getDownloadUrlForContentId($item->remote_id, rand(2222222222, 8888888888), '31');
             } catch (\Exception $e) {
                 return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
             }
@@ -107,13 +107,13 @@ class HomeController extends Controller
                 return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
             }
         } else {
-            if( $item->type == 'upload' ) {
+            if ($item->type == 'upload') {
                 try {
                     return response()->download($item->download['link']);
                 } catch (\Exception $e) {
                     return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
                 }
-            } elseif($item->type == 'cloud'){
+            } elseif ($item->type == 'cloud') {
 
                 return CloudUploader::download($item);
 
@@ -135,7 +135,7 @@ class HomeController extends Controller
     }
 
     public function viewPage(Page $page)
-    {   
+    {
         // if static route is fetched directly and language is different, change it
         if ($page->lang_code !== \App::getLocale()) {
             \Session::put('locale', $page->lang_code);
@@ -153,7 +153,7 @@ class HomeController extends Controller
         $url = redirect()->back()->getTargetUrl();
         $url_segments = explode('/', $url);
         if ($url_segments[3] == 'page') return redirect()->route('view.portal');
-        
+
         return redirect()->back();
     }
 
@@ -168,7 +168,7 @@ class HomeController extends Controller
 
     private function paginateCollection($items, $per_page)
     {
-        $page   = \Request::get('page', 1);
+        $page = \Request::get('page', 1);
         $offset = ($page * $per_page) - $per_page;
 
         return new \Illuminate\Pagination\LengthAwarePaginator(
@@ -180,7 +180,8 @@ class HomeController extends Controller
         );
     }
 
-    private function returnVideoInfo(ContentItem $item) {
+    private function returnVideoInfo(ContentItem $item)
+    {
         $video = [];
         if ($item->provider == 'mobibase') {
             $client = new Client(config('services.mobibase.api_key'));

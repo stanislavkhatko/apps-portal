@@ -28,6 +28,7 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Domain</th>
+                                    <th>Theme</th>
                                     <th>Content types</th>
                                     <th>Categories</th>
                                     <th>Content items</th>
@@ -46,6 +47,9 @@
                                         <a href="http://{{ $portal->domain }}" target="_blank">
                                             {{ $portal->domain }}
                                         </a>                                        
+                                    </td>
+                                    <td>
+                                        {{ $portal->theme->name }}
                                     </td>
                                     <td>
                                         {{ $portal->localContentTypes->count() }}

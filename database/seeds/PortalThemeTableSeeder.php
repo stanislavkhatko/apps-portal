@@ -13,11 +13,11 @@ class PortalThemeTableSeeder extends Seeder
     public function run()
     {
         ContentPortalTheme::create([
-            'name' => 'Portal Theme 1',
+            'name' => 'Theme 1',
             'theme_name' => 'apps_theme_1',
         ]);
         ContentPortalTheme::create([
-            'name' => 'Portal Theme 2',
+            'name' => 'Theme 2',
             'theme_name' => 'apps_theme_2',
         ]);
     }
