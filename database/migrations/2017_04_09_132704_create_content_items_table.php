@@ -16,12 +16,15 @@ class CreateContentItemsTable extends Migration
         Schema::create('content_items', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('remote_id')->nullable();
+            $table->string('provider');
+            $table->json('download')->nullable();
+            $table->boolean('is_customized')->default(false);
             $table->unsignedInteger('category_id')->nullable();
+            $table->string('type');
             $table->json('title')->nullable();
             $table->json('description')->nullable();
             $table->json('info')->nullable();
             $table->json('compatibility')->nullable();
-            //$table->json('download')->nullable();
             $table->string('preview')->nullable();
             $table->timestamps();
         });

@@ -17,11 +17,20 @@ class CreateContentPortalsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
+            $table->string('subdomain')->nullable();
+            $table->unsignedInteger('content_portal_theme_id')->nullable();
+            $table->tinyInteger('show_categories')->default(1);
+            $table->json('config')->nullable();
+            $table->text('custom_css')->nullable();
             $table->string('host');
+            $table->string('domain');
             $table->json('languages');
-            $table->string('domain')->storedAs("CONCAT(slug, '.', host)");
-            $table->json('disclaimer')->nullable();
+            $table->string('default_language', 2)->nullable();
+            $table->string('offer_url')->nullable();
+            $table->string('exit_url')->nullable();
+            $table->json('options')->nullable();
             $table->timestamps();
+
         });
     }
 

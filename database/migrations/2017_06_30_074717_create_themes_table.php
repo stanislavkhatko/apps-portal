@@ -16,6 +16,7 @@ class CreateThemesTable extends Migration
         Schema::create('content_portal_themes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('theme_name');
             $table->timestamps();
         });
     }

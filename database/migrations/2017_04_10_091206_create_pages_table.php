@@ -16,8 +16,12 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('content_portal_id');
+            $table->string('lang_code', 2);
+            $table->string('type')->default('dynamic');
             $table->json('title')->nullable();
             $table->json('body')->nullable();
+            $table->unsignedInteger('position')->nullable();
+            $table->boolean('visible')->default(false);
             $table->timestamps();
         });
     }

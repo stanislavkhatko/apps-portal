@@ -14,10 +14,12 @@ class CreateLanguageLinesTable extends Migration
     {
         Schema::create('language_lines', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('content_portal_theme_id')->nullable();
             $table->string('group');
             $table->index('group');
             $table->string('key');
             $table->text('text');
+            $table->boolean('in_use')->default(false);
             $table->timestamps();
         });
     }
