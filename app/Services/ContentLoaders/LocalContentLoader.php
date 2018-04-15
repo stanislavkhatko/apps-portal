@@ -105,9 +105,13 @@ final class LocalContentLoader extends ContentLoader
         $contentItem->fill($request->get('contentItem'));
         $contentItem->save();
 
-        $contentItem->preview = $this->moveToImagesFolder($request, $contentItem->id);
-        $contentItem->download = $this->moveToContentFolder($request, $contentItem->id);
-        $contentItem->save();
+        if($contentItem->type !== 'reference') {
+            $contentItem->preview = $this->moveToImagesFolder($request, $contentItem->id);
+            $contentItem->download = $this->moveToContentFolder($request, $contentItem->id);
+        } else {
+            $contentItem->preview = $this->moveToImagesFolder($request, $contentItem->id);
+        }
+
         $this->deleteTempFolder();
 
         return response()->json(['success' => true, 'contentItem' => $contentItem]);

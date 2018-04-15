@@ -17,7 +17,7 @@ class CreateLocalContentTypesTable extends Migration
             $table->increments('id');     
             $table->text('name')->nullable();       
             $table->json('label')->nullable();
-            $table->string('icon');
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

@@ -21,8 +21,8 @@ class ImportContent implements ShouldQueue
      * @var array|\App\ContentProviders\ContentProviderContract
      */
     protected $providers = [
-        // 'melodimedia',
-        'mobibase',
+         'melodimedia',
+//        'mobibase',
     ];
 
     /**

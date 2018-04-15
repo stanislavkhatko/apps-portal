@@ -1,10 +1,7 @@
-
 //Font awesome
 @import "~font-awesome/scss/font-awesome";
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -18,7 +15,7 @@ $helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 // Hide license alert from froala
 .fr-wrapper > div:first-child {
-  display: none;
+  //display: none;
 }
 
 // Header and navbar menu
