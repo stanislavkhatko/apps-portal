@@ -20,7 +20,7 @@ class CreateContentItemsTable extends Migration
             $table->json('download')->nullable();
             $table->boolean('is_customized')->default(false);
             $table->unsignedInteger('category_id')->nullable();
-            $table->string('type');
+            $table->string('type')->default('upload');
             $table->json('title')->nullable();
             $table->json('description')->nullable();
             $table->json('info')->nullable();

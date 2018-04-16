@@ -57,15 +57,22 @@ final class LocalContentLoader extends ContentLoader
         $contentItem = new ContentItem();
         $contentItem->fill($request->get('contentItem'));
 
-        // Content upload
-        if ($contentItem->type !== 'reference' && $contentItem->dawnload['link']) {
-            $contentItem->download = $this->moveToContentFolder($request, 'content-item_' . $contentItem->id . '_' . time());
+        // Upload content item
+        if ($request->input('contentItem')['download']['link'] && $request->input('contentItem')['type'] !== 'reference') {
+            if (Storage::disk('temp')->exists(basename($request->input('contentItem')['download']['link']))) {
+                $this->deleteOldContentFile(basename($contentItem->download['link']));
+                $contentItem->download = $this->moveToContentFolder($request, $contentItem->id);
+            }
         }
 
-        // Image upload (preview)
-        if ($contentItem->preview) {
-            $contentItem->preview = $this->moveToImagesFolder($request, 'content-item-image_' . $contentItem->id . '_' . time());
+        // Upload preview image
+        if ($request->input('contentItem')['preview']) {
+            if (Storage::disk('temp')->exists(basename($request->input('contentItem')['preview']))) {
+                $this->deleteOldImageFile(basename($contentItem->preview));
+                $contentItem->preview = $this->moveToImagesFolder($request, $contentItem->id);
+            }
         }
+
 
         $contentItem->save();
 

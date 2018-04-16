@@ -35,12 +35,13 @@ class DigitalOceanCloudUploader extends CloudUploader
     #region MAIN METHODS
     public function upload()
     {
-        if(count($this->localContent) > 0 && count($this->localImages) > 0){
+        if (count($this->localContent) > 0 && count($this->localImages) > 0) {
             $filesArray = $this->joinImagesWithContent();
-            if($filesArray !== false){
-                foreach ($filesArray AS $imageFile=>$contentFile){
+
+            if ($filesArray !== false) {
+                foreach ($filesArray AS $imageFile => $contentFile) {
                     $this->removeOldFilesFromCloud($imageFile);
-                    $this->copyNewFilesToCloud($imageFile ,$contentFile);
+                    $this->copyNewFilesToCloud($imageFile, $contentFile);
                     $this->recordCloudPathsToDB($imageFile, $contentFile);
                     $this->deleteLocalFiles($imageFile, $contentFile);
                 }
@@ -52,54 +53,34 @@ class DigitalOceanCloudUploader extends CloudUploader
     public function update(Request $request, $id)
     {
         $contentItem = ContentItem::find($id);
+        $contentItem->fill($request->get('contentItem'));
 
-        $contentDeleted = false;
-        $imageDeleted = false;
-
-        //image
-        $imageInputLink = basename($request->input('contentItem')['preview']);
-        if (Storage::disk('temp')->exists($imageInputLink)) {
-
-            Storage::disk('spaces')
-                ->delete('images/'.basename($contentItem->preview));
-            $imageDeleted = true;
+        // Update contentItem file
+        if ($request->input('contentItem')['download']['link']) {
+            if (Storage::disk('temp')->exists(basename($request->input('contentItem')['download']['link']))) {
+                Storage::disk('spaces')->delete('content/' . basename($contentItem->download['link']));
+                $contentItem->download = $this->moveToCloudFolderAndReturnPath(
+                    $request->input('contentItem')['download']['link'],
+                    'content-item_' . $contentItem->id . '_' . time(),
+                    $this->cloudContentFolder);
+                $contentItem->type = 'cloud';
+            }
         }
 
-        //content
-        $contentInputLink = basename($request->input('contentItem')['download']['link']);
-        if (Storage::disk('temp')->exists($contentInputLink)) {
-
-            Storage::disk('spaces')
-                ->delete('content/'.basename($contentItem->download['link']));
-            $contentDeleted = true;
-        }
-
-        $input = $request->except(['preview', 'download', 'type']);
-        $contentItem->fill($input);
-
-
-        if ($imageDeleted === true) {
-            $contentItem->preview =
-                $this->moveToCloudFolderAndReturnPath(
-                    $imageInputLink,
-                    $contentItem->id,
+        // Upload preview image
+        if ($request->input('contentItem')['preview']) {
+            if (Storage::disk('temp')->exists(basename($request->input('contentItem')['preview']))) {
+                Storage::disk('spaces')->delete('images/' . basename($contentItem->preview));
+                $contentItem->preview = $this->moveToCloudFolderAndReturnPath(
+                    $request->input('contentItem')['preview'],
+                    'content-item-image_' . $contentItem->id . '_' . time(),
                     $this->cloudImageFolder
                 );
+            }
         }
 
-        if ($contentDeleted === true) {
-            $contentItem->download =
-                $this->moveToCloudFolderAndReturnPath(
-                    $contentInputLink,
-                    $contentItem->id,
-                    $this->cloudContentFolder
-                );
-        }
-
-        $contentItem->type = 'cloud';
         $contentItem->save();
-
-        return response()->json(['success' => true, 'contentItem' => $contentItem]);
+        return $contentItem;
     }
 
     public function download(ContentItem $item)
@@ -124,17 +105,17 @@ class DigitalOceanCloudUploader extends CloudUploader
     public function delete(ContentItem $contentItem)
     {
         $imageFiles = Storage::disk('spaces')->files('images');
-        if(count($imageFiles)>0){
+        if (count($imageFiles) > 0) {
             $image = $this->findFile($imageFiles, $contentItem->id);
-            if($image !== false){
+            if ($image !== false) {
                 Storage::disk('spaces')->delete($image);
             }
         }
 
         $contentFiles = Storage::disk('spaces')->files('content');
-        if(count($contentFiles)>0){
+        if (count($contentFiles) > 0) {
             $content = $this->findFile($contentFiles, $contentItem->id);
-            if($content !== false){
+            if ($content !== false) {
                 Storage::disk('spaces')->delete($content);
             }
         }
@@ -146,22 +127,22 @@ class DigitalOceanCloudUploader extends CloudUploader
     private function moveToCloudFolderAndReturnPath($tempInputLink, $newFileName, $storage)
     {
         $tempFile = basename($tempInputLink);
-        $fileExtension = pathinfo($tempFile,PATHINFO_EXTENSION);
-        $newFile = $newFileName.'.'.$fileExtension;
+        $fileExtension = pathinfo($tempFile, PATHINFO_EXTENSION);
+        $newFile = $newFileName . '.' . $fileExtension;
 
-        $fullFilePath  = Storage::disk('temp')->
+        $fullFilePath = Storage::disk('temp')->
             getDriver()->
             getAdapter()->
-            getPathPrefix()."\\".$tempFile;
+            getPathPrefix() . "\\" . $tempFile;
 
         $file = new File($fullFilePath);
 
-        if($storage === $this->cloudImageFolder){
+        if ($storage === $this->cloudImageFolder) {
             Storage::disk('spaces')->putFileAs($storage, $file, $newFile, 'public');
-            return Storage::disk('spaces')->url($storage.'/'.$newFile);
-        }elseif($storage === $this->cloudContentFolder){
+            return Storage::disk('spaces')->url($storage . '/' . $newFile);
+        } elseif ($storage === $this->cloudContentFolder) {
             Storage::disk('spaces')->putFileAs($storage, $file, $newFile);
-            return ['link' => $storage.'/'.$newFile];
+            return ['link' => $storage . '/' . $newFile];
         }
     }
 
@@ -171,46 +152,46 @@ class DigitalOceanCloudUploader extends CloudUploader
         $cleanImageNames = $this->getCleanNames($this->localImages);
         $cleanContentNames = $this->getCleanNames($this->localContent);
 
-        foreach ($cleanContentNames AS $key=>$value){
+        foreach ($cleanContentNames AS $key => $value) {
             $foundImageKey = array_search($value, $cleanImageNames);
-            if($foundImageKey !== false){
+            if ($foundImageKey !== false) {
                 $joinedArray[$this->localImages[$foundImageKey]] = $this->localContent[$key];
             }
         }
 
-        if(count($joinedArray)>0){
+        if (count($joinedArray) > 0) {
             return $joinedArray;
-        }else{
+        } else {
             return false;
         }
     }
 
     private function removeOldFilesFromCloud($imageFile)
     {
-        $contentItemID = pathinfo($imageFile,PATHINFO_FILENAME);
+        $contentItemID = pathinfo($imageFile, PATHINFO_FILENAME);
 
         $contentObject = ContentItem::find($contentItemID);
 
-        if($contentObject){
+        if ($contentObject) {
             //removing content files
             $contentFiles = Storage::disk('spaces')->files('content');
-            if(count($contentFiles)>0){
+            if (count($contentFiles) > 0) {
                 $contentFileNames = $this->getCleanNames($contentFiles);
                 $foundFileKey = array_search($contentItemID, $contentFileNames);
-                if($foundFileKey !== false){
+                if ($foundFileKey !== false) {
                     Storage::disk('spaces')
-                        ->delete('/'.$contentFiles[$foundFileKey]);
+                        ->delete('/' . $contentFiles[$foundFileKey]);
                 }
             }
 
             //removing image file
             $imageFiles = Storage::disk('spaces')->files('images');
-            if(count($imageFiles)>0){
+            if (count($imageFiles) > 0) {
                 $imageFileNames = $this->getCleanNames($imageFiles);
-                $foundFileKey = array_search($contentItemID,$imageFileNames);
-                if($foundFileKey !== false){
+                $foundFileKey = array_search($contentItemID, $imageFileNames);
+                if ($foundFileKey !== false) {
                     Storage::disk('spaces')
-                        ->delete($this->cloudImageFolder.'/'.$imageFiles[$foundFileKey]);
+                        ->delete($this->cloudImageFolder . '/' . $imageFiles[$foundFileKey]);
                 }
             }
 
@@ -220,46 +201,46 @@ class DigitalOceanCloudUploader extends CloudUploader
     private function copyNewFilesToCloud($imageFile, $contentFile)
     {
         //saving image file to cloud
-        $storageFolder  = Storage::disk('images')->
-            getDriver()->
-            getAdapter()->
-            getPathPrefix();
-        $fullImagePath = $storageFolder.$imageFile;
+        $storageFolder = Storage::disk('images')->
+        getDriver()->
+        getAdapter()->
+        getPathPrefix();
+        $fullImagePath = $storageFolder . $imageFile;
 
-        $handle = fopen($fullImagePath,'r');
+        $handle = fopen($fullImagePath, 'r');
 
-        Storage::disk('spaces')->put($this->cloudImageFolder.'/'.$imageFile, $handle, 'public');
+        Storage::disk('spaces')->put($this->cloudImageFolder . '/' . $imageFile, $handle, 'public');
 
         fclose($handle);
 
         //saving content file to cloud
-        $storageFolder  = Storage::disk('content')->
-            getDriver()->
-            getAdapter()->
-            getPathPrefix();
-        $fullImagePath = $storageFolder.$contentFile;
+        $storageFolder = Storage::disk('content')->
+        getDriver()->
+        getAdapter()->
+        getPathPrefix();
+        $fullImagePath = $storageFolder . $contentFile;
 
-        $handle = fopen($fullImagePath,'r');
+        $handle = fopen($fullImagePath, 'r');
 
-        Storage::disk('spaces')->put($this->cloudContentFolder.'/'.$contentFile, $handle);
+        Storage::disk('spaces')->put($this->cloudContentFolder . '/' . $contentFile, $handle);
         fclose($handle);
     }
 
     private function recordCloudPathsToDB($imageFile, $contentFile)
     {
-        $contentItemID = pathinfo($imageFile,PATHINFO_FILENAME);
+        $contentItemID = pathinfo($imageFile, PATHINFO_FILENAME);
 
         $contentObject = ContentItem::find($contentItemID);
 
-        if($contentObject){
-            $imageUrl = Storage::disk('spaces')->url('images/'.$imageFile);
+        if ($contentObject) {
+            $imageUrl = Storage::disk('spaces')->url('images/' . $imageFile);
 
-            $contentDownloadUrl = 'content/'.$contentFile;
+            $contentDownloadUrl = 'content/' . $contentFile;
 
             $contentObject->update([
-                'type'=>'cloud',
-                'preview'=>$imageUrl,
-                'download'=>['link'=>$contentDownloadUrl]
+                'type' => 'cloud',
+                'preview' => $imageUrl,
+                'download' => ['link' => $contentDownloadUrl]
             ]);
         }
     }
