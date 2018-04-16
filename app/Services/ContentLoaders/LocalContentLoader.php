@@ -56,6 +56,7 @@ final class LocalContentLoader extends ContentLoader
     {
         $contentItem = new ContentItem();
         $contentItem->fill($request->get('contentItem'));
+        $contentItem->save();
 
         // Upload content item
         if ($request->input('contentItem')['download']['link'] && $request->input('contentItem')['type'] !== 'reference') {
@@ -143,23 +144,11 @@ final class LocalContentLoader extends ContentLoader
 
     private function deleteOldImageFile($imageFile)
     {
-        #region LOGREC
-        LogRec::debug([
-            'process' => 'deleting file ' . $imageFile
-        ]);
-        #endregion
-
         Storage::disk('images')->delete($imageFile);
     }
 
     private function deleteOldContentFile($contentFile)
     {
-        #region LOGREC
-        LogRec::debug([
-            'process' => 'deleting file ' . $contentFile
-        ]);
-        #endregion
-
         Storage::disk('content')->delete($contentFile);
     }
     #endregion
