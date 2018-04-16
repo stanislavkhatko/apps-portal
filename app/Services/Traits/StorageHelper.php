@@ -12,7 +12,7 @@ namespace App\Services\Traits;
 trait StorageHelper
 {
 
-    protected function findContentItemFile(array $filesArray, string $fileName)
+    protected function findFile(array $filesArray, string $fileName)
     {
         $clearFileNames = $this->getCleanContentItemNames($filesArray);
 

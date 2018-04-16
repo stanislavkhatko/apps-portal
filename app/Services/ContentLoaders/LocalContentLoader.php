@@ -74,11 +74,8 @@ final class LocalContentLoader extends ContentLoader
             }
         }
 
-
         $contentItem->save();
-
         $this->deleteTempFolder();
-
         return $contentItem;
     }
 
