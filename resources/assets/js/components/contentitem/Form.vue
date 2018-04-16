@@ -285,13 +285,13 @@
                                 <label class="col-sm-2 control-label">File (e.g. APK, image, video)</label>
                                 <div class="col-sm-10">
 
-                                    <template v-if="contentItem.id && linkLoaded">
+                                    <template v-if="contentItem.download.link">
 
                                         <a :href="'/download/'+contentItem.id" class="file_download_link"
                                            target="_blank">
                                             Click here to download file <mark>{{ contentItem.download.link }}</mark>
                                         </a>
-                                        <button class="btn btn-danger min_width_100" @click="linkLoaded = false">
+                                        <button class="btn btn-danger min_width_100" @click="contentItem.download.link = ''">
                                             Remove file
                                         </button>
 
@@ -421,7 +421,6 @@
                 contentTypeId: '',
                 categories: [],
                 newSelectedLanguage: '',
-                linkLoaded: true
             }
         },
 
@@ -437,7 +436,7 @@
                 }
 
                 // compatibility
-                if (this.contentItem.compatibility[0].os == 'Android') {
+                if (this.contentItem.compatibility[0].os === 'Android') {
                     this.helpers.devices.selected = this.helpers.devices.options[1];
                 }
                 else {
@@ -539,7 +538,7 @@
             },
 
             changedDevice(device) {
-                if (device.value == 'Android') {
+                if (device.value === 'Android') {
                     this.contentItem.compatibility[0].os = 'Android';
                 }
                 else {
@@ -564,7 +563,6 @@
             },
 
             saveContentItem(goBack) {
-                this.linkLoaded = true;
                 if (goBack) {
                     this.helpers.spinner.saveAndReturn = true;
                 }
