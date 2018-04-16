@@ -588,7 +588,7 @@
                             if (response.data) {
                                 this.helpers.spinner.save = false;
                                 this.helpers.spinner.saveAndReturn = false;
-                                window.location.href = '/admin/content-items/' + response.data.contentItem.id + '/edit';
+                                window.location.href = '/admin/content-items/' + response.data.id + '/edit';
                             }
                         });
                 }

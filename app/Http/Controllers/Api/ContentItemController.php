@@ -17,9 +17,9 @@ class ContentItemController extends Controller
     public function update(Request $request, $id)
     {
         $contentItem = ContentItem::find($request->input('contentItem')['id']);
-        if($contentItem->type === 'upload'){
+        if ($contentItem->type !== 'cloud') {
             return ContentLoader::update($request, $id);
-        }elseif ($contentItem->type === 'cloud'){
+        } else {
             return CloudUploader::update($request, $id);
         }
     }
@@ -37,14 +37,14 @@ class ContentItemController extends Controller
 
     public function uploadContentItemImage(Request $request)
     {
-        if($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
 
             $path = $file->hashName('public/temp');
 
             $image = Image::make($file)->fit(240);
 
-            Storage::put($path, (string) $image->encode());
+            Storage::put($path, (string)$image->encode());
 
             $url = Storage::url($path);
 
@@ -53,12 +53,12 @@ class ContentItemController extends Controller
 
     }
 
-    public function uploadContentItemFile(Request $request) 
+    public function uploadContentItemFile(Request $request)
     {
-        if($request->hasFile('file')){
-            $file = $request->file('file')->store('','temp');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file')->store('', 'temp');
             $ds = DIRECTORY_SEPARATOR;
-            return storage_path('app'.$ds.'public'.$ds.'temp'.$ds.$file);
+            return storage_path('app' . $ds . 'public' . $ds . 'temp' . $ds . $file);
         }
     }
     #endregion
