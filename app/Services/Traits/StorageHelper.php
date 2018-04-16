@@ -12,9 +12,9 @@ namespace App\Services\Traits;
 trait StorageHelper
 {
 
-    protected function findFile(array $filesArray, string $fileName)
+    protected function findContentItemFile(array $filesArray, string $fileName)
     {
-        $clearFileNames = $this->getCleanNames($filesArray);
+        $clearFileNames = $this->getCleanContentItemNames($filesArray);
 
         $fileKey = array_search($fileName, $clearFileNames);
 
@@ -26,7 +26,7 @@ trait StorageHelper
 
     }
 
-    protected function getCleanNames(array $filesArray)
+    protected function getCleanContentItemNames(array $filesArray)
     {
         $cleanNamesArray = null;
         foreach ($filesArray AS $fileName){
