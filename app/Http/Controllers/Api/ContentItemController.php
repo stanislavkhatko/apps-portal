@@ -88,10 +88,8 @@ class ContentItemController extends Controller
     public function uploadContentItemFile(Request $request)
     {
         if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $path = $file->hashName('public/temp');
-            Storage::put($path, (string)$file);
-            return Storage::url($path);
+            $path = $request->file('file')->store('public/temp');
+            return $path;
         }
     }
     #endregion

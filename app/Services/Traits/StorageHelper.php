@@ -14,20 +14,6 @@ use Illuminate\Support\Facades\Storage;
 trait StorageHelper
 {
 
-    protected function findFile(array $filesArray, string $fileName)
-    {
-        $clearFileNames = $this->getCleanContentItemNames($filesArray);
-
-        $fileKey = array_search($fileName, $clearFileNames);
-
-        if($fileKey !== false){
-            return $filesArray[$fileKey];
-        }
-
-        return false;
-
-    }
-
     protected function moveItemToCloud($tempInputLink, $newFileName, $storage)
     {
         $tempFile = basename($tempInputLink);
@@ -37,13 +23,12 @@ trait StorageHelper
         $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $tempFile;
         $file = new File($fullFilePath);
         Storage::disk('spaces')->putFileAs($storage, $file, $newFile);
-//        Storage::disk('temp')->delete($tempFile);
+        Storage::disk('temp')->delete($tempFile);
         return $storage . '/' . $newFile;
     }
 
     protected function removeItemFromCloud($fileName)
     {
-        dump($fileName);
         return Storage::disk('spaces')->delete($fileName);
     }
 }
