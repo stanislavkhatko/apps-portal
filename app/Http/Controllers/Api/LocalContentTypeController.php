@@ -20,12 +20,13 @@ class LocalContentTypeController extends Controller
     {
         // save local content type
         $localContentType = LocalContentType::find($id);
-        $localContentType->fill($request->contentType);
+        $localContentType->fill($request->all());
+        $localContentType->save();
 
         // Upload preview image
-        if ($request->contentType['icon'] && Storage::disk('temp')->exists(basename($request->contentType['icon']))) {
+        if ($request->icon && Storage::disk('temp')->exists(basename($request->icon))) {
             $localContentType->icon = $this->moveItemToCloud(
-                $request->contentType['icon'],
+                $request->icon,
                 $localContentType->id,
                 'local-content-type-images');
         }
@@ -33,7 +34,7 @@ class LocalContentTypeController extends Controller
         $localContentType->save();
 
         // get local cats which were marked for deletion
-        $localCatIDs = array_pluck($request->contentType['local_categories'], 'id');
+        $localCatIDs = array_pluck($request->local_categories, 'id');
         $deletedLocalCats = LocalCategory::where('local_content_type_id', $id)->whereNotIn('id', $localCatIDs)->get();
 
         // delete local cats and detach their items
@@ -42,7 +43,7 @@ class LocalContentTypeController extends Controller
             $deletedLocalCat->delete();
         }
 
-        foreach ($request->contentType['local_categories'] as $local_category) {
+        foreach ($request->local_categories as $local_category) {
 
             // update/create the local categories
             $localCategory = $localContentType->localCategories()->updateOrCreate(['id' => $local_category['id']], $local_category);
@@ -57,7 +58,7 @@ class LocalContentTypeController extends Controller
             }
         }
 
-        return response()->json(['success' => true, 'contentType' => $localContentType]);
+        return $localContentType;
     }
 
 
@@ -65,20 +66,20 @@ class LocalContentTypeController extends Controller
     {
         // save local content type
         $localContentType = new LocalContentType();
-
-        $localContentType->fill($request->contentType);
+        $localContentType->fill($request->all());
+        $localContentType->save();
 
         // Upload preview image
-        if (isset($request->contentType['icon']) && Storage::disk('temp')->exists(basename($request->contentType['icon']))) {
+        if (isset($request->icon) && Storage::disk('temp')->exists(basename($request->icon))) {
             $localContentType->icon = $this->moveItemToCloud(
-                $request->contentType['icon'],
+                $request->icon,
                 $localContentType->id,
                 'local-content-type-images');
         }
 
         $localContentType->save();
 
-        foreach ($request->contentType['local_categories'] as $local_category) {
+        foreach ($request->local_categories as $local_category) {
 
             // update/create the local categories
             $localCategory = $localContentType->localCategories()->updateOrCreate(['id' => $local_category['id']], $local_category);
@@ -88,7 +89,7 @@ class LocalContentTypeController extends Controller
             $localCategory->contentItems()->sync($contentItemsIDs);
         }
 
-        return response()->json(['success' => true, 'contentType' => $localContentType]);
+        return $localContentType;
     }
 
 

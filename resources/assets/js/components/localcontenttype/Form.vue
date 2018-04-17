@@ -558,7 +558,7 @@ export default {
 
             // update
             if (this.contentType_) {
-                axios.patch('/admin/api/local-content-type/' + this.contentType.id , {contentType: this.contentType})
+                axios.patch('/admin/api/local-content-type/' + this.contentType.id , this.contentType)
                     .then((response) => {
                         if (response.data) {
                             this.helpers.spinner.save = false;
@@ -571,12 +571,12 @@ export default {
 
             // new
             else {
-                axios.post('/admin/api/local-content-type/', {contentType: this.contentType})
+                axios.post('/admin/api/local-content-type/', this.contentType)
                     .then((response) => {
                         if (response.data) {
                             this.helpers.spinner.save = false;
                             this.helpers.spinner.saveAndReturn = false;
-                            window.location.href = '/admin/local-content-types/' + response.data.contentType.id + '/edit';
+                            window.location.href = '/admin/local-content-types/' + response.data.id + '/edit';
                         }
                     });
             }            
