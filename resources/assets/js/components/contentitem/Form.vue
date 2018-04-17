@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="form-group"
-                         v-if="contentItem.compatibility && contentItem.compatibility[0].os == 'Android'">
+                         v-if="contentItem.compatibility && contentItem.compatibility[0].os === 'Android'">
                         <label class="col-sm-2 control-label">Min. Version</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" placeholder="Type a min. version e.g. 4.0.1"

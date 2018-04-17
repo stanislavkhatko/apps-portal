@@ -109,14 +109,10 @@ class HomeController extends Controller
         } else {
             if ($item->type == 'upload') {
                 try {
-                    return response()->download($item->download['link']);
+                    return Storage::disk('spaces')->download($item->download['link']);
                 } catch (\Exception $e) {
                     return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
                 }
-            } elseif ($item->type == 'cloud') {
-
-                return CloudUploader::download($item);
-
             } else {
 
                 try {

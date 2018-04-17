@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Scopes\AdultScope;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Models\ContentItem
@@ -59,7 +60,7 @@ class ContentItem extends Model
     {
         return $this->hasMany(ContentDownload::class);
     }
-    
+
     public function downloadedBy($subscription)
     {
         \App\Models\ContentDownload::create([
@@ -78,7 +79,7 @@ class ContentItem extends Model
         $description = $this->description;
 
         if (strlen($description) > 130) {
-            $description = substr($description, 0, 130).'...';
+            $description = substr($description, 0, 130) . '...';
         }
 
         return $description;
@@ -87,6 +88,23 @@ class ContentItem extends Model
     public function getTitleTranslatedAttribute()
     {
         return $this->title;
+    }
+
+    public function getPreviewAttribute($value)
+    {
+        if (Storage::disk('spaces')->exists($value)) {
+            return Storage::disk('spaces')->url($value);
+        }
+        return $value;
+    }
+
+    public function setPreviewAttribute($value)
+    {
+        if ($value && strstr($value, '.com/')) {
+            return substr($value, strpos($value, '.com/') + 5);
+        }
+
+        return $value;
     }
 
     public function getCreatedAtAttribute($value)

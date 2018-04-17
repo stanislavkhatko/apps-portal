@@ -22,7 +22,7 @@ trait StorageHelper
 
         $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $tempFile;
         $file = new File($fullFilePath);
-        Storage::disk('spaces')->putFileAs($storage, $file, $newFile);
+        Storage::disk('spaces')->putFileAs($storage, $file, $newFile, 'public');
         Storage::disk('temp')->delete($tempFile);
         return $storage . '/' . $newFile;
     }
