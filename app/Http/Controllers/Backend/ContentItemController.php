@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Services\Facades\CloudUploader;
-use App\Services\Facades\ContentLoader;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ContentItem;
 use App\Models\ContentType;
 use App\Models\Category;
+use App\Services\Traits\StorageHelper;
+
 class ContentItemController extends Controller
 {
+    use StorageHelper;
+
     public function index(Request $request)
-    {     
+    {
         DB::connection()->enableQueryLog();
 
         $providers = ContentItem::select('provider')->get()->unique('provider');
         $contenttypes = ContentType::orderBy('label');
-        $categories = Category::orderBy('label');       
+        $categories = Category::orderBy('label');
         $items = ContentItem::with('category');
 
         // Filter on provider
@@ -26,28 +28,28 @@ class ContentItemController extends Controller
             $provider = $request->provider;
 
             $contenttypes = $contenttypes->where('provider', $provider);
-            
-            $categories = $categories->whereHas('contentType', function ($q) use($provider) {
+
+            $categories = $categories->whereHas('contentType', function ($q) use ($provider) {
                 $q->where('provider', $provider);
             });
 
-            $items = $items->whereHas('category', function ($q) use($provider) {
-                $q->whereHas('contentType', function ($q2) use($provider) {
+            $items = $items->whereHas('category', function ($q) use ($provider) {
+                $q->whereHas('contentType', function ($q2) use ($provider) {
                     $q2->where('provider', $provider);
                 });
-            });        
+            });
         }
 
         // Filter on contenttype
         if ($request->contenttype) {
-            $contentType = $request->contenttype;   
+            $contentType = $request->contenttype;
 
-            $categories = $categories->whereHas('contentType', function ($q) use($contentType) {
+            $categories = $categories->whereHas('contentType', function ($q) use ($contentType) {
                 $q->where('content_type_id', $contentType);
             });
 
-            $items = $items->whereHas('category', function ($q) use($contentType) {
-                $q->whereHas('contentType', function ($q2) use($contentType) {
+            $items = $items->whereHas('category', function ($q) use ($contentType) {
+                $q->whereHas('contentType', function ($q2) use ($contentType) {
                     $q2->where('id', $contentType);
                 });
             });
@@ -64,7 +66,7 @@ class ContentItemController extends Controller
 
         // Filter on search
         if ($request->search) {
-            $items = $items->whereRaw('LOWER(title->"$.en") LIKE \'?\'', '%'.strtolower($request->search).'%')->orWhere('remote_id', 'LIKE', '%'.$request->search.'%');
+            $items = $items->whereRaw('LOWER(title->"$.en") LIKE \'?\'', '%' . strtolower($request->search) . '%')->orWhere('remote_id', 'LIKE', '%' . $request->search . '%');
         }
 
         // Set items pagination to 20
@@ -89,21 +91,21 @@ class ContentItemController extends Controller
 
     public function destroy($id)
     {
-
         $contentItem = ContentItem::find($id);
 
-        if($contentItem->type === 'upload' || $contentItem->type === 'cloud'){
-            ContentLoader::delete($contentItem);
-            CloudUploader::delete($contentItem);
+        if ($contentItem->preview) {
+            $this->removeItemFromCloud($contentItem->preview);
+        }
+        if (isset($contentItem->download['link']) && !empty($contentItem->download['link'])) {
+            $this->removeItemFromCloud($contentItem->download['link']);
         }
 
         // if contentItem belongs to a local cat, delete it
         if ($contentItem->localCategory()->first()) {
             $contentItem->localCategory()->first()->contentItems()->detach([$id]);
         }
-            
-        $contentItem->delete();
 
+        $contentItem->delete();
         return back();
     }
 }

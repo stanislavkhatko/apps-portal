@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\ContentItem;
-use App\Services\Facades\CloudUploader;
-use App\Services\Facades\ContentLoader;
+use App\Services\Traits\StorageHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -13,20 +12,60 @@ use Illuminate\Support\Facades\Storage;
 
 class ContentItemController extends Controller
 {
+    use StorageHelper;
+
     #region MAIN METHODS
     public function update(Request $request, $id)
     {
-        $contentItem = ContentItem::find($request->input('contentItem')['id']);
-        if ($contentItem->type !== 'cloud') {
-            return ContentLoader::update($request, $id);
-        } else {
-            return CloudUploader::update($request, $id);
+        $contentItem = ContentItem::find($id);
+        $contentItem->fill($request->all());
+
+        // Upload content item
+        $download = isset($request->download) ? $request->input('download') : '';
+        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
+            $contentItem->download = ['link' => $this->moveItemToCloud(
+                $download['link'],
+                $contentItem->id,
+                'content-items')];
         }
+
+        // Upload preview image
+        if ($request->preview && Storage::disk('temp')->exists(basename($request->preview))) {
+            $contentItem->preview = $this->moveItemToCloud(
+                $request->preview,
+                $contentItem->id,
+                'content-item-images');
+        }
+
+        $contentItem->save();
+        return $contentItem;
     }
 
     public function store(Request $request)
     {
-        return ContentLoader::store($request);
+        $contentItem = new ContentItem();
+        $contentItem->fill($request->all());
+        $contentItem->save();
+
+        // Upload content item
+        $download = isset($request->download) ? $request->input('download') : '';
+        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
+            $contentItem->download = ['link' => $this->moveItemToCloud(
+                $download['link'],
+                $contentItem->id,
+                'content-items')];
+        }
+
+        // Upload preview image
+        if ($request->preview && Storage::disk('temp')->exists(basename($request->preview))) {
+            $contentItem->preview = $this->moveItemToCloud(
+                $request->preview,
+                $contentItem->id,
+                'content-item-images');
+        }
+
+        $contentItem->save();
+        return $contentItem;
     }
 
     public function getCategories(Request $request)
@@ -39,26 +78,20 @@ class ContentItemController extends Controller
     {
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-
             $path = $file->hashName('public/temp');
-
-            $image = Image::make($file)->fit(240);
-
+            $image = Image::make($file)->fit(290);
             Storage::put($path, (string)$image->encode());
-
-            $url = Storage::url($path);
-
-            return $url;
+            return Storage::url($path);
         }
-
     }
 
     public function uploadContentItemFile(Request $request)
     {
         if ($request->hasFile('file')) {
-            $file = $request->file('file')->store('', 'temp');
-            $ds = DIRECTORY_SEPARATOR;
-            return storage_path('app' . $ds . 'public' . $ds . 'temp' . $ds . $file);
+            $file = $request->file('file');
+            $path = $file->hashName('public/temp');
+            Storage::put($path, (string)$file);
+            return Storage::url($path);
         }
     }
     #endregion

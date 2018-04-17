@@ -574,7 +574,7 @@
 
                 // update
                 if (this.item) {
-                    axios.patch('/admin/api/content-item/' + this.contentItem.id, {contentItem: this.contentItem})
+                    axios.patch('/admin/api/content-item/' + this.contentItem.id, this.contentItem)
                         .then((response) => {
                             if (response.data) {
                                 this.helpers.spinner.save = false;
@@ -583,7 +583,7 @@
                             }
                         });
                 } else {
-                    axios.post('/admin/api/content-item/', {contentItem: this.contentItem})
+                    axios.post('/admin/api/content-item/', this.contentItem)
                         .then((response) => {
                             if (response.data) {
                                 this.helpers.spinner.save = false;

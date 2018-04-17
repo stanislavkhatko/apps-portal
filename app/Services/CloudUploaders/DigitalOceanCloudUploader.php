@@ -124,7 +124,7 @@ class DigitalOceanCloudUploader extends CloudUploader
     {
         $imageFiles = Storage::disk('spaces')->files('images');
         if (count($imageFiles) > 0) {
-            $image = $this->findContentItemFile($imageFiles, $contentItem->id);
+            $image = $this->findFile($imageFiles, $contentItem->id);
             if ($image !== false) {
                 Storage::disk('spaces')->delete($image);
             }
@@ -132,7 +132,7 @@ class DigitalOceanCloudUploader extends CloudUploader
 
         $contentFiles = Storage::disk('spaces')->files('content');
         if (count($contentFiles) > 0) {
-            $content = $this->findContentItemFile($contentFiles, $contentItem->id);
+            $content = $this->findCFile($contentFiles, $contentItem->id);
             if ($content !== false) {
                 Storage::disk('spaces')->delete($content);
             }

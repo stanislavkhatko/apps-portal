@@ -7,6 +7,8 @@
  */
 
 namespace App\Services\Traits;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 
 trait StorageHelper
@@ -26,12 +28,22 @@ trait StorageHelper
 
     }
 
-    protected function getCleanContentItemNames(array $filesArray)
+    protected function moveItemToCloud($tempInputLink, $newFileName, $storage)
     {
-        $cleanNamesArray = null;
-        foreach ($filesArray AS $fileName){
-            $cleanNamesArray[] = pathinfo($fileName,PATHINFO_FILENAME);
-        }
-        return $cleanNamesArray;
+        $tempFile = basename($tempInputLink);
+        $fileExtension = pathinfo($tempFile, PATHINFO_EXTENSION);
+        $newFile = $newFileName . '.' . $fileExtension;
+
+        $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $tempFile;
+        $file = new File($fullFilePath);
+        Storage::disk('spaces')->putFileAs($storage, $file, $newFile);
+//        Storage::disk('temp')->delete($tempFile);
+        return $storage . '/' . $newFile;
+    }
+
+    protected function removeItemFromCloud($fileName)
+    {
+        dump($fileName);
+        return Storage::disk('spaces')->delete($fileName);
     }
 }
