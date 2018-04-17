@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Support\Facades\Storage;
 
 class LocalContentType extends Model
 {
@@ -26,7 +27,25 @@ class LocalContentType extends Model
     {
         //return $this->hasManyThrough(ContentItem::class, LocalCategory::class);
         return $this->localCategories->pluck('contentItems')->collapse()->values();
-    }   
+    }
+
+    public function getIconAttribute($value)
+    {
+        if (Storage::disk('spaces')->exists($value)) {
+            return Storage::disk('spaces')->url($value);
+        }
+
+        return $value;
+    }
+
+    public function setIconAttribute($value)
+    {
+        if ($value && strstr($value, '.com/')) {
+            return substr($value, strpos($value, '.com/') + 5);
+        }
+
+        return $value;
+    }
 
     public function getCreatedAtAttribute($value)
     {

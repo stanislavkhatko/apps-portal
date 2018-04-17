@@ -564,7 +564,7 @@ export default {
                             this.helpers.spinner.save = false;
                             this.helpers.spinner.saveAndReturn = false;                            
                             if (goBack) this.goBack();
-                            location.reload();
+                            // location.reload();
                         }
                     });
             }
