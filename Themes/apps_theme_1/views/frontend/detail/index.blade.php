@@ -42,7 +42,7 @@
                 </div>
             @endif
 
-            @if($item->type == 'upload' || $item->type == 'cloud')
+            @if($item->type == 'upload')
                 <a href="{{ route('download.contentitem', $item) }}" class="btn btn-primary app-item-detail__download">
                     @lang('portal.download_label') <span class="glyphicon glyphicon-download-alt"></span>
                 </a>

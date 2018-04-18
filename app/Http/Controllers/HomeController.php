@@ -82,11 +82,9 @@ class HomeController extends Controller
         return view('frontend.detail.index', compact('item', 'video'));
     }
 
-    public function showItem2(LocalContentType $localContentType, LocalCategory $localCategory, ContentItem $item)
+    public function showItem2(ContentItem $item)
     {
-        $video = $this->returnVideoInfo($item);
-
-        return view('frontend.detail.index', compact('localContentType', 'localCategory', 'item', 'video'));
+        return view('frontend.content-page', compact('item'));
     }
 
     public function downloadItem(ContentItem $item)
@@ -114,12 +112,12 @@ class HomeController extends Controller
                     return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
                 }
             } else {
-
-                try {
-                    return redirect()->away($item->download['link']);
-                } catch (\Exception $e) {
-                    return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
-                }
+                return $this->showItem2($item);
+//                try {
+//                    return redirect()->away($item->download['link']);
+//                } catch (\Exception $e) {
+//                    return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
+//                }
             }
         }
 
@@ -174,20 +172,5 @@ class HomeController extends Controller
             \Illuminate\Pagination\Paginator::resolveCurrentPage(),
             ['path' => \Illuminate\Pagination\Paginator::resolveCurrentPath()]
         );
-    }
-
-    private function returnVideoInfo(ContentItem $item)
-    {
-        $video = [];
-        if ($item->provider == 'mobibase') {
-            $client = new Client(config('services.mobibase.api_key'));
-            $client->setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25");
-            $service = $client->getVideo($item->remote_id, env('MOBIBASE_TICKET'), 'wifi');
-
-            $video['info'] = $service->response->video; // video object
-            $video['stream'] = $service->response->stream; // stream object
-        }
-
-        return $video;
     }
 }
