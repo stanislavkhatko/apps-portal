@@ -41,10 +41,10 @@ class LocalContentType extends Model
     public function setIconAttribute($value)
     {
         if ($value && strstr($value, '.com/')) {
-            return substr($value, strpos($value, '.com/') + 5);
+            $value = substr($value, strpos($value, '.com/') + 5);
         }
 
-        return $value;
+        $this->attributes['icon'] = $value;
     }
 
     public function getCreatedAtAttribute($value)

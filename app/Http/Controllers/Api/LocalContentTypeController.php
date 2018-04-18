@@ -21,7 +21,6 @@ class LocalContentTypeController extends Controller
         // save local content type
         $localContentType = LocalContentType::find($id);
         $localContentType->fill($request->all());
-        $localContentType->save();
 
         // Upload preview image
         if ($request->icon && Storage::disk('temp')->exists(basename($request->icon))) {
@@ -67,7 +66,6 @@ class LocalContentTypeController extends Controller
         // save local content type
         $localContentType = new LocalContentType();
         $localContentType->fill($request->all());
-        $localContentType->save();
 
         // Upload preview image
         if (isset($request->icon) && Storage::disk('temp')->exists(basename($request->icon))) {

@@ -101,10 +101,10 @@ class ContentItem extends Model
     public function setPreviewAttribute($value)
     {
         if ($value && strstr($value, '.com/')) {
-            return substr($value, strpos($value, '.com/') + 5);
+            $value = substr($value, strpos($value, '.com/') + 5);
         }
 
-        return $value;
+        $this->attributes['preview'] = $value;
     }
 
     public function getCreatedAtAttribute($value)

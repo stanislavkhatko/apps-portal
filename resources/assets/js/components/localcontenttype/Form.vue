@@ -86,7 +86,7 @@
                             <div class="col-sm-10">
 
                                 <ul class="nav nav-tabs">
-                                    <li v-for="(language, langIdx) in selectedLanguages" :class="langIdx == 0 ? 'active' : ''">
+                                    <li v-for="(language, langIdx) in selectedLanguages" :class="langIdx === 0 ? 'active' : ''">
                                         <a data-toggle="tab" :href="'#s_page' + langIdx">
                                             {{ language.label }}
                                         </a>
@@ -95,10 +95,8 @@
                                 <!-- nav-tabs headers -->
 
                                 <div class="tab-content">
-                                    <div :id="'s_page' + langIdx" class="tab-pane" v-for="(language, langIdx) in selectedLanguages" :class="langIdx == 0 ? 'in active' : ''">
-
+                                    <div :id="'s_page' + langIdx" class="tab-pane" v-for="(language, langIdx) in selectedLanguages" :class="langIdx === 0 ? 'in active' : ''">
                                         <input type="text" autocomplete="off" class="form-control" v-model="contentType.label[language.value]" :placeholder="language.label + ' label for the content type (e.g. Android games, wallpapers, trailers...)'">
-                                        
                                     </div>
                                 </div>
                                 <!-- end tab-content -->
@@ -417,12 +415,11 @@ export default {
     },
 
     mounted() {
-        // geen reactivity/2-way binding via properties, wel data elementen, mss via $set wel
         if (this.contentType_) {
             this.contentType = this.contentType_;
 
             this.languages.forEach((language) => {
-                if (this.contentType.label.hasOwnProperty(language.value)) {
+                if (this.contentType.label[language.value]) {
                     this.selectedLanguages.push(language);
                 }                
             });

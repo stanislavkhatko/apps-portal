@@ -23,7 +23,7 @@
 	                        <i class="fa fa-plus"></i> &nbsp;&nbsp;Add selection
 	                    </button>
 	                </template>
-	                <template v-else>
+	                <template v-else>Choose languages
 	                    <div class="text-center">
 	                        <strong><i>No new content items available.<br />Add new content items via Provider Content overview menu.</i></strong>
 	                    </div>                                                    
