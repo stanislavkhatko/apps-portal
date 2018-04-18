@@ -18,8 +18,8 @@ class CreatePagesTable extends Migration
             $table->unsignedInteger('content_portal_id');
             $table->string('lang_code', 2);
             $table->string('type')->default('dynamic');
-            $table->json('title')->nullable();
-            $table->json('body')->nullable();
+            $table->string('title')->nullable();
+            $table->text('body')->nullable();
             $table->unsignedInteger('position')->nullable();
             $table->boolean('visible')->default(false);
             $table->timestamps();
