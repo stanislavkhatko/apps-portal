@@ -26,9 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         // if (session()->has('subscription')) {
-//        return redirect()->route('view.portal');
+        return redirect()->route('view.portal');
         //}
-        return Config::get('currentPortal');
+//        return Config::get('currentPortal');
 //        return view('frontend.page', ['page' => $portal->pages->first()]);
     }
 
