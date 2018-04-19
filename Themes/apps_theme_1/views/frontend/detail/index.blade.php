@@ -24,17 +24,6 @@
 
         <div class="app-item-detail">
 
-
-            {{--<span>@lang('portal.category'): {{ $item->category->label }}</span>--}}
-            {{--@if ($item->compatibility[0]['os'] ?? $item->compatibility[0]['os'] != null ?? $item->compatibility['os'] != '')--}}
-            {{--<span>--}}
-            {{--@lang('portal.compatibility'):--}}
-            {{--{{ $item->compatibility[0]['os'] ?? $item->compatibility['os'] }}--}}
-            {{--{{ $item->compatibility[0]['minVersion'] ?? $item->compatibility['minVersion'] }}--}}
-            {{--@lang('portal.or_higher')</span>--}}
-            {{--@endif--}}
-            {{--<br/>--}}
-
             @if($item->description)
                 <div class="app-item-detail__title">@lang('portal.description'):</div>
                 <div class="app-item-detail__description">
@@ -42,15 +31,20 @@
                 </div>
             @endif
 
-            @if($item->type == 'upload')
+            @if($item->type === 'upload')
                 <a href="{{ route('download.contentitem', $item) }}" class="btn btn-primary app-item-detail__download">
                     @lang('portal.download_label') <span class="glyphicon glyphicon-download-alt"></span>
                 </a>
             @else
-                <a href="{{ route('download.contentitem', $item) }}" target="_blank"
-                   class="btn btn-primary app-item-detail__download">
-                    @lang('portal.download_label') <span class="glyphicon glyphicon-new-window"></span>
-                </a>
+                @if(! session()->has('subscription'))
+                    <a href="{{ route('download.contentitem', $item) }}" class="btn btn-primary app-item-detail__download">
+                        @lang('portal.download_label') <span class="glyphicon glyphicon-new-window"></span>
+                    </a>
+                @else
+                    <iframe width="560" height="315"
+                            src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                @endif
             @endif
 
         </div>

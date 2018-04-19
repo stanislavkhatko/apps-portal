@@ -19,15 +19,6 @@ use Illuminate\Support\Facades\Response;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
@@ -35,10 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         // if (session()->has('subscription')) {
-        return redirect()->route('view.portal');
+//        return redirect()->route('view.portal');
         //}
-        $portal = Config::get('currentPortal');
-        return view('frontend.page', ['page' => $portal->pages->first()]);
+        return Config::get('currentPortal');
+//        return view('frontend.page', ['page' => $portal->pages->first()]);
     }
 
     public function viewPortal()
@@ -68,18 +59,7 @@ class HomeController extends Controller
 
     public function showItem(ContentItem $item)
     {
-        $video = [];
-        if ($item->provider == 'mobibase') {
-            $client = new Client(config('services.mobibase.api_key'));
-
-            $client->setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25");
-            $service = $client->getVideo($item->remote_id, env('MOBIBASE_TICKET'), 'wifi');
-
-            $video['info'] = $service->response->video; // video object
-            $video['stream'] = $service->response->stream; // stream object
-        }
-
-        return view('frontend.detail.index', compact('item', 'video'));
+        return view('frontend.detail.index', compact('item'));
     }
 
     public function showItem2(ContentItem $item)
@@ -112,7 +92,7 @@ class HomeController extends Controller
                     return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
                 }
             } else {
-                return $this->showItem2($item);
+                return $this->showItem($item);
 //                try {
 //                    return redirect()->away($item->download['link']);
 //                } catch (\Exception $e) {
