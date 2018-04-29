@@ -10618,8 +10618,8 @@ a {
 }
 
 .navbar {
-  margin-bottom: 0px;
-  border: 0px;
+  margin-bottom: 0;
+  border: 0;
   min-height: 50px;
   color: white;
   padding-top: 8px;
@@ -10627,8 +10627,8 @@ a {
 
 .navbar .container {
   max-width: 800px;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .navbar li.dropdown {
@@ -10638,8 +10638,8 @@ a {
 
 @media (max-width: 767px) {
   .container > .navbar-header {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 
@@ -10699,7 +10699,7 @@ a {
 .navbar-toggle .icon-bar {
   width: 33px;
   height: 3px;
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .navbar-toggle .icon-bar + .icon-bar {
@@ -10735,7 +10735,7 @@ a {
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   opacity: 2.5;
   font-size: 18px;
   padding: 12px;
@@ -10747,9 +10747,8 @@ a {
 
 h3 {
   float: left;
-  font-weight: 300;
   font-size: 20px;
-  margin-top: 0px;
+  margin-top: 0;
   font-weight: bold;
 }
 
@@ -10772,8 +10771,8 @@ h3 {
   max-width: 800px;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .category_menu_banner .category_menu_item {
@@ -10837,10 +10836,7 @@ h3 {
 .bttn_light_blue {
   background-color: #bb1010;
   color: white;
-  padding-left: 35px;
-  padding-right: 35px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 35px;
   display: inline-block;
   font-size: 14px;
 }
@@ -10859,8 +10855,7 @@ h3 {
 
 .app_section {
   max-width: 670px;
-  margin: 0 auto;
-  margin-bottom: 45px;
+  margin: 0 auto 45px;
 }
 
 .app_section .bttn_more:hover {
@@ -10878,7 +10873,6 @@ h3 {
 .app_section .flickity-prev-next-button.previous,
 .app_section .flickity-prev-next-button.next {
   background-color: #bb1010;
-  width: 35px;
   height: 40px;
   width: 40px;
   cursor: pointer;
@@ -10923,8 +10917,8 @@ h3 {
 
 @media (max-width: 630px) {
   .app_section {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -10956,7 +10950,7 @@ h3 {
 }
 
 .footer a:last-child {
-  margin-right: 0px;
+  margin-right: 0;
 }
 
 .detail_game {
@@ -10967,8 +10961,8 @@ h3 {
   float: left;
   margin-left: 15px;
   margin-right: 15px;
-  -webkit-box-shadow: 0px 0px 10px #8c8c8c;
-          box-shadow: 0px 0px 10px #8c8c8c;
+  -webkit-box-shadow: 0 0 10px #8c8c8c;
+          box-shadow: 0 0 10px #8c8c8c;
 }
 
 .detail_game .detail_game_name {
@@ -10981,9 +10975,7 @@ h3 {
 }
 
 .download_bttn {
-  margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 0px;
+  margin: 40px auto 0 auto;
   background-color: #bb1010;
   color: white;
   padding-top: 10px;
@@ -11026,7 +11018,7 @@ h3 {
 .detail_header .detail_title_back .bttn_forward,
 .detail_header .detail_title_forward .bttn_back,
 .detail_header .detail_title_forward .bttn_forward {
-  padding: 8px 0px;
+  padding: 8px 0;
   text-align: center;
   font-size: 18px;
 }
@@ -11088,7 +11080,7 @@ h3 {
 }
 
 .detail_wrapper .available_wrapper .app_section {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 .categories_wrapper,
@@ -11109,7 +11101,7 @@ h3 {
 .contenttype_wrapper .detail_header .detail_title {
   font-weight: 300;
   font-size: 27px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .contenttype_wrapper .detail_game {
@@ -11138,11 +11130,11 @@ h3 {
 
 .contenttype_wrapper .detail_game .download_bttn {
   margin-bottom: 10px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .contenttype_wrapper .detail_game:last-child {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 .contenttype_wrapper .detail_game:hover .download_bttn {
@@ -11150,7 +11142,7 @@ h3 {
 }
 
 .contenttype_wrapper .download_bttn {
-  padding: 8px 0px;
+  padding: 8px 0;
   font-size: 18px;
 }
 
