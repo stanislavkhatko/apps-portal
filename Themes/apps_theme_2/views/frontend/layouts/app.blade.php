@@ -206,7 +206,7 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 <div class="pull-left">{{ $navbar['content']['title'] }}</div>
                 @if ($navbar['content']['image'])
-                    <img src="/storage/{{ $navbar['content']['image'] }}" class="img-responsive"
+                    <img src="{{ $navbar['content']['image'] }}" class="img-responsive"
                          style="max-height: 50px;position: relative;top: -19px;left:10px;"/>
                 @endif
             </a>
@@ -313,7 +313,7 @@
                 <div class="category_menu_icon">
 
                     @if ($contentType->icon)
-                        <img src="{{ asset($contentType->icon) }}" class="img-responsive">
+                        <img src="{{ $contentType->icon }}" class="img-responsive">
                     @else
                         <img src="/img/home.png" class="img-responsive">
                     @endif

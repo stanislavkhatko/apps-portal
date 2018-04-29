@@ -262,7 +262,7 @@
                    class="app-menu_item {{ Request::segment(2) == $contentType->id ? 'active' : ''  }}">
                     <div class="app-menu_icon">
                         @if ($contentType->icon)
-                            <img src="{{ asset($contentType->icon) }}" class="img-responsive"
+                            <img src="{{ $contentType->icon }}" class="img-responsive"
                                  alt="{{ $contentType->label }}">
                         @else
                             <img src="/img/home.png" class="img-responsive" alt="{{ $contentType->label }}">

@@ -78,9 +78,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
         /** portal theme **/
         Route::patch('/portal-theme/{id}', ['uses' => 'ContentPortalThemeController@update']);
-        Route::post('/portal-theme/header/upload', ['uses' => 'ContentPortalThemeController@uploadHeaderImage']);
-        Route::post('/portal-theme/navbar/upload', ['uses' => 'ContentPortalThemeController@uploadNavbarImage']); 
-        Route::post('/portal-theme/footer/upload', ['uses' => 'ContentPortalThemeController@uploadFooterImage']); 
+        Route::post('/portal-theme/header/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadHeaderImage']);
+        Route::post('/portal-theme/navbar/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadNavbarImage']);
+        Route::post('/portal-theme/footer/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadFooterImage']);
         Route::post('/portal-theme/contentTypeHeader/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadContentTypeHeaderImage']);
 
         /** content type ***/

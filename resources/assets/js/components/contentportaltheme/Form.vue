@@ -136,7 +136,7 @@
                                                     <div class="col-sm-10">                                                        
 
                                                         <template v-if="theme.components.navbar.content.image">
-                                                            <img :src="'/storage/' + theme.components.navbar.content.image" class="img-responsive">
+                                                            <img :src="theme.components.navbar.content.image" class="img-responsive">
                                                             <div class="text-center margin_top_10">
                                                                 <button class="btn btn-danger min_width_100" @click="theme.components.navbar.content.image = ''">
                                                                     Remove logo
@@ -147,7 +147,7 @@
                                                         <template v-else>
                                                             <dropzone 
                                                                 id="myVueDropzone2" 
-                                                                url="/admin/api/portal-theme/navbar/upload" 
+                                                                :url="navbarUploadRoute"
                                                                 :useFontAwesome="true"
                                                                 :max-number-of-files=1
                                                                 v-on:vdropzone-success="uploadNavbarImage">
@@ -390,7 +390,7 @@
                                                     <div class="col-sm-10">                                                        
 
                                                         <template v-if="theme.components.footer.content.image">
-                                                            <img :src="'/storage/' + theme.components.footer.content.image" class="img-responsive">
+                                                            <img :src="theme.components.footer.content.image" class="img-responsive">
                                                             <div class="text-center margin_top_10">
                                                                 <button class="btn btn-danger min_width_100" @click="theme.components.footer.content.image = ''">
                                                                     Remove image
@@ -401,7 +401,7 @@
                                                         <template v-else>
                                                             <dropzone 
                                                                 id="myVueDropzone3" 
-                                                                url="/admin/api/portal-theme/header/upload" 
+                                                                :url="footerUploadRoute"
                                                                 :useFontAwesome="true"
                                                                 :max-number-of-files=1
                                                                 v-on:vdropzone-success="uploadFooterImage">
@@ -1396,6 +1396,12 @@ export default {
             else {
                 return false;
             }
+        },
+        navbarUploadRoute() {
+            return '/admin/api/portal-theme/navbar/' + this.portal.id + '/upload';
+        },
+        footerUploadRoute() {
+            return '/admin/api/portal-theme/footer/' + this.portal.id + '/upload'
         }
     },
 

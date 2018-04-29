@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ContentPortal;
-//use App\Models\ContentItem;
-//use Image;
+use App\Services\Traits\StorageHelper;
 use Storage;
 
 class ContentPortalThemeController extends Controller
 {
+    use StorageHelper;
 
     /**
      * Display the specified resource.
@@ -40,13 +40,15 @@ class ContentPortalThemeController extends Controller
     public function uploadHeaderImage(Request $request)
     {
         $path = Storage::put('public/headers', $request->file('file'));
-        return substr($path, 7); 
+        return substr($path, 7);
     }
 
-    public function uploadNavbarImage(Request $request)
+    public function uploadNavbarImage(Request $request, $id)
     {
-        $path = Storage::put('public/navbar', $request->file('file'));
-        return substr($path, 7); 
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('public/temp');
+            return Storage::disk('spaces')->url($this->moveItemToCloud($path, $id, 'navbar-images'));
+        }
     }
 
     public function uploadContentTypeHeaderImage(Request $request)
@@ -55,9 +57,11 @@ class ContentPortalThemeController extends Controller
         return response()->json(['success' => true, 'id' => $request->id, 'image' => substr($path, 7)]);
     }
 
-    public function uploadFooterImage(Request $request)
+    public function uploadFooterImage(Request $request, $id)
     {
-        $path = Storage::put('public/footer', $request->file('file'));
-        return substr($path, 7); 
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('public/temp');
+            return Storage::disk('spaces')->url($this->moveItemToCloud($path, $id, 'footer-images'));
+        }
     }
 }

@@ -9,7 +9,6 @@
  --}}
 
 <div class="footer">
-
     @foreach(\Config::get('currentPortal')->dynamicPages as $page)
         @if (App::getLocale() == $page->lang_code)
             <a href="{{ route('view.page', $page) }}">{{ $page->title }}</a>
