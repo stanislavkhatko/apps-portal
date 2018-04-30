@@ -37,7 +37,7 @@
                 </a>
             @else
                 @if(strpos($item->download['link'], 'online/') !== false)
-                    <a href="{{ $item->download['link'] }}" target="_blank" class="btn btn-primary app-item-detail__download">
+                    <a href="{{ $item->download['link'] }}" class="btn btn-primary app-item-detail__download">
                         @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
                     </a>
                     @else

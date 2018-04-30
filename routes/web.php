@@ -32,15 +32,16 @@ Route::group(['middleware' => ['currentPortal', 'locale']], function() {
     Route::post('/cancel', ['as' => 'subscription.unsubscribe', 'uses' => 'AuthController@unsubscribe']);
     Route::post('/change-language', ['as' => 'view.change.language', 'uses' => 'HomeController@changeLocale']);
     Route::get('/exit', ['as' => 'exit', 'uses' => 'HomeController@exit']);
+
+    Route::get('/item/{contentItem}', ['as' => 'view.contentitem', 'uses' => 'HomeController@showItem']);
+    Route::get('/contenttype/{localContentType}', ['as' => 'view.contenttype', 'uses' => 'HomeController@showContentType']);
+    Route::get('/contenttype/{localContentType}/categories', ['as' => 'view.categories', 'uses' => 'HomeController@showCategories']);
+    Route::get('/contenttype/{localContentType}/categories/{localCategory}', ['as' => 'view.category', 'uses' => 'HomeController@showCategory']);
 });
 
 Route::group(['middleware' => 'portal'], function() {
     Route::get('/play/{contentItem}', ['as' => 'play.contentitem', 'uses' => 'HomeController@playOnline']);
     Route::get('/download/{contentItem}', ['as' => 'download.contentitem', 'uses' => 'HomeController@downloadItem']);
-    Route::get('/item/{contentItem}', ['as' => 'view.contentitem', 'uses' => 'HomeController@showItem']);
-    Route::get('/contenttype/{localContentType}', ['as' => 'view.contenttype', 'uses' => 'HomeController@showContentType']);
-    Route::get('/contenttype/{localContentType}/categories', ['as' => 'view.categories', 'uses' => 'HomeController@showCategories']);
-    Route::get('/contenttype/{localContentType}/categories/{localCategory}', ['as' => 'view.category', 'uses' => 'HomeController@showCategory']);
 
     Route::group(['prefix' => 'api'], function() {
         Route::get('/contenttype/{contentType}/contentitems', ['uses' => 'HomeController@loadContentType']);
