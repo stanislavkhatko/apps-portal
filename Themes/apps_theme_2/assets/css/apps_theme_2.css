@@ -11063,9 +11063,8 @@ h3 {
 }
 
 .detail_wrapper .download_wrapper span {
-  display: block;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .detail_wrapper .download_wrapper p {

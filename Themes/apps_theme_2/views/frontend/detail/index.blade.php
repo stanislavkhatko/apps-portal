@@ -83,11 +83,21 @@
                             </p>
                         @endif
 
-                        <a href="{{ route('download.contentitem', $item) }}">
-                            <div class="download_bttn">
-                                @lang('portal.download_label')
-                            </div>
-                        </a>
+                        @if($item->type === 'upload')
+                            <a href="{{ route('download.contentitem', $item) }}" class="download_bttn">
+                                @lang('portal.download_label') <span class="glyphicon glyphicon-download-alt"></span>
+                            </a>
+                        @else
+                            @if(strpos($item->download['link'], 'online/') !== false)
+                                <a href="{{ route('play.contentitem', $item) }}" target="_blank" class="download_bttn">
+                                    @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
+                                </a>
+                            @else
+                                <iframe width="560" height="315"
+                                        src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
+                                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            @endif
+                        @endif
 
                     </div>
                     <!-- download_wrapper -->

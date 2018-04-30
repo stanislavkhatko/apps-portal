@@ -36,15 +36,15 @@
                     @lang('portal.download_label') <span class="glyphicon glyphicon-download-alt"></span>
                 </a>
             @else
-                @if(! session()->has('subscription'))
-                    <a href="{{ route('download.contentitem', $item) }}" class="btn btn-primary app-item-detail__download">
-                        @lang('portal.download_label') <span class="glyphicon glyphicon-new-window"></span>
+                @if(strpos($item->download['link'], 'online/') !== false)
+                    <a href="{{ $item->download['link'] }}" target="_blank" class="btn btn-primary app-item-detail__download">
+                        @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
                     </a>
-                @else
+                    @else
                     <iframe width="560" height="315"
                             src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
                             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                @endif
+                    @endif
             @endif
 
         </div>

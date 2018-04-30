@@ -62,7 +62,7 @@ class HomeController extends Controller
         return view('frontend.detail.index', compact('item'));
     }
 
-    public function showItem2(ContentItem $item)
+    public function playOnline(ContentItem $item)
     {
         return view('frontend.content-page', compact('item'));
     }
@@ -98,6 +98,7 @@ class HomeController extends Controller
 //                } catch (\Exception $e) {
 //                    return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
 //                }
+
             }
         }
 
