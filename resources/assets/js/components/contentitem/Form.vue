@@ -305,7 +305,7 @@
                                                 :max-number-of-files=1
                                                 :thumbnailHeight=240
                                                 :thumbnailWidth=240
-                                                :maxFilesize=100
+                                                :maxFileSizeInMB=100
                                                 v-on:vdropzone-success="uploadContentItemFile">
                                             <input type="hidden" name="_token" :value="token">
                                         </dropzone>
