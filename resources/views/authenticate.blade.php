@@ -8,7 +8,7 @@
                 <div style="padding: 15px;">
                    
                     <h1>@lang('portal.login')</h1>
-                    <form action="authenticate" method="post">
+                    <form action="/authenticate" method="post">
                         {{ csrf_field() }}
                         <div class="form-group @if (session('loginError')) has-error @endif">
                             <label for="msisdn">@lang('portal.msisdn')</label>

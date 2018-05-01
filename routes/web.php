@@ -20,7 +20,7 @@ Route::get('hoi', function () {
 
 Route::group(['middleware' => ['currentPortal', 'locale']], function() {
     Route::get('authenticate', 'AuthController@show');
-    Route::post('authenticate', 'AuthController@login')->name('authenticate');
+    Route::post('authenticate', 'AuthController@login');
     Route::get('authenticate/challenge/{token}', 'AuthController@challenge');
 
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);

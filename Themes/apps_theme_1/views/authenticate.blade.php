@@ -4,7 +4,7 @@
 
         <div class="col-sm-8 col-sm-offset-2">
             <h1>@lang('portal.login')</h1>
-            <form action="{{ route('authenticate') }}" method="post">
+            <form action="/authenticate" method="post">
                 {{ csrf_field() }}
                 <div class="form-group @if (session('loginError')) has-error @endif">
                     <label for="msisdn">@lang('portal.msisdn')</label>

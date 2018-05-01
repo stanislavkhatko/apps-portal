@@ -180,7 +180,7 @@
                 <!-- Authentication Links -->
                 @if(! session()->has('subscription'))
                     <li>
-                        <a href="{{ route('authenticate') }}" class="btn btn-default">
+                        <a href="/authenticate" class="btn btn-default">
                             @lang('portal.login')
                         </a>
                     </li>

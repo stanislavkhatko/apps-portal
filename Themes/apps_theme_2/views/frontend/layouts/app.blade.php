@@ -220,7 +220,7 @@
                 @if(! session()->has('subscription'))
 
                     <li>
-                        <a href="authenticate" style="padding: 0px;">
+                        <a href="/authenticate" style="padding: 0px;">
                             <div class="bttn_portal">
                                 @lang('portal.login')
                             </div>
