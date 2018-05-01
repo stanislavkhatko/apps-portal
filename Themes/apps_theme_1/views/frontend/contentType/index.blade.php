@@ -41,7 +41,7 @@
                     {{ $item->title }}
                 </div>
 
-                @include('frontend.rating')
+                @include('frontend.partials.rating', $item)
 
                 <p>
                     {!! str_limit($item->description, 150) !!}

@@ -44,7 +44,7 @@ class ContentItem extends Model
     protected $translatable = ['title', 'description'];
     protected $casts = ['compatibility' => 'array', 'download' => 'array', 'is_customized' => 'boolean'];
     protected $appends = ['titleTranslated'];
-    protected $fillable = ['category_id', 'provider', 'type', 'title', 'description', 'compatibility', 'preview', 'remote_id', 'download', 'is_customized'];
+    protected $fillable = ['category_id', 'provider', 'type', 'title', 'description', 'compatibility', 'preview', 'remote_id', 'download', 'is_customized', 'rating'];
 
     public function category()
     {

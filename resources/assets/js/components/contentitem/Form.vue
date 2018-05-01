@@ -93,12 +93,18 @@
                         </div>
                     </div>
 
-                    <div class="form-group"
-                         v-if="contentItem.compatibility && contentItem.compatibility[0].os === 'Android'">
+                    <div class="form-group" v-if="contentItem.compatibility && contentItem.compatibility[0].os === 'Android'">
                         <label class="col-sm-2 control-label">Min. Version</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" placeholder="Type a min. version e.g. 4.0.1"
                                    v-model="contentItem.compatibility[0].minVersion"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Rating</label>
+                        <div class="col-sm-10">
+                            <star-rating :star-size="20" v-model="contentItem.rating"></star-rating>
                         </div>
                     </div>
 
@@ -222,7 +228,7 @@
 
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Item preview image<br/>(240x240)</label>
+                            <label class="col-sm-2 control-label">Item preview image<br/>(290x290)</label>
                             <div class="col-sm-10">
 
                                 <template v-if="contentItem.preview">
@@ -357,11 +363,12 @@
     import {modal, select} from 'vue-strap';
     import _ from 'lodash';
     import Dropzone from 'vue2-dropzone';
+    import StarRating from 'vue-star-rating'
 
     export default {
 
         components: {
-            modal, Dropzone, vSelect2: select
+            modal, Dropzone, StarRating, vSelect2: select
         },
 
         props: {

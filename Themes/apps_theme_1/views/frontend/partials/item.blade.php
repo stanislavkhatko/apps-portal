@@ -13,13 +13,7 @@
         {{ $item->category->label }}
     </div>
 
-    <div class="app-category-item__rating">
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-    </div>
+    @include('frontend.partials.rating', $item)
 
     <div class="app-category-item__title">
         {{ $item->title }}
