@@ -5,15 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\ContentItem;
 use App\Models\LocalContentType;
 use App\Models\LocalCategory;
-use App\Models\ContentType;
-use App\Models\Category;
 use App\Models\Page;
-use App\Services\Facades\CloudUploader;
 use Illuminate\Http\Request;
 use Config;
-use Clients\Mobibase\Client;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
 
 
 class HomeController extends Controller
@@ -25,11 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // if (session()->has('subscription')) {
         return redirect()->route('view.portal');
-        //}
 //        return Config::get('currentPortal');
-//        return view('frontend.page', ['page' => $portal->pages->first()]);
     }
 
     public function viewPortal()
@@ -40,7 +32,6 @@ class HomeController extends Controller
     public function showContentType(LocalContentType $localContentType)
     {
         $contentItems = $localContentType->contentItems;
-        //$contentItems = $contentType->contentItems()->paginate(20);
 
         $contentItems = $this->paginateCollection($contentItems, 20);
 
@@ -69,39 +60,17 @@ class HomeController extends Controller
 
     public function downloadItem(ContentItem $item)
     {
-        if ($item->provider == 'melodimedia') {
-            $melodi = app(\DevIT\MelodiMedia\ApiClient::class);
+        $item->downloadedBy(session('subscription'));
 
+        if ($item->type == 'upload') {
             try {
-                $download = $melodi->getDownloadUrlForContentId($item->remote_id, rand(2222222222, 8888888888), '31');
+                return Storage::disk('spaces')->download($item->download['link']);
             } catch (\Exception $e) {
                 return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
             }
-
-            if ($download['status'] == '200') {
-                $item->downloadedBy(session('subscription'));
-                return redirect()->to($download['content']);
-            } else {
-                return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
-            }
         } else {
-            if ($item->type == 'upload') {
-                try {
-                    return Storage::disk('spaces')->download($item->download['link']);
-                } catch (\Exception $e) {
-                    return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
-                }
-            } else {
-                return $this->showItem($item);
-//                try {
-//                    return redirect()->away($item->download['link']);
-//                } catch (\Exception $e) {
-//                    return redirect()->route('view.contentitem', $item)->with('downloaderror', trans('portal.download_error'));
-//                }
-
-            }
+            return $this->showItem($item);
         }
-
     }
 
     public function loadContentType(LocalContentType $contentType)

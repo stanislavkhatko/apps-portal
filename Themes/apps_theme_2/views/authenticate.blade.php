@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container portal_container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h1>@lang('portal.login')</h1>
