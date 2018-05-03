@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="app" class="container portal_container">
+    <div class="portal_container">
 
         <div class="contenttype_wrapper">
 

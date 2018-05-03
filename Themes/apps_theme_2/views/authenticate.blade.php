@@ -15,7 +15,6 @@
                         </span>
                     </div>
 
-
                     <div class="form-group">
                         <button type="submit" class="btn btn-default">@lang('portal.login')</button>
                     </div>

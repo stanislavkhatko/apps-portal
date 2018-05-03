@@ -1,25 +1,15 @@
 <div class="app_wrap carousel-cell">
 
     <div class="app_thumb_wrapper">
+        <div class="app_thumb" style="background-image: url('{{ $item->preview }}')">
+            <a href="{{ route('view.contentitem', [$item]) }}"></a>
+        </div>
+    </div>
 
-        @if ($item->type == 'flash')
-            <div class="app_thumb" style="background-image: url('/img/musica2.png')">
-                @elseif ($item->type == 'mp3')
-                    <div class="app_thumb" style="background-image: url('/img/musica.png')">
-                        @else
-                            <div class="app_thumb" style="background-image: url('{{ $item->preview }}')">
-                                @endif
+    {{--@include('frontend.partials.rating')--}}
 
-                                <a href="{{ route('view.contentitem', [$item]) }}"></a>
-                            </div>
-                            <!-- app_thumb -->
-                    </div>
-                    <!-- app_thumb_wrapper -->
+    <div class="app_name">
+        {{ $item->title }}
+    </div>
 
-                    <div class="app_name">
-                        {{ $item->title }}
-                    </div>
-                    <!-- app_name -->
-
-            </div>
-            <!-- app_wrap -->
+</div>

@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="{{ themes('css/apps_theme_2.css') }}?{{ date('YmdHis') }}">
 
-    <style type="text/css">
+    <style>
 
         /** header **/
         .top_banner {
@@ -34,8 +34,13 @@
             border-bottom-width: {{ $header['style']['border_bottom_size'] }}px;
             border-bottom-color: {{ $header['style']['border_color']['hex'] }};
             @if ($header && $header['style']['border_bottom_size'] > 0)
-                     border-bottom-style: solid;
+                          border-bottom-style: solid;
         @endif
+
+
+
+
+
 
         }
 
@@ -55,10 +60,15 @@
             font-weight: {{ $navbar['style']['brand_font_weight'] }};
             font-size: {{ $navbar['style']['brand_font_size'] }}px;
             @if ($navbar['style']['brand_text_align'] == 'center')
-                     transform: translateX(-50%);
+                          transform: translateX(-50%);
             left: 50%;
             position: absolute;
         @endif
+
+
+
+
+
 
         }
 
@@ -123,7 +133,7 @@
 
         .pagination_wrapper .pagination > li > a, .pagination_wrapper .pagination > .disabled > span {
             color: {{ $center['style']['button_background_color']['hex'] }};
-            border: 1px solid {{ $center['style']['button_background_color']['hex'] }};
+            border: 1px solid{{ $center['style']['button_background_color']['hex'] }};
         }
 
         .pagination_wrapper .pagination > .active > span {
@@ -140,8 +150,9 @@
             border-top-width: {{ $footer['style']['border_top_size'] }}px;
             border-top-color: {{ $footer['style']['border_color']['hex'] }};
             @if ($footer && $footer['style']['border_top_size'] > 0)
-                     border-top-style: solid;
+                          border-top-style: solid;
         @endif
+
 
 
 
@@ -155,39 +166,26 @@
             font-size: {{ $footer['style']['font_size'] }}px;
         }
 
-        /** end footer **/
-
-        /* text_align: 'center',
-         background_color: { hex: '#333333' },
-         color: { hex: '#fff' },
-         font_size: 14,
-         font_weight: 'normal',
-         border_top_size: 0,
-         border_color: 0,
-         height: 50*/
-
     </style>
 
-    <style type="text/css">
+    <style>
         {!! Config::get('currentPortal')->custom_css  !!}
     </style>
 <body>
 
+<!-- Price banner -->
 @foreach(Config::get('currentPortal')->priceBanners as $priceBanner)
-
     @if (App::getLocale() == $priceBanner->lang_code)
         @if ($priceBanner->visible == 1)
             <div class="top_banner" style="padding-top: 12px;cursor: pointer;"
                  @if (Config::get('currentPortal')->offer_url) onclick="location.href='{{ Config::get('currentPortal')->offer_url }}';" @endif>
-
                 {!! $priceBanner->body !!}
-
             </div>
             <div style="clear:both;"></div>
         @endif
     @endif
-
 @endforeach
+<!-- End Price banner -->
 
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -214,21 +212,18 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
-            <!-- Right Side Of Navbar -->
+            <!-- Login/Logout block -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if(! session()->has('subscription'))
-
                     <li>
-                        <a href="/authenticate" style="padding: 0px;">
+                        <a href="/authenticate" style="padding: 0;">
                             <div class="bttn_portal">
                                 @lang('portal.login')
                             </div>
                         </a>
                     </li>
-
                 @else
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ session('subscription')['msisdn'] }} <span class="caret"></span>
@@ -248,9 +243,9 @@
                             </li>
                         </ul>
                     </li>
-
                 @endif
 
+            <!-- Language block -->
                 @if (count(Config::get('currentPortal')->languages) > 1)
                     <li class="dropdown">
 
@@ -288,52 +283,44 @@
     </div>
 </nav>
 
+<!-- Menu block -->
 <div class="category_menu_banner">
     <div class="container category_menu_wrapper">
 
+        <!-- Home menu item -->
         <a href="{{ url('/') }}" class="category_menu_item {{ Request::segment(1) == 'portal' ? 'active' : ''  }}"
            style="width: 16.66%;">
             <div class="category_menu_icon">
                 <img src="/img/home.png" class="img-responsive">
             </div>
-            <!-- category_menu_icon -->
             <div class="category_menu_txt">
-                Home<br/>
+                @lang('portal.home')
             </div>
-            <!-- category_menu_txt -->
         </a>
 
-        <!-- category_menu_item -->
+        <!-- Content type items / Navigation -->
         @foreach (Config::get('currentPortal')->localContentTypes as $contentType)
-            {{-- @continue(str_contains(strtolower($contentType->label), ['android']) && ! Agent::isAndroidOS()) --}}
-
             <a href="{{ route('view.categories', $contentType) }}"
                class="category_menu_item {{ Request::segment(2) == $contentType->id ? 'active' : ''  }}"
                style="width: 16.66%;">
                 <div class="category_menu_icon">
-
-                    @if ($contentType->icon)
-                        <img src="{{ $contentType->icon }}" class="img-responsive">
-                    @else
-                        <img src="/img/home.png" class="img-responsive">
-                    @endif
-
+                    <img src="{{ $contentType->icon ?? '/img/home.png' }}" class="img-responsive">
                 </div>
-                <!-- category_menu_icon -->
+
                 <div class="category_menu_txt">
-                    {{ $contentType->label }}<br/>
+                    {{ $contentType->label }}
                 </div>
-                <!-- category_menu_txt -->
             </a>
-            <!-- category_menu_item -->
         @endforeach
 
     </div>
-    <!-- category_menu_wrapper -->
 </div>
-<!-- category_menu_banner -->
+<!-- End navigation menu -->
 
-@yield('content')
+<div id="app" class="container portal_container">
+    @yield('content')
+</div>
+
 
 @include('frontend.footer')
 
@@ -374,9 +361,8 @@
             }, 0);
             window.onbeforeunload = null;
             return 'Press "Stay On Page" to be redirected';
-        }
+        };
         @endif
-
 
     });
 
