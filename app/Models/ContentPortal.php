@@ -133,6 +133,7 @@ class ContentPortal extends Model
         if($value == 'en') $iconLang = 'gb';
         if($value == 'el') $iconLang = 'gr';
         if($value == 'sr') $iconLang = 'rs';
+        if($value == 'uk') $iconLang = 'ua';
 
         return $iconLang;
     }
