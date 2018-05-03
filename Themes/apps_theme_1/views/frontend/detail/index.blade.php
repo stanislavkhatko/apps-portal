@@ -40,10 +40,14 @@
                     <a href="{{ route('play.contentitem', $item) }}" target="_blank" class="btn btn-primary app-item-detail__download">
                         @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
                     </a>
+                    @elseif(strpos($item->download['link'], 'www.') !== false || strpos($item->download['link'], 'http') !== false || strpos($item->download['link'], 'https') !== false)
+                        <a href="{{ $item->download['link'] }}" target="_blank" class="btn btn-primary app-item-detail__download">
+                            @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
+                        </a>
                     @else
-                    <iframe width="560" height="315"
-                            src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
-                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe width="560" height="315"
+                                src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     @endif
             @endif
 
