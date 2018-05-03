@@ -15,11 +15,11 @@
             <div class="app_wrapper carousel">
 
                 @if (Request::segment(3) == 'categories')
-                    @foreach($localContentType->contentItems()->take(10)->get() as $item)
+                    @foreach($localContentType->contentItems()->orderBy('rating', 'desc')->take(10)->get() as $item)
                         @include('frontend.contentitems/contentitem', compact('item'))
                     @endforeach
                 @else
-                    @foreach($localContentType->localCategories()->first()->contentItems()->take(10)->get() as $item)
+                    @foreach($localContentType->localCategories()->first()->contentItems()->orderBy('rating', 'desc')->take(10)->get() as $item)
                         @include('frontend.contentitems/contentitem', compact('item'))
                     @endforeach
                 @endif
