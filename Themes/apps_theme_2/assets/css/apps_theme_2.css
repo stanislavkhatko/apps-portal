@@ -10628,6 +10628,12 @@ a {
           flex: 1;
 }
 
+.search_group {
+  max-width: 200px;
+  padding-top: 4px;
+  margin-right: 10px;
+}
+
 .navbar {
   margin-bottom: 0;
   border: 0;

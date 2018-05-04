@@ -10,14 +10,14 @@
                 </a>
 
                 <h3>
-                    @lang('portal.category'): {{ $localCategory->label }}
+                    @lang('portal.search'): {{ $search }}
                 </h3>
 
                 <div style="clear:both"></div>
             </div>
 
-            @foreach ($localCategory->contentItems()->orderBy('rating', 'desc')->take(50)->get() as $app)
-                @include('frontend.contentitems.contentitem', ['item'=> $app])
+            @foreach ($items as $item)
+                @include('frontend.contentitems.contentitem', ['item'=> $item])
             @endforeach
 
             <div style="clear:both"></div>

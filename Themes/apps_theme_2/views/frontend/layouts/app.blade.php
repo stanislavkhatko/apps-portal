@@ -34,8 +34,11 @@
             border-bottom-width: {{ $header['style']['border_bottom_size'] }}px;
             border-bottom-color: {{ $header['style']['border_color']['hex'] }};
             @if ($header && $header['style']['border_bottom_size'] > 0)
-                          border-bottom-style: solid;
+                             border-bottom-style: solid;
         @endif
+
+
+
 
 
 
@@ -60,10 +63,13 @@
             font-weight: {{ $navbar['style']['brand_font_weight'] }};
             font-size: {{ $navbar['style']['brand_font_size'] }}px;
             @if ($navbar['style']['brand_text_align'] == 'center')
-                          transform: translateX(-50%);
+                             transform: translateX(-50%);
             left: 50%;
             position: absolute;
         @endif
+
+
+
 
 
 
@@ -150,8 +156,11 @@
             border-top-width: {{ $footer['style']['border_top_size'] }}px;
             border-top-color: {{ $footer['style']['border_color']['hex'] }};
             @if ($footer && $footer['style']['border_top_size'] > 0)
-                          border-top-style: solid;
+                             border-top-style: solid;
         @endif
+
+
+
 
 
 
@@ -212,14 +221,22 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
-            <form action="/search" method="POST" class="">
-                <input type="text" name="search" placeholder="Search name" required minlength="5">
-                <button type="submit">Search</button>
-                {{ csrf_field() }}
-            </form>
-
             <!-- Login/Logout block -->
             <ul class="nav navbar-nav navbar-right">
+                <!-- Search field -->
+                <li class="search_group">
+                    <form action="/search" method="POST" class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="@lang('portal.search')" required
+                                   minlength="5">
+                            <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </span>
+                        </div>
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+
                 <!-- Authentication Links -->
                 @if(! session()->has('subscription'))
                     <li>
