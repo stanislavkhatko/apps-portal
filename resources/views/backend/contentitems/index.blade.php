@@ -151,8 +151,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($item->compatibility[0]['os'])
-                                                    {{ $item->compatibility[0]['os'] }}
+                                                @if ($item->compatibility['os'])
+                                                    {{ $item->compatibility['os'] }}
                                                 @endif
                                             </td>
                                             <td>
