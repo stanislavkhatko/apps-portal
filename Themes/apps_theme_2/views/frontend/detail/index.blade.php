@@ -65,11 +65,11 @@
                     <div class="download_wrapper">
 
                         <span>@lang('portal.category'): {{ $item->category->label }}</span>
-                        @if ($item->compatibility[0]['os'] ?? $item->compatibility[0]['os'] != null ?? $item->compatibility['os'] != '')
+                        @if ($item->compatibility['os'] != null ?? $item->compatibility['os'] != '')
                             <span>
 	    		@lang('portal.compatibility'):
-                                {{ $item->compatibility[0]['os'] ?? $item->compatibility['os'] }}
-                                {{ $item->compatibility[0]['minVersion'] ?? $item->compatibility['minVersion'] }}
+                                {{ $item->compatibility['os'] }}
+                                {{ $item->compatibility['minVersion'] }}
                                 @lang('portal.or_higher')</span>
                         @endif
                         <br/>
