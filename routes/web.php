@@ -24,7 +24,6 @@ Route::group(['middleware' => ['currentPortal', 'locale']], function() {
     Route::get('authenticate/challenge/{token}', 'AuthController@challenge');
 
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-    Route::post('/search', 'HomeController@search');
     Route::get('/category', 'HomeController@showCategory');
     Route::get('/detail', 'HomeController@showDetail');
     Route::get('page/{page}', ['as' => 'view.page', 'uses' => 'HomeController@viewPage']);
@@ -41,6 +40,7 @@ Route::group(['middleware' => ['currentPortal', 'locale']], function() {
 });
 
 Route::group(['middleware' => 'portal'], function() {
+    Route::post('/search', 'HomeController@search');
     Route::get('/play/{contentItem}', ['as' => 'play.contentitem', 'uses' => 'HomeController@playOnline']);
     Route::get('/download/{contentItem}', ['as' => 'download.contentitem', 'uses' => 'HomeController@downloadItem']);
 

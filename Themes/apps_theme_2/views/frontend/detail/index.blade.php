@@ -86,12 +86,8 @@
                                 @lang('portal.download_label') <span class="glyphicon glyphicon-download-alt"></span>
                             </a>
                         @else
-                            @if(strpos($item->download['link'], 'online/') !== false)
+                            @if(strpos($item->download['link'], '/online/') !== false || strpos($item->download['link'], 'www.') !== false || strpos($item->download['link'], 'http') !== false || strpos($item->download['link'], 'https') !== false)
                                 <a href="{{ route('play.contentitem', $item) }}" target="_blank" class="download_bttn">
-                                    @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
-                                </a>
-                            @elseif(strpos($item->download['link'], 'www.') !== false || strpos($item->download['link'], 'http') !== false || strpos($item->download['link'], 'https') !== false)
-                                <a href="{{ $item->download['link'] }}" target="_blank" class="download_bttn">
                                     @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
                                 </a>
                             @else

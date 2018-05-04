@@ -9,7 +9,7 @@
                     {{ csrf_field() }}
                     <div class="form-group @if (session('loginError')) has-error @endif">
                         <label for="msisdn">@lang('portal.msisdn')</label>
-                        <input class="form-control" name="msisdn" value="{{ old('msisdn') }}"/>
+                        <input class="form-control" name="msisdn" autofocus value="{{ old('msisdn') }}"/>
                         <span class="help-block">
                             {{ session('loginError') }}
                         </span>
