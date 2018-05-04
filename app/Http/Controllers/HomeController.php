@@ -110,6 +110,11 @@ class HomeController extends Controller
         return redirect()->to($redirect);
     }
 
+    public function search(Request $request)
+    {
+        return $request->all();
+    }
+
     private function paginateCollection($items, $per_page)
     {
         $page = \Request::get('page', 1);

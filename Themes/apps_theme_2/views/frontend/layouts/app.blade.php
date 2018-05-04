@@ -212,6 +212,12 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
+            <form action="/search" method="POST" class="hidden">
+                <input type="text" name="search" placeholder="Search name">
+                <button type="submit">Search</button>
+                {{ csrf_field() }}
+            </form>
+
             <!-- Login/Logout block -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->

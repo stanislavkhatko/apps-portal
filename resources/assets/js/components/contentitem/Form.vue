@@ -93,11 +93,12 @@
                         </div>
                     </div>
 
-                    <div class="form-group" v-if="contentItem.compatibility && contentItem.compatibility[0].os === 'Android'">
+                    <div class="form-group"
+                         v-if="contentItem.compatibility && contentItem.compatibility.os === 'Android'">
                         <label class="col-sm-2 control-label">Min. Version</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" placeholder="Type a min. version e.g. 4.0.1"
-                                   v-model="contentItem.compatibility[0].minVersion"/>
+                                   v-model="contentItem.compatibility.minVersion"/>
                         </div>
                     </div>
 
@@ -295,9 +296,11 @@
 
                                         <a :href="'/download/'+contentItem.id" class="file_download_link"
                                            target="_blank">
-                                            Click here to download file <mark>{{ contentItem.download.link }}</mark>
+                                            Click here to download file
+                                            <mark>{{ contentItem.download.link }}</mark>
                                         </a>
-                                        <button class="btn btn-danger min_width_100" @click="contentItem.download.link = ''">
+                                        <button class="btn btn-danger min_width_100"
+                                                @click="contentItem.download.link = ''">
                                             Remove file
                                         </button>
 
@@ -415,12 +418,10 @@
                     title: {},
                     description: {},
                     preview: '',
-                    compatibility: [
-                        {
-                            minVersion: "",
-                            os: ""
-                        }
-                    ],
+                    compatibility: {
+                        minVersion: "",
+                        os: ""
+                    },
                     download: {
                         link: ''
                     }
@@ -444,7 +445,7 @@
                 }
 
                 // compatibility
-                if (this.contentItem.compatibility[0].os === 'Android') {
+                if (this.contentItem.compatibility.os === 'Android') {
                     this.helpers.devices.selected = this.helpers.devices.options[1];
                 }
                 else {
@@ -547,10 +548,10 @@
 
             changedDevice(device) {
                 if (device.value === 'Android') {
-                    this.contentItem.compatibility[0].os = 'Android';
+                    this.contentItem.compatibility.os = 'Android';
                 }
                 else {
-                    this.contentItem.compatibility[0].os = '';
+                    this.contentItem.compatibility.os = '';
                 }
             },
 
