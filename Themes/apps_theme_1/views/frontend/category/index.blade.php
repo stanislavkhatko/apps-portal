@@ -11,7 +11,7 @@
         </div>
 
         <div class="app-category-items">
-            @foreach ($localCategory->contentItems->take(50) as $item)
+            @foreach ($localCategory->contentItems()->orderBy('rating', 'desc')->take(50)->get() as $item)
                 @include('frontend.partials.item', $item)
             @endforeach
         </div>

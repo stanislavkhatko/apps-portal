@@ -16,7 +16,7 @@
                 <div style="clear:both"></div>
             </div>
 
-            @foreach ($localCategory->contentItems->take(50) as $app)
+            @foreach ($localCategory->contentItems()->orderBy('rating', 'desc')->take(50)->get() as $app)
                 @include('frontend.contentitems.contentitem', ['item'=> $app])
             @endforeach
 
