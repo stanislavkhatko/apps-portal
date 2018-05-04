@@ -16,9 +16,7 @@
                     <div class="detail_title">
 
                         {{ $item->category->contenttype->label }} - {{ $item->category->label }}
-                        @if ($item->compatibility[0]['os'] ?? !empty($item->compatibility['os']))
-                            ({{ $item->compatibility[0]['os'] ?? $item->compatibility['os'] }})
-                        @endif
+                        ({{ $item->compatibility['os'] }})
                     </div>
                     <!-- detail_title -->
 

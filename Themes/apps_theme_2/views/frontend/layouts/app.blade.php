@@ -212,8 +212,8 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
-            <form action="/search" method="POST" class="hidden">
-                <input type="text" name="search" placeholder="Search name">
+            <form action="/search" method="POST" class="">
+                <input type="text" name="search" placeholder="Search name" required minlength="5">
                 <button type="submit">Search</button>
                 {{ csrf_field() }}
             </form>

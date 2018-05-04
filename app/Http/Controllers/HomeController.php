@@ -112,7 +112,12 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        return $request->all();
+        $search = $request->input('search');
+        $currentPortal = Config::get('currentPortal');
+
+        dump($search);
+        return $currentPortal->contentItems->where('title','issile');
+        return $currentPortal->contentItems->where('title','LIKE','%'.$search."%");
     }
 
     private function paginateCollection($items, $per_page)
