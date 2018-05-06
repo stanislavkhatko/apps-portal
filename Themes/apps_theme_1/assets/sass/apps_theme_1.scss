@@ -57,6 +57,37 @@ body {
   font-size: 12px;
 }
 
+.app {
+
+  &-footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-color);
+    text-align: var(--footer-text-align);
+    min-height: var(--footer-min-height);
+    border-top: var(--footer-border-size) solid var(--footer-border-color);
+
+    .footer a {
+      //font-weight: {{ $footer['style']['font_weight'] }};
+      //color: {{ $footer['style']['color']['hex'] }};
+      //font-size: {{ $footer['style']['font_size'] }}px;
+    }
+
+
+    &__page {
+
+    }
+
+    &__cancel {
+
+    }
+
+    &__copyright {
+
+    }
+
+  }
+}
+
 a {
   transition: all 0.2s ease-out;
 
@@ -253,22 +284,6 @@ a {
 .app-disclaimer {
   padding: 15px;
   text-align: center;
-}
-
-.app-footer {
-
-  &__page {
-
-  }
-
-  &__cancel {
-
-  }
-
-  &__text {
-
-  }
-
 }
 
 .app-pricebanner {

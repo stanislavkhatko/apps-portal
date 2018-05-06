@@ -14,7 +14,7 @@
     @endif
 
     @if ($footer['content']['text'])
-        <div class="app-footer__text">
+        <div class="app-footer__copyright">
             {{ $footer['content']['text'] }}
         </div>
     @endif

@@ -197,9 +197,9 @@ h3 {
 
 .category_menu_banner {
   width: 100%;
-  background-color: #0e0e0e;
+  background-color: #b0cac7;
   font-size: 0;
-  border-bottom: 3px solid #bb1010;
+  border-bottom: 3px solid #d2d2d2;
 
   .category_menu_wrapper {
     max-width: 800px;
@@ -230,11 +230,11 @@ h3 {
     }
 
     &.active {
-      background-color: #bb1010;
+      background-color: #d2d2d2;
     }
 
     &:hover {
-      background-color: #e61111;
+      background-color: #d2d2d2;
       text-decoration: none;
 
       .category_menu_txt {

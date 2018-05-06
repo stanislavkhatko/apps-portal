@@ -156,36 +156,6 @@
             color: {{ $center['style']['button_color']['hex'] }};
         }
 
-        /** end center buttons **/
-
-        /** footer **/
-        .app-footer {
-            color: {{ $footer['style']['color']['hex'] }};
-            text-align: {{ $footer['style']['text_align'] }};
-            min-height: {{ $footer['style']['height'] }}px;
-            background-color: {{ $footer['style']['background_color']['hex'] }};
-            border-top-width: {{ $footer['style']['border_top_size'] }}px;
-            border-top-color: {{ $footer['style']['border_color']['hex'] }};
-            @if ($footer && $footer['style']['border_top_size'] > 0)
-                                 border-top-style: solid;
-        @endif
-
-
-
-
-
-
-
-        }
-
-        .footer a {
-            font-weight: {{ $footer['style']['font_weight'] }};
-            color: {{ $footer['style']['color']['hex'] }};
-            font-size: {{ $footer['style']['font_size'] }}px;
-        }
-
-        /** end footer **/
-
     </style>
 
     <link rel="stylesheet" href="{{ themes('css/apps_theme_1.css') }}">
