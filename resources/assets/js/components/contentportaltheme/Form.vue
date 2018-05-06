@@ -198,7 +198,14 @@
 
                                                 <form-input
                                                     type="colorPicker"
-                                                    label="Background color"
+                                                    label="Header background color"
+                                                    item="background_color"
+                                                    :model="theme.components.header.style">
+                                                </form-input>
+
+                                                <form-input
+                                                    type="colorPicker"
+                                                    label="Navbar background color"
                                                     item="background_color"
                                                     :model="theme.components.navbar.style">
                                                 </form-input>

@@ -169,113 +169,115 @@
 
     @include('frontend.partials.pricebanner')
 
-    <nav class="navbar navbar-default app-header">
-        <div class="app-header-navbar">
+    <header class="app-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <!-- Collapsed Hamburger -->
+        <button class="app-header__menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-            <!-- Branding Image -->
-            <a class="navbar-brand app-header-brand" href="{{ url('/') }}">
+        <!-- Branding Image -->
+        <a class="app-header-logo" href="{{ url('/') }}">
 
-                @if ($navbar['content']['image'])
-                    <img src="/storage/{{ $navbar['content']['image'] }}" class="img-responsive"
-                         style="max-height: 50px;">
-                @endif
-                {{ $navbar['content']['title'] }}
-            </a>
+            @if ($navbar['content']['image'])
+                <img src="{{ $navbar['content']['image'] }}">
+            @endif
+            {{ $navbar['content']['title'] }}
+        </a>
 
-            <ul class="nav navbar-nav navbar-right app-header-subnav">
+        <div class="app-header__search">
 
-                <!-- Search field -->
-                <li class="search_group">
-                    <form action="/search" method="POST" class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="@lang('portal.search')"
-                                   required
-                                   minlength="5">
-                            <span class="input-group-btn">
+        </div>
+
+        <div class="app-header__login">
+
+        </div>
+
+        <div class="app-header__language">
+
+        </div>
+
+        <!-- Search field -->
+        <form action="/search" method="POST" class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="@lang('portal.search')"
+                       required
+                       minlength="5">
+                <span class="input-group-btn">
                         <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
                                                                             aria-hidden="true"></span></button>
                     </span>
-                        </div>
-                        {{ csrf_field() }}
-                    </form>
-                </li>
+            </div>
+            {{ csrf_field() }}
+        </form>
 
-                <!-- Authentication Links -->
-                @if(! session()->has('subscription'))
+        <!-- Authentication Links -->
+        @if(! session()->has('subscription'))
+            <li>
+                <a href="/authenticate" class="btn btn-default">
+                    @lang('portal.login')
+                </a>
+            </li>
+        @else
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">
+                    {{ session('subscription')['msisdn'] }} <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="/authenticate" class="btn btn-default">
-                            @lang('portal.login')
-                        </a>
-                    </li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false">
-                            {{ session('subscription')['msisdn'] }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-fw fa-btn fa-sign-out"></i>
-                                    @lang('portal.logout')
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-
-                @if (count(Config::get('currentPortal')->languages) > 1)
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false">
-                            <span class="flag-icon flag-icon-{{ Config::get('currentPortal')->getCountryIcon(App::getLocale()) }}"></span>
-                            <span class="caret"></span>
+                            <i class="fa fa-fw fa-btn fa-sign-out"></i>
+                            @lang('portal.logout')
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                @foreach (Config::get('currentPortal')->languages as $language)
-
-                                    @if (App::getLocale() !== $language)
-                                        <a href="{{ route('view.change.language') }}"
-                                           onclick="event.preventDefault(); document.getElementById('change-language-form-{{ $loop->index }}').submit();">
-                                            <span class="flag-icon flag-icon-{{ Config::get('currentPortal')->getCountryIcon($language) }}"></span>
-                                        </a>
-                                    @endif
-
-                                    <form id="change-language-form-{{ $loop->index }}"
-                                          action="{{ route('view.change.language') }}" method="POST"
-                                          style="display: none;">
-                                        <input type="hidden" name="locale" value="{{ $language }}">
-                                        {{ csrf_field() }}
-                                    </form>
-
-                                @endforeach
-                            </li>
-                        </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
-                @endif
+                </ul>
+            </li>
+        @endif
 
-            </ul>
-        </div>
-    </nav>
+        @if (count(Config::get('currentPortal')->languages) > 1)
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">
+                    <span class="flag-icon flag-icon-{{ Config::get('currentPortal')->getCountryIcon(App::getLocale()) }}"></span>
+                    <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        @foreach (Config::get('currentPortal')->languages as $language)
+
+                            @if (App::getLocale() !== $language)
+                                <a href="{{ route('view.change.language') }}"
+                                   onclick="event.preventDefault(); document.getElementById('change-language-form-{{ $loop->index }}').submit();">
+                                    <span class="flag-icon flag-icon-{{ Config::get('currentPortal')->getCountryIcon($language) }}"></span>
+                                </a>
+                            @endif
+
+                            <form id="change-language-form-{{ $loop->index }}"
+                                  action="{{ route('view.change.language') }}" method="POST"
+                                  style="display: none;">
+                                <input type="hidden" name="locale" value="{{ $language }}">
+                                {{ csrf_field() }}
+                            </form>
+
+                        @endforeach
+                    </li>
+                </ul>
+            </li>
+        @endif
+    </header>
 
     <div class="app-menu collapse" id="app-navbar-collapse">
         <div class="app-menu_wrapper">
@@ -333,6 +335,11 @@
             return 'Press "Stay On Page" to be redirected';
         };
         @endif
+
+
+        $('.app-header__menu-toggle').click(function () {
+            $(this).toggleClass('open');
+        });
     });
 </script>
 
