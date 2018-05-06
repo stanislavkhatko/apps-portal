@@ -16,6 +16,12 @@ a {
   }
 }
 
+.search_group {
+  max-width: 200px;
+  padding-top: 4px;
+  margin-right: 10px;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -302,5 +308,9 @@ a {
 @media (max-width: 500px) {
   .app-category-item {
     flex: 0 0 40%;
+  }
+
+  .search_group {
+    margin: 0 auto;
   }
 }

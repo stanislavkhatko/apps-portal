@@ -10437,6 +10437,12 @@ a:active {
   text-decoration: none;
 }
 
+.search_group {
+  max-width: 200px;
+  padding-top: 4px;
+  margin-right: 10px;
+}
+
 .app {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10774,6 +10780,10 @@ a:active {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 40%;
             flex: 0 0 40%;
+  }
+
+  .search_group {
+    margin: 0 auto;
   }
 }
 
