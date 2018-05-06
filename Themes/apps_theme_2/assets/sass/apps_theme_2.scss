@@ -40,15 +40,10 @@ a {
   text-align: center;
 }
 
-@media (max-width: 630px) {
-  .top_banner {
-    font-size: 14px;
-  }
-}
-
 .portal_container {
   background-color: white;
   max-width: 800px;
+  width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
   flex: 1;
@@ -246,6 +241,16 @@ h3 {
         text-decoration: none;
       }
     }
+  }
+}
+
+@media (max-width: 630px) {
+  .top_banner {
+    font-size: 14px;
+  }
+
+  .search_group {
+    margin: 0 auto;
   }
 }
 
