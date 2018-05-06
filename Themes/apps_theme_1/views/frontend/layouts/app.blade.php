@@ -1,30 +1,69 @@
-@php
-
-    $config = json_decode(Config::get('currentPortal')->config, true);
-
-    $header = $config['components']['header'];
-    $navbar = $config['components']['navbar'];
-    $body = $config['components']['body'];
-    $center = $config['components']['center'];
-    $footer = $config['components']['footer'];
-
-@endphp
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+
+    @php
+        $config = json_decode(Config::get('currentPortal')->config, true);
+
+        $header = $config['components']['header'];
+        $navbar = $config['components']['navbar'];
+        $body = $config['components']['body'];
+        $center = $config['components']['center'];
+        $footer = $config['components']['footer'];
+    @endphp
+
     <title>{{ $navbar['content']['title'] }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic,greek"
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
           rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ themes('css/apps_theme_1.css') }}">
 
     <style type="text/css">
 
-        body {
-            background-color: {{ $body['style']['background_color']['hex'] }};
+        :root {
+            --main-bg-color: {{ $body['style']['background_color']['hex'] }};
+
+            --logo-text-align: {{ $navbar['style']['brand_text_align'] }};
+            --logo-text-color: {{ $navbar['style']['brand_color']['hex'] }};
+            --logo-font-size: {{ $navbar['style']['brand_font_size'] }}px;
+            --logo-font-weight: {{ $navbar['style']['brand_font_weight'] }};
+
+            --header-bg-color: {{ $header['style']['background_color']['hex'] }};
+            --header-color: {{ $header['style']['color']['hex'] }};
+            --header-font-size: {{ $header['style']['font_size'] }}px;
+            --header-font-weight: {{ $header['style']['font_weight'] }};
+            --header-border-size: {{ $header['style']['border_bottom_size'] }}px;
+            --header-border-color: {{ $header['style']['border_color']['hex'] ?? 'transparent' }};
+            --header-min-height: {{ $header['style']['height'] }}px;
+            --header-menu-align: {{ $navbar['style']['menu_float'] }};
+
+            /*--banner-bg-color: ;*/
+            /*--banner-text-align:;*/
+            /*--banner-color:;*/
+            /*--banner-font-size:;*/
+            /*--banner-font-weight:;*/
+            /*--banner-border-size:;*/
+            /*--banner-border-color:;*/
+            /*--banner-min-height:;*/
+
+            --content-bg-color: {{ $center['style']['background_color']['hex'] }};
+            --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
+            --content-border-color: {{ $center['style']['border_color']['hex'] ?? 'transparent' }};
+
+            --button-font-size: {{ $center['style']['button_font_size'] }}px;
+            --button-color: {{ $center['style']['button_color']['hex'] }};
+            --button-bg-color: {{ $center['style']['button_background_color']['hex'] }};
+            --button-border-size: {{ $center['style']['button_border_size'] }}px;
+            --button-border-color: {{ $center['style']['button_border_color']['hex'] ?? 'transparent' }};
+
+            --footer-bg-color: {{ $footer['style']['background_color']['hex'] }};
+            --footer-text-align: {{ $footer['style']['text_align'] }};
+            --footer-color: {{ $footer['style']['color']['hex'] }};
+            --footer-font-size: {{ $footer['style']['font_size'] }}px;
+            --footer-font-weight: {{ $footer['style']['font_weight'] }};
+            --footer-border-size: {{ $footer['style']['border_top_size'] }}px;
+            --footer-border-color: {{ $footer['style']['border_color']['hex'] ?? 'transparent' }};
+            --footer-min-height: {{ $footer['style']['height'] }}px;
         }
 
         .app-pricebanner {
@@ -33,7 +72,7 @@
             color: {{ $header['style']['color']['hex'] }};
             font-size: {{ $header['style']['font_size'] }}px;
             font-weight: {{ $header['style']['font_weight'] }};
-            border-bottom: {{ $header['style']['border_bottom_size'] }}px solid {{ $header['style']['border_color']['hex'] ?? 'transparent' }};
+            border-bottom: {{ $header['style']['border_bottom_size'] }}px solid{{ $header['style']['border_color']['hex'] ?? 'transparent' }};
             min-height: {{ $header['style']['height'] }}px;
         }
 
@@ -110,7 +149,7 @@
 
         .pagination_wrapper .pagination > li > a, .pagination_wrapper .pagination > .disabled > span {
             color: {{ $center['style']['button_background_color']['hex'] }};
-            border: 1px solid {{ $center['style']['button_background_color']['hex'] }};
+            border: 1px solid{{ $center['style']['button_background_color']['hex'] }};
         }
 
         .pagination_wrapper .pagination > .active > span {
@@ -128,8 +167,12 @@
             border-top-width: {{ $footer['style']['border_top_size'] }}px;
             border-top-color: {{ $footer['style']['border_color']['hex'] }};
             @if ($footer && $footer['style']['border_top_size'] > 0)
-                             border-top-style: solid;
+                                 border-top-style: solid;
         @endif
+
+
+
+
 
 
 
@@ -144,6 +187,8 @@
         /** end footer **/
 
     </style>
+
+    <link rel="stylesheet" href="{{ themes('css/apps_theme_1.css') }}">
 
     <style type="text/css">
         {!! Config::get('currentPortal')->custom_css  !!}
@@ -182,10 +227,12 @@
                 <li class="search_group">
                     <form action="/search" method="POST" class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="@lang('portal.search')" required
+                            <input type="text" class="form-control" name="search" placeholder="@lang('portal.search')"
+                                   required
                                    minlength="5">
                             <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
+                                                                            aria-hidden="true"></span></button>
                     </span>
                         </div>
                         {{ csrf_field() }}

@@ -10420,10 +10420,59 @@ button.close {
   background-image: url(/fonts/vendor/flag-icon-css/flags/1x1/un.svg?424ca4dfb83e20505d9c5a92f107b151);
 }
 
+/*:root {
+  --main-bg-color: {{ $body['style']['background_color']['hex'] }};
+
+  --logo-text-align: {{ $navbar['style']['brand_text_align'] }};
+  --logo-text-color: {{ $navbar['style']['brand_color']['hex'] }};
+  --logo-font-size: {{ $navbar['style']['brand_font_size'] }}px;
+  --logo-font-weight: {{ $navbar['style']['brand_font_weight'] }};
+
+  --header-bg-color: {{ $header['style']['background_color']['hex'] }};
+  --header-color: {{ $header['style']['color']['hex'] }};
+  --header-font-size: {{ $header['style']['font_size'] }}px;
+  --header-font-weight: {{ $header['style']['font_weight'] }};
+  --header-border-size: {{ $header['style']['border_bottom_size'] }}px;
+  --header-border-color: {{ $header['style']['border_color']['hex'] ?? 'transparent' }};
+  --header-min-height: {{ $header['style']['height'] }}px;
+  --header-menu-align: {{ $navbar['style']['menu_float'] }};
+
+  --banner-bg-color: ;
+  --banner-text-align:;
+  --banner-color:;
+  --banner-font-size:;
+  --banner-font-weight:;
+  --banner-border-size:;
+  --banner-border-color:;
+  --banner-min-height:;
+
+  --content-bg-color: {{ $center['style']['background_color']['hex'] }};
+  --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
+  --content-border-color: {{ $center['style']['border_color']['hex'] ?? 'transparent' }};
+
+  --button-font-size: {{ $center['style']['button_font_size'] }}px;
+  --button-color: {{ $center['style']['button_color']['hex'] }};
+  --button-bg-color: {{ $center['style']['button_background_color']['hex'] }};
+  --button-border-size: {{ $center['style']['button_border_size'] }}px;
+  --button-border-color: {{ $center['style']['button_border_color']['hex'] ?? 'transparent' }};
+
+  --footer-bg-color: {{ $footer['style']['background_color']['hex'] }};
+  --footer-text-align: {{ $footer['style']['text_align'] }};
+  --footer-color: {{ $footer['style']['color']['hex'] }};
+  --footer-font-size: {{ $footer['style']['font_size'] }}px;
+  --footer-font-weight: {{ $footer['style']['font_weight'] }};
+  --footer-border-size: {{ $footer['style']['border_top_size'] }}px;
+  --footer-border-color: {{ $footer['style']['border_color']['hex'] ?? 'transparent' }};
+  --footer-min-height: {{ $footer['style']['height'] }}px;
+}*/
+
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 12px;
+  background-color: var(--main-bg-color);
+  padding: 0;
+  margin: 0;
   min-height: 100vh;
+  font-size: 12px;
 }
 
 a {
