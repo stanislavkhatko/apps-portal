@@ -1,4 +1,4 @@
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 //@import "~flickity/dist/flickity";
 @import "~flag-icon-css/sass/flag-icon";
 
@@ -57,7 +57,55 @@ body {
   font-size: 12px;
 }
 
+a {
+  transition: all 0.2s ease-out;
+
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+  }
+}
+
 .app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    background-color: var(--header-bg-color);
+
+
+
+    &-navbar {
+      padding: 0 15px;
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-brand {
+      display: flex;
+      flex: 1;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 0;
+
+      & img {
+        margin-right: 10px;
+        max-height: 40px;
+        border-radius: 15px;
+      }
+    }
+
+    &-subnav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+  }
+
+
+
 
   &-footer {
     background-color: var(--footer-bg-color);
@@ -66,10 +114,14 @@ body {
     min-height: var(--footer-min-height);
     border-top: var(--footer-border-size) solid var(--footer-border-color);
 
-    .footer a {
-      //font-weight: {{ $footer['style']['font_weight'] }};
-      //color: {{ $footer['style']['color']['hex'] }};
-      //font-size: {{ $footer['style']['font_size'] }}px;
+    & a {
+      font-weight: var(--footer-font-weight);
+      color: var(--footer-color);
+      font-size: var(--footer-font-size);
+
+      &:hover, &:active &:focus {
+        color: var(--footer-color);
+      }
     }
 
 
@@ -88,13 +140,7 @@ body {
   }
 }
 
-a {
-  transition: all 0.2s ease-out;
 
-  &:hover, &:focus, &:active {
-    text-decoration: none;
-  }
-}
 
 .search_group {
   max-width: 200px;
@@ -102,45 +148,7 @@ a {
   margin-right: 10px;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  max-width: 900px;
-  margin: 0 auto;
-}
 
-.app-header {
-  margin-bottom: 0;
-
-  &-navbar {
-    padding: 0 15px;
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &-brand {
-    display: flex;
-    flex: 1;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 0;
-
-    & img {
-      margin-right: 10px;
-      max-height: 40px;
-      border-radius: 15px;
-    }
-  }
-
-  &-subnav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-}
 
 .app-menu {
 

@@ -10776,7 +10776,7 @@ h3 {
   width: 100%;
   background-color: #b0cac7;
   font-size: 0;
-  border-bottom: 3px solid #d2d2d2;
+  border-bottom: 4px solid #000000;
 }
 
 .category_menu_banner .category_menu_wrapper {
@@ -10807,11 +10807,11 @@ h3 {
 }
 
 .category_menu_banner .category_menu_item.active {
-  background-color: #d2d2d2;
+  background-color: #000000;
 }
 
 .category_menu_banner .category_menu_item:hover {
-  background-color: #d2d2d2;
+  background-color: #000000;
   text-decoration: none;
 }
 
