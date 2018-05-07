@@ -1,53 +1,3 @@
-//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-//@import "~flickity/dist/flickity";
-@import "~flag-icon-css/sass/flag-icon";
-
-/*:root {
-  --main-bg-color: {{ $body['style']['background_color']['hex'] }};
-
-  --logo-text-align: {{ $navbar['style']['brand_text_align'] }};
-  --logo-text-color: {{ $navbar['style']['brand_color']['hex'] }};
-  --logo-font-size: {{ $navbar['style']['brand_font_size'] }}px;
-  --logo-font-weight: {{ $navbar['style']['brand_font_weight'] }};
-
-  --header-bg-color: {{ $header['style']['background_color']['hex'] }};
-  --header-color: {{ $header['style']['color']['hex'] }};
-  --header-font-size: {{ $header['style']['font_size'] }}px;
-  --header-font-weight: {{ $header['style']['font_weight'] }};
-  --header-border-size: {{ $header['style']['border_bottom_size'] }}px;
-  --header-border-color: {{ $header['style']['border_color']['hex'] ?? 'transparent' }};
-  --header-min-height: {{ $header['style']['height'] }}px;
-  --header-menu-align: {{ $navbar['style']['menu_float'] }};
-
-  --banner-bg-color: ;
-  --banner-text-align:;
-  --banner-color:;
-  --banner-font-size:;
-  --banner-font-weight:;
-  --banner-border-size:;
-  --banner-border-color:;
-  --banner-min-height:;
-
-  --content-bg-color: {{ $center['style']['background_color']['hex'] }};
-  --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
-  --content-border-color: {{ $center['style']['border_color']['hex'] ?? 'transparent' }};
-
-  --button-font-size: {{ $center['style']['button_font_size'] }}px;
-  --button-color: {{ $center['style']['button_color']['hex'] }};
-  --button-bg-color: {{ $center['style']['button_background_color']['hex'] }};
-  --button-border-size: {{ $center['style']['button_border_size'] }}px;
-  --button-border-color: {{ $center['style']['button_border_color']['hex'] ?? 'transparent' }};
-
-  --footer-bg-color: {{ $footer['style']['background_color']['hex'] }};
-  --footer-text-align: {{ $footer['style']['text_align'] }};
-  --footer-color: {{ $footer['style']['color']['hex'] }};
-  --footer-font-size: {{ $footer['style']['font_size'] }}px;
-  --footer-font-weight: {{ $footer['style']['font_weight'] }};
-  --footer-border-size: {{ $footer['style']['border_top_size'] }}px;
-  --footer-border-color: {{ $footer['style']['border_color']['hex'] ?? 'transparent' }};
-  --footer-min-height: {{ $footer['style']['height'] }}px;
-}*/
-
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--main-bg-color);
@@ -79,6 +29,7 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 
   &-header {
     background-color: var(--header-bg-color);
@@ -94,18 +45,19 @@ button {
 
     /* Burger button toggle menu */
     &__menu-toggle {
-      width: 40px;
-      height: 35px;
+      width: 25px;
+      height: 21px;
       position: relative;
       transform: rotate(0deg);
       transition: .5s ease-in-out;
       cursor: pointer;
       background-color: var(--header-bg-color);
+      margin: 0 10px;
 
       & span {
         display: block;
         position: absolute;
-        height: 5px;
+        height: 1px;
         width: 100%;
         background-color: var(--header-color);
         border-radius: 9px;
@@ -120,11 +72,11 @@ button {
       }
 
       & span:nth-child(2), & span:nth-child(3) {
-        top: 15px;
+        top: 10px;
       }
 
       & span:nth-child(4) {
-        top: 30px;
+        top: 20px;
       }
 
       &.open span:nth-child(1) {
@@ -150,13 +102,17 @@ button {
 
     /* Logo */
     &-logo {
-      display: flex;
-      align-items: center;
       flex: 1;
-      text-align: var(--logo-text-align);
-      color: var(--logo-text-color);
-      font-size: var(--logo-font-size);
-      font-weight: var(--logo-font-weight);
+      display: flex;
+      justify-content: var(--logo-text-align);
+
+      &__link {
+        display: flex;
+        align-items: center;
+        color: var(--logo-text-color);
+        font-size: var(--logo-font-size);
+        font-weight: var(--logo-font-weight);
+      }
 
       & img {
         margin-right: 20px;
@@ -166,20 +122,259 @@ button {
 
     /* Search button */
     &__search {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* Change size of icon and input */
+      $size: 18px;
+
+      .search-bar {
+        height: auto;
+        width: auto;
+        display: inline-block;
+        transform: translate( 0, 0);
+        box-sizing: border-box;
+
+        input {
+          height: 40px;
+          width: 40px;
+          padding: 2px 20px;
+          box-sizing: border-box;
+          font-size: 13px;
+          border: $size/10 solid transparent;
+          border-radius: 40px;
+          cursor: pointer;
+          background-color: transparent;
+          transition: all 0.5s ease-out;
+          color: transparent;
+
+          &::placeholder {
+            color: transparent;
+          }
+
+          &:invalid {
+            box-shadow: none;
+          }
+
+          &:hover {
+            border: $size/10 solid var(--header-color);
+            box-shadow: 0 0 $size/10 $size/10 var(--header-bg-color);
+          }
+
+          &:focus, &:valid {
+            width: 280px;
+            border: $size/10 solid var(--header-bg-color);
+            outline: none;
+            cursor: auto;
+            background-color: var(--header-color);
+            color: var(--header-bg-color);
+            font-weight: var(--header-font-weight);
+
+            &::placeholder {
+              color: var(--header-bg-color);
+            }
+
+            + .search-icon {
+              z-index: 0;
+              border-color: var(--header-bg-color);
+              right: 20px;
+
+              &:after {
+                background-color: var(--header-bg-color);
+              }
+            }
+          }
+        }
+      }
+
+      .search-icon {
+        display: inline-block;
+        height: $size;
+        width: $size;
+        border-radius: 50%;
+        border: $size/13 solid var(--header-color);
+        position: absolute;
+        right: 12px;
+        top: 8px;
+        z-index: -1;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: $size/2 + $size/4*1.6 + $size/10;
+          left: $size/2 + $size/4*1.5;
+          transform: rotate(45deg);
+          height: $size/10;
+          width: $size/2;
+          background-color: var(--header-color);
+          border-radius: 10px;
+        }
+      }
 
     }
 
     /* Auth button for login */
-    &__login {
+    &__auth {
+      margin: 0 10px;
+
+      &-login {
+        display: block;
+
+        & svg {
+          position: relative;
+          top: 2px;
+          width: 35px;
+          height: 25px;
+          fill: var(--header-color);
+        }
+      }
+
+      &-logout {
+        display: block;
+
+        & svg {
+          position: relative;
+          top: 2px;
+          width: 35px;
+          height: 25px;
+          fill: var(--header-color);
+        }
+      }
 
     }
 
     /* Language block */
     &__language {
+      margin: 0 20px 0 0;
+      position: relative;
+
+      &:hover > .dropdown-menu {
+        display: block;
+        opacity: 1;
+      }
+
+      .dropdown-trigger {
+        position: relative;
+        text-transform: uppercase;
+        color: var(--header-color);
+        font-weight: var(--header-font-weight);
+
+
+        &:focus + .dropdown-menu {
+          display: block;
+          opacity: 1;
+        }
+
+        &::after {
+          content: "›";
+          position: absolute;
+          color: var(--header-color);
+          font-size: var(--header-font-size);
+          font-weight: var(--header-font-weight);
+          transform: rotate(90deg);
+          right: -15px;
+        }
+      }
+
+      .dropdown-menu {
+        background-color: var(--header-bg-color);
+        display: inline-block;
+        text-align: right;
+        position: absolute;
+        top: 10px;
+        right: -20px;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        padding: 0;
+        width: 63px;
+
+        a {
+          color: var(--header-color);
+          text-transform: uppercase;
+          font-weight: lighter;
+        }
+      }
+
+      .dropdown-menu-item {
+        cursor: pointer;
+        padding-left: 5px;
+        text-align: left;
+        list-style: none;
+
+        &:hover, &:focus {
+          background-color: var(--header-color);
+        }
+
+        & a:hover, & a:focus {
+          color: var(--header-bg-color);
+        }
+      }
+    }
+
+  }
+
+  &-navbar {
+    background-color: var(--navbar-bg-color);
+    min-height: var(--navbar-min-height);
+    border-bottom: var(--navbar-border-size) solid var(--navbar-bg-color);
+    display: flex;
+    justify-content: center;
+
+    &-menu {
+      display: flex;
+
+      &-item {
+        color: var(--navbar-color);
+        font-weight: var(--navbar-font-weight);
+        font-size: var(--navbar-font-size);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 100px;
+        position: relative;
+        margin: 0 5px;
+
+        &__icon {
+
+        }
+
+        &__label {
+          text-transform: uppercase;
+          width: 100px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+        }
+
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 100px;
+          bottom: calc(-1 * var(--navbar-border-size));
+          display: none;
+          background-color: var(--navbar-border-color);
+          height: var(--navbar-border-size);
+        }
+
+        &:hover, &.active {
+          &:after {
+            display: block;
+          }
+        }
+      }
 
     }
-    
 
+  }
+
+  &-content {
+    flex: 1;
   }
 
   &-footer {
@@ -214,30 +409,7 @@ button {
   }
 }
 
-.search_group {
-  max-width: 200px;
-  padding-top: 4px;
-  margin-right: 10px;
-}
 
-.app-menu {
-
-  &_item {
-    font-weight: 700;
-
-    &.active {
-      color: #000;
-    }
-  }
-
-  &_wrapper {
-    padding: 15px;
-  }
-}
-
-.app-content {
-  flex: 1;
-}
 
 .app-link-back {
   font-weight: bold;

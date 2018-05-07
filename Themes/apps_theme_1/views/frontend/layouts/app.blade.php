@@ -37,6 +37,14 @@
             --header-min-height: {{ $header['style']['height'] }}px;
             --header-menu-align: {{ $navbar['style']['menu_float'] }};
 
+            --navbar-bg-color: {{ $navbar['style']['background_color']['hex'] }};
+            --navbar-color: {{ $navbar['style']['color']['hex'] }};
+            --navbar-font-weight: {{ $navbar['style']['font_weight'] }};
+            --navbar-font-size: {{ $navbar['style']['font_size'] }}px;
+            --navbar-border-size: {{ $navbar['style']['border_bottom_size'] }}px;
+            --navbar-border-color: {{ $navbar['style']['border_color']['hex'] }};
+            --navbar-min-height: {{ $navbar['style']['height'] }}px;
+
             /*--banner-bg-color: ;*/
             /*--banner-text-align:;*/
             /*--banner-color:;*/
@@ -76,42 +84,6 @@
             min-height: {{ $header['style']['height'] }}px;
         }
 
-        /** navbar **/
-        .app-header {
-            background-color: {{ $navbar['style']['background_color']['hex'] }};
-            border-width: {{ $navbar['style']['border_bottom_size'] }}px;
-            border-color: {{ $navbar['style']['border_color']['hex'] }};
-            border-style: solid;
-        }
-
-        .app-header-navbar {
-            min-height: {{ $navbar['style']['height'] }}px;
-        }
-
-        .app-header-brand {
-            color: {{ $navbar['style']['brand_color']['hex'] }};
-            font-weight: {{ $navbar['style']['brand_font_weight'] }};
-            font-size: {{ $navbar['style']['brand_font_size'] }}px;
-            text-align: {{ $navbar['style']['brand_text_align'] }};
-        }
-
-        .navbar-default .navbar-brand:hover,
-        .navbar-default .navbar-brand:focus {
-            color: {{ $navbar['style']['color']['hex'] }};
-        }
-
-        .navbar-default .navbar-toggle {
-            float: {{ $navbar['style']['menu_float'] }};
-        }
-
-        .dropdown {
-            color: {{ $navbar['style']['color']['hex'] }};
-            font-weight: {{ $navbar['style']['font_weight'] }};
-            font-size: {{ $navbar['style']['font_size'] }}px;
-        }
-
-        /** end navbar **/
-
         /** center **/
         .app-content {
             background-color: {{ $center['style']['background_color']['hex'] }};
@@ -138,24 +110,6 @@
             border-style: solid;
         }
 
-        .app_section .flickity-prev-next-button.previous, .app_section .flickity-prev-next-button.next {
-            background-color: {{ $center['style']['button_background_color']['hex'] }};
-        }
-
-        .pagination_wrapper .pagination > .active > span {
-            background-color: {{ $center['style']['button_background_color']['hex'] }};
-            border-color: {{ $center['style']['button_background_color']['hex'] }};
-        }
-
-        .pagination_wrapper .pagination > li > a, .pagination_wrapper .pagination > .disabled > span {
-            color: {{ $center['style']['button_background_color']['hex'] }};
-            border: 1px solid{{ $center['style']['button_background_color']['hex'] }};
-        }
-
-        .pagination_wrapper .pagination > .active > span {
-            color: {{ $center['style']['button_color']['hex'] }};
-        }
-
     </style>
 
     <link rel="stylesheet" href="{{ themes('css/apps_theme_1.css') }}">
@@ -180,137 +134,127 @@
         </button>
 
         <!-- Branding Image -->
-        <a class="app-header-logo" href="{{ url('/') }}">
+        <div class="app-header-logo">
+            <a class="app-header-logo__link" href="{{ url('/') }}">
 
-            @if ($navbar['content']['image'])
-                <img src="{{ $navbar['content']['image'] }}">
-            @endif
-            {{ $navbar['content']['title'] }}
-        </a>
-
-        <div class="app-header__search">
-
+                @if ($navbar['content']['image'])
+                    <img src="{{ $navbar['content']['image'] }}">
+                @endif
+                {{ $navbar['content']['title'] }}
+            </a>
         </div>
 
-        <div class="app-header__login">
+        <div class="app-header__search" title="@lang('portal.search')">
+            <!-- Search field -->
+            <div class="search-bar">
 
-        </div>
+                <form action="/search" method="POST" class="form-group">
+                    {{ csrf_field() }}
 
-        <div class="app-header__language">
-
-        </div>
-
-        <!-- Search field -->
-        <form action="/search" method="POST" class="form-group">
-            <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="@lang('portal.search')"
-                       required
-                       minlength="5">
-                <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
-                                                                            aria-hidden="true"></span></button>
-                    </span>
+                    <input type="text" placeholder="@lang('portal.search')" required minlength="5">
+                    <div class="search-icon"></div>
+                </form>
             </div>
-            {{ csrf_field() }}
-        </form>
 
-        <!-- Authentication Links -->
-        @if(! session()->has('subscription'))
-            <li>
-                <a href="/authenticate" class="btn btn-default">
-                    @lang('portal.login')
+        </div>
+
+        <div class="app-header__auth">
+
+            <!-- Authentication Links -->
+            @if(!session()->has('subscription'))
+                <a href="/authenticate" class="app-header__auth-login" title="@lang('portal.login')">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                         id="Capa_1" x="0px" y="0px" width="708.631px" height="708.631px" viewBox="0 0 708.631 708.631"
+                         style="enable-background:new 0 0 708.631 708.631;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <polygon
+                                        points="177.158,499.264 177.158,708.631 660.315,708.631 660.315,0 177.158,0 177.158,209.369 209.368,209.369     209.368,32.21 628.104,32.21 628.104,676.422 209.368,676.422 209.368,499.264   "/>
+                                <polygon
+                                        points="48.315,370.357 459,370.357 370.421,515.369 402.631,515.369 499.263,354.316 402.631,193.263 370.421,193.263     459,338.21 48.315,338.21   "/>
+                            </g>
+                        </g>
+                    </svg>
                 </a>
-            </li>
-        @else
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-expanded="false">
-                    {{ session('subscription')['msisdn'] }} <span class="caret"></span>
+            @else
+                <a href="{{ route('logout') }}" title="@lang('portal.logout')"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                   class="app-header__auth-logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                         id="Capa_1" x="0px" y="0px" width="612px" height="612px" viewBox="0 0 612 612"
+                         style="enable-background:new 0 0 612 612;" xml:space="preserve">
+                    <g>
+                        <g>
+                            <polygon
+                                    points="222.545,319.909 577.228,319.909 500.728,445.091 528.546,445.091 612,306 528.546,166.909 500.728,166.909     577.228,292.146 222.545,292.146   "/>
+                            <polygon
+                                    points="0,612 417.272,612 417.272,431.182 389.454,431.182 389.454,584.182 27.818,584.182 27.818,27.818     389.454,27.818 389.454,180.818 417.272,180.818 417.272,0 0,0   "/>
+                        </g>
+                    </g>
+                    </svg>
                 </a>
 
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            <i class="fa fa-fw fa-btn fa-sign-out"></i>
-                            @lang('portal.logout')
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                              style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
-            </li>
-        @endif
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                      style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            @endif
+        </div>
 
         @if (count(Config::get('currentPortal')->languages) > 1)
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-expanded="false">
-                    <span class="flag-icon flag-icon-{{ Config::get('currentPortal')->getCountryIcon(App::getLocale()) }}"></span>
-                    <span class="caret"></span>
-                </a>
 
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        @foreach (Config::get('currentPortal')->languages as $language)
+            <div class="app-header__language">
 
-                            @if (App::getLocale() !== $language)
+                <a class="dropdown-trigger"
+                   href="#">{{ App::getLocale() }}</a>
+                <ul class="dropdown-menu">
+
+                    @foreach (Config::get('currentPortal')->languages as $language)
+
+                        @if (App::getLocale() !== $language)
+                            <li class="dropdown-menu-item">
                                 <a href="{{ route('view.change.language') }}"
                                    onclick="event.preventDefault(); document.getElementById('change-language-form-{{ $loop->index }}').submit();">
-                                    <span class="flag-icon flag-icon-{{ Config::get('currentPortal')->getCountryIcon($language) }}"></span>
+                                    {{ $language }}
                                 </a>
-                            @endif
+                            </li>
+                        @endif
 
-                            <form id="change-language-form-{{ $loop->index }}"
-                                  action="{{ route('view.change.language') }}" method="POST"
-                                  style="display: none;">
-                                <input type="hidden" name="locale" value="{{ $language }}">
-                                {{ csrf_field() }}
-                            </form>
+                        <form id="change-language-form-{{ $loop->index }}"
+                              action="{{ route('view.change.language') }}" method="POST"
+                              style="display: none;">
+                            <input type="hidden" name="locale" value="{{ $language }}">
+                            {{ csrf_field() }}
+                        </form>
 
-                        @endforeach
-                    </li>
+                    @endforeach
                 </ul>
-            </li>
+
+            </div>
+
         @endif
+
     </header>
 
-    <div class="app-menu collapse" id="app-navbar-collapse">
-        <div class="app-menu_wrapper">
-
-            <a href="{{ url('/') }}" class="app-menu_item {{ Request::segment(1) == 'portal' ? 'active' : ''  }}">
-                <div class="app-menu_icon">
-                    <img src="/img/home.png" class="img-responsive">
-                </div>
-                <div class="app-menu_txt">
-                    Home<br/>
-                </div>
-            </a>
-
+    <nav class="app-navbar">
+        <div class="app-navbar-menu">
             @foreach (Config::get('currentPortal')->localContentTypes as $contentType)
-                <a href="{{ route('view.categories', $contentType) }}"
-                   class="app-menu_item {{ Request::segment(2) == $contentType->id ? 'active' : ''  }}">
-                    <div class="app-menu_icon">
-                        @if ($contentType->icon)
-                            <img src="{{ $contentType->icon }}" class="img-responsive"
-                                 alt="{{ $contentType->label }}">
-                        @else
-                            <img src="/img/home.png" class="img-responsive" alt="{{ $contentType->label }}">
-                        @endif
-                    </div>
+                <a href="{{ route('view.categories', $contentType) }}" title="{{ $contentType->label }}"
+                   class="app-navbar-menu-item {{ Request::segment(2) == $contentType->id ? 'active' : ''  }}">
 
-                    <div class="app-menu_txt" title="{{ $contentType->label }}">
+                    @if ($contentType->icon)
+                        <img src="{{ $contentType->icon }}" class="app-navbar-menu-item__icon"
+                             alt="{{ $contentType->label }}">
+                    @endif
+
+                    <div class="app-navbar-menu-item__label">
                         {{ $contentType->label }}
                     </div>
                 </a>
             @endforeach
-
         </div>
-    </div>
+    </nav>
+
 
     <div class="app-content">
         @yield('content')
@@ -318,11 +262,9 @@
 
 @include('frontend.footer')
 
-<!-- Scripts -->
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
     $(function () {
