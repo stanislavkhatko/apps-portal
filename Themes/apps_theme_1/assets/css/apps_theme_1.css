@@ -460,70 +460,14 @@ button:active {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-
-.app-footer {
-  background-color: var(--footer-bg-color);
-  color: var(--footer-color);
-  text-align: var(--footer-text-align);
-  min-height: var(--footer-min-height);
-  border-top: var(--footer-border-size) solid var(--footer-border-color);
-}
-
-.app-footer a {
-  font-weight: var(--footer-font-weight);
-  color: var(--footer-color);
-  font-size: var(--footer-font-size);
-}
-
-.app-footer a:hover,
-.app-footer a:active .app-footer a:focus {
-  color: var(--footer-color);
-}
-
-.app-link-back {
-  font-weight: bold;
-}
-
-.app-item {
-  margin-bottom: 20px;
-}
-
-.app-item-header {
-  margin-top: 10px;
-  padding: 0 15px;
-}
-
-.app-item-title {
-  font-weight: bold;
-  padding: 7px 0;
-  margin: 15px 0;
-  font-size: 20px;
-  border-bottom: 1px solid black;
-}
-
-.app-item-detail {
-  padding: 20px 15px;
-}
-
-.app-item-detail__title {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.app-item-detail__description {
-  text-align: justify;
-  line-height: 1.1;
-}
-
-.app-item-detail__download {
-  display: block;
-  margin: 30px auto;
-  max-width: 290px;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 10px auto;
 }
 
 .app-category {
   margin-bottom: 20px;
+  background-color: var(--content-bg-color);
 }
 
 .app-category-header {
@@ -624,6 +568,66 @@ button:active {
   font-weight: bold;
   color: #000;
   text-align: center;
+}
+
+.app-item {
+  margin-bottom: 20px;
+}
+
+.app-item-header {
+  margin-top: 10px;
+  padding: 0 15px;
+}
+
+.app-item-title {
+  font-weight: bold;
+  padding: 7px 0;
+  margin: 15px 0;
+  font-size: 20px;
+  border-bottom: 1px solid black;
+}
+
+.app-item-detail {
+  padding: 20px 15px;
+}
+
+.app-item-detail__title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.app-item-detail__description {
+  text-align: justify;
+  line-height: 1.1;
+}
+
+.app-item-detail__download {
+  display: block;
+  margin: 30px auto;
+  max-width: 290px;
+}
+
+.app-footer {
+  background-color: var(--footer-bg-color);
+  color: var(--footer-color);
+  text-align: var(--footer-text-align);
+  min-height: var(--footer-min-height);
+  border-top: var(--footer-border-size) solid var(--footer-border-color);
+}
+
+.app-footer a {
+  font-weight: var(--footer-font-weight);
+  color: var(--footer-color);
+  font-size: var(--footer-font-size);
+}
+
+.app-footer a:hover,
+.app-footer a:active .app-footer a:focus {
+  color: var(--footer-color);
+}
+
+.app-link-back {
+  font-weight: bold;
 }
 
 .app-disclaimer {

@@ -54,6 +54,7 @@
             /*--banner-border-color:;*/
             /*--banner-min-height:;*/
 
+            --content-width: 1024px;
             --content-bg-color: {{ $center['style']['background_color']['hex'] }};
             --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
             --content-border-color: {{ $center['style']['border_color']['hex'] ?? 'transparent' }};
@@ -83,13 +84,6 @@
             border-bottom: {{ $header['style']['border_bottom_size'] }}px solid{{ $header['style']['border_color']['hex'] ?? 'transparent' }};
             min-height: {{ $header['style']['height'] }}px;
         }
-
-        /** center **/
-        .app-content {
-            background-color: {{ $center['style']['background_color']['hex'] }};
-        }
-
-        /** end center **/
 
         /** center buttons **/
         .bttn_light_blue {
