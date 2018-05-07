@@ -311,7 +311,7 @@ export default {
             fontWeight: {
                 options: [
                     'lighter',
-                    'regular',
+                    'normal',
                     'bold'
                 ]
             },

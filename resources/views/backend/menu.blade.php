@@ -28,7 +28,7 @@
                 <ul class="nav spark-settings-stacked-tabs" role="tablist">
                     <li role="presentation">
                         <a href="{{ route('local-content-types.index') }}" class="{{  Request::segment(2) == 'local-content-types' ? 'active' : ''  }}">
-                            Content types
+                            Portal Content types
                         </a>
                         <a href="{{ route('translations.index') }}" class="{{  Request::segment(2) == 'translations' ? 'active' : ''  }}">
                             Translations

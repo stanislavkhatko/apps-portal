@@ -1,22 +1,29 @@
-<!-- Item -->
 <a href="{{ route('view.contentitem', [$item]) }}" class="app-category-item">
 
-    <img src="{{ ($item->type == 'flash') ? '/img/musica2.png' : $item->type == 'mp3' ? '/img/musica.png' : $item->preview}}"
-         alt="" class="app-category-item__thumb">
+    <div class="app-category-item--main">
+        <img src="{{ $item->preview}}" alt="{{ $item->title }}" class="app-category-item__thumb">
 
-    <div class="app-category-item-type">
-        @if($item->category->icon)
-            <img src="{{ $item->category->icon }}"
-                 alt="{{ $item->category->label }}"
-                 class="app-category-items-type__thumb">
-        @endif
-        {{ $item->category->label }}
+        <div class="app-category-item__title">
+            {{ $item->title }}
+        </div>
     </div>
 
-    @include('frontend.partials.rating', $item)
+    <div class="app-category-item--details">
 
-    <div class="app-category-item__title">
-        {{ $item->title }}
+        <div class="app-category-item__category">
+            {{ $item->category->label }}
+        </div>
+
+        <div class="app-category-item__rating">
+            @for($i = 0; $i < 5; $i++)
+                <span class="{{ $i < $item->rating ? 'active' : '' }}">☆</span>
+            @endfor
+        </div>
+
+        <div class="app-category-item__price">
+            Free
+        </div>
+
     </div>
 
 </a>

@@ -55,6 +55,9 @@
             /*--banner-min-height:;*/
 
             --content-width: 1024px;
+            --content-color: #252525;
+            --content-primery-color: #1cdd6e;
+            --content-secondary-color: #b0b0b0;
             --content-bg-color: {{ $center['style']['background_color']['hex'] }};
             --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
             --content-border-color: {{ $center['style']['border_color']['hex'] ?? 'transparent' }};
@@ -119,47 +122,49 @@
 
     <header class="app-header">
 
-        <!-- Collapsed Hamburger -->
-        <button class="app-header__menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="app-header--wrapper">
 
-        <!-- Branding Image -->
-        <div class="app-header-logo">
-            <a class="app-header-logo__link" href="{{ url('/') }}">
+            <!-- Collapsed Hamburger -->
+            <button class="app-header__menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-                @if ($navbar['content']['image'])
-                    <img src="{{ $navbar['content']['image'] }}">
-                @endif
-                {{ $navbar['content']['title'] }}
-            </a>
-        </div>
+            <!-- Branding Image -->
+            <div class="app-header-logo">
+                <a class="app-header-logo__link" href="{{ url('/') }}">
 
-        <div class="app-header__search" title="@lang('portal.search')">
-            <!-- Search field -->
-            <div class="search-bar">
-
-                <form action="/search" method="POST" class="form-group">
-                    {{ csrf_field() }}
-
-                    <input type="text" placeholder="@lang('portal.search')" required minlength="5">
-                    <div class="search-icon"></div>
-                </form>
+                    @if ($navbar['content']['image'])
+                        <img src="{{ $navbar['content']['image'] }}">
+                    @endif
+                    {{ $navbar['content']['title'] }}
+                </a>
             </div>
 
-        </div>
+            <div class="app-header__search" title="@lang('portal.search')">
+                <!-- Search field -->
+                <div class="search-bar">
 
-        <div class="app-header__auth">
+                    <form action="/search" method="POST" class="form-group">
+                        {{ csrf_field() }}
 
-            <!-- Authentication Links -->
-            @if(!session()->has('subscription'))
-                <a href="/authenticate" class="app-header__auth-login" title="@lang('portal.login')">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                         id="Capa_1" x="0px" y="0px" width="708.631px" height="708.631px" viewBox="0 0 708.631 708.631"
-                         style="enable-background:new 0 0 708.631 708.631;" xml:space="preserve">
+                        <input type="text" placeholder="@lang('portal.search')" required minlength="5">
+                        <div class="search-icon"></div>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="app-header__auth">
+
+                <!-- Authentication Links -->
+                @if(!session()->has('subscription'))
+                    <a href="/authenticate" class="app-header__auth-login" title="@lang('portal.login')">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                             id="Capa_1" x="0px" y="0px" width="708.631px" height="708.631px" viewBox="0 0 708.631 708.631"
+                             style="enable-background:new 0 0 708.631 708.631;" xml:space="preserve">
                         <g>
                             <g>
                                 <polygon
@@ -169,14 +174,14 @@
                             </g>
                         </g>
                     </svg>
-                </a>
-            @else
-                <a href="{{ route('logout') }}" title="@lang('portal.logout')"
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                   class="app-header__auth-logout">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                         id="Capa_1" x="0px" y="0px" width="612px" height="612px" viewBox="0 0 612 612"
-                         style="enable-background:new 0 0 612 612;" xml:space="preserve">
+                    </a>
+                @else
+                    <a href="{{ route('logout') }}" title="@lang('portal.logout')"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       class="app-header__auth-logout">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                             id="Capa_1" x="0px" y="0px" width="612px" height="612px" viewBox="0 0 612 612"
+                             style="enable-background:new 0 0 612 612;" xml:space="preserve">
                     <g>
                         <g>
                             <polygon
@@ -186,47 +191,49 @@
                         </g>
                     </g>
                     </svg>
-                </a>
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                      style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            @endif
-        </div>
-
-        @if (count(Config::get('currentPortal')->languages) > 1)
-
-            <div class="app-header__language">
-
-                <a class="dropdown-trigger"
-                   href="#">{{ App::getLocale() }}</a>
-                <ul class="dropdown-menu">
-
-                    @foreach (Config::get('currentPortal')->languages as $language)
-
-                        @if (App::getLocale() !== $language)
-                            <li class="dropdown-menu-item">
-                                <a href="{{ route('view.change.language') }}"
-                                   onclick="event.preventDefault(); document.getElementById('change-language-form-{{ $loop->index }}').submit();">
-                                    {{ $language }}
-                                </a>
-                            </li>
-                        @endif
-
-                        <form id="change-language-form-{{ $loop->index }}"
-                              action="{{ route('view.change.language') }}" method="POST"
-                              style="display: none;">
-                            <input type="hidden" name="locale" value="{{ $language }}">
-                            {{ csrf_field() }}
-                        </form>
-
-                    @endforeach
-                </ul>
-
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                @endif
             </div>
 
-        @endif
+            @if (count(Config::get('currentPortal')->languages) > 1)
+
+                <div class="app-header__language">
+
+                    <a class="dropdown-trigger"
+                       href="#">{{ App::getLocale() }}</a>
+                    <ul class="dropdown-menu">
+
+                        @foreach (Config::get('currentPortal')->languages as $language)
+
+                            @if (App::getLocale() !== $language)
+                                <li class="dropdown-menu-item">
+                                    <a href="{{ route('view.change.language') }}"
+                                       onclick="event.preventDefault(); document.getElementById('change-language-form-{{ $loop->index }}').submit();">
+                                        {{ $language }}
+                                    </a>
+                                </li>
+                            @endif
+
+                            <form id="change-language-form-{{ $loop->index }}"
+                                  action="{{ route('view.change.language') }}" method="POST"
+                                  style="display: none;">
+                                <input type="hidden" name="locale" value="{{ $language }}">
+                                {{ csrf_field() }}
+                            </form>
+
+                        @endforeach
+                    </ul>
+
+                </div>
+
+            @endif
+
+        </div>
 
     </header>
 
