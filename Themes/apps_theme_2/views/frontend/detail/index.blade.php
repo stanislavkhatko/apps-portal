@@ -81,6 +81,13 @@
                             </p>
                         @endif
 
+                        @if(strpos($item->download['link'], '.mp4') !== false)
+                        <video width="400" controls>
+                            <source src="{{ $item->download['link'] }}" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                        @endif
+
                         @if($item->type === 'upload')
                             <a href="{{ route('download.contentitem', $item) }}" class="download_bttn">
                                 @lang('portal.download_label') <span class="glyphicon glyphicon-download-alt"></span>
@@ -90,10 +97,6 @@
                                 <a href="{{ route('play.contentitem', $item) }}" target="_blank" class="download_bttn">
                                     @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
                                 </a>
-                            @else
-                                <iframe width="560" height="315"
-                                        src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
-                                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             @endif
                         @endif
 
