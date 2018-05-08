@@ -4,9 +4,9 @@
 
     <div class="app-category-header">
         @include('frontend.partials.back')
-        <h4>
-            @lang('portal.categories_for') {{ $localContentType->label }}
-        </h4>
+        <div class="app-category-header__title">
+            @lang('portal.category'): {{ $localContentType->label }}
+        </div>
     </div>
 
     @foreach($localContentType->localCategories as $localContentType)

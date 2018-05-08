@@ -21,7 +21,7 @@
         </div>
 
         <div class="app-category-item__price">
-            Free
+            @lang('portal.free')
         </div>
 
     </div>

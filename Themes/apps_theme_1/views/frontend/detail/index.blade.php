@@ -8,13 +8,12 @@
 
             @include('frontend.partials.back')
 
-            <div class="app-item-title">
+            <div class="app-item-header__title">
                 {{ $item->category->contenttype->label }} - {{ $item->category->label }}
             </div>
 
             @if (session()->has('downloaderror'))
-                <br>
-                <div class="alert alert-danger" role="alert">
+                <div class="app-item-header__error">
                     {{ session('downloaderror') }}
                 </div>
             @endif
@@ -37,37 +36,39 @@
                 </a>
             @else
                 @if(strpos($item->download['link'], 'online/') !== false)
-                    <a href="{{ route('play.contentitem', $item) }}" target="_blank" class="btn btn-primary app-item-detail__download">
+                    <a href="{{ route('play.contentitem', $item) }}" target="_blank"
+                       class="btn btn-primary app-item-detail__download">
                         @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
                     </a>
-                    @elseif(strpos($item->download['link'], 'www.') !== false || strpos($item->download['link'], 'http') !== false || strpos($item->download['link'], 'https') !== false)
-                        <a href="{{ $item->download['link'] }}" target="_blank" class="btn btn-primary app-item-detail__download">
-                            @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
-                        </a>
-                    @else
-                        <iframe width="560" height="315"
-                                src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
-                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    @endif
+                @elseif(strpos($item->download['link'], 'www.') !== false || strpos($item->download['link'], 'http') !== false || strpos($item->download['link'], 'https') !== false)
+                    <a href="{{ $item->download['link'] }}" target="_blank"
+                       class="btn btn-primary app-item-detail__download">
+                        @lang('portal.play') <span class="glyphicon glyphicon-new-window"></span>
+                    </a>
+                @else
+                    <iframe width="560" height="315"
+                            src="https://www.youtube-nocookie.com/embed/{!! $item->download['link'] !!}?rel=0&amp;showinfo=0"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                @endif
             @endif
 
         </div>
 
         <div class="app-category">
+
             <div class="app-category-header">
-                <h4>
+                <div class="app-category-header__title">
                     @lang('portal.also_available'):
-                </h4>
+                </div>
             </div>
 
             <div class="app-category-items">
-                @foreach($item->category->contentItems->take(10) as $item)
+                @foreach($item->category->contentItems->take(5) as $item)
                     @include('frontend.partials.item', $item)
                 @endforeach
             </div>
+
         </div>
-
-
     </div>
 
     @include('frontend.disclaimer')

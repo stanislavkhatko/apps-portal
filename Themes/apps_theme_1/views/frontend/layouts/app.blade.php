@@ -56,7 +56,7 @@
 
             --content-width: 1024px;
             --content-color: #252525;
-            --content-primery-color: #1cdd6e;
+            --content-primary-color: #1cdd6e;
             --content-secondary-color: #b0b0b0;
             --content-bg-color: {{ $center['style']['background_color']['hex'] }};
             --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
