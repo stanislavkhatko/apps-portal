@@ -307,13 +307,6 @@
 
                                             <panel header="Style" is-open type="primary">
 
-                                                <form-input
-                                                        type="numberInput"
-                                                        label="Content width"
-                                                        addonLabel="pixels"
-                                                        item="content_width"
-                                                        :model="theme.components.center.style">
-                                                </form-input>
 
                                                 <form-input
                                                         type="colorPicker"
@@ -322,10 +315,10 @@
                                                         :model="theme.components.center.style">
                                                 </form-input>
 
-                                                <form-input
+                                           <!--     <form-input
                                                         type="colorPicker"
                                                         label="Font color"
-                                                        item="content_color"
+                                                        item="color"
                                                         :model="theme.components.center.style">
                                                 </form-input>
 
@@ -340,6 +333,14 @@
                                                         type="colorPicker"
                                                         label="Secondary text color"
                                                         item="content_secondary_color"
+                                                        :model="theme.components.center.style">
+                                                </form-input>-->
+
+                                                <form-input
+                                                        type="numberInput"
+                                                        label="Content width"
+                                                        addonLabel="pixels"
+                                                        item="content_width"
                                                         :model="theme.components.center.style">
                                                 </form-input>
 
@@ -1418,14 +1419,14 @@
                                 border_left_right_size: 0,
                                 border_color: {hex: ""},
                                 button_font_size: 14,
-                                button_color: {hex: "#fff"},
-                                button_background_color: {hex: "#00a2e4"},
+                                button_color: {hex: '#fff'},
+                                button_background_color: {hex: '#00a2e4'},
                                 button_border_color: {hex: ""},
                                 button_border_size: 0,
                                 content_width: 1024,
-                                content_color: {hex: "#000000"},
-                                content_primary_color: {hex: "#1cdd6e"},
-                                content_secondary_color: {hex: "#b0b0b0"}
+                                content_color: { hex: '#000000'},
+                                content_primary_color: { hex: '#1cdd6e'},
+                                content_secondary_color: { hex: '#b0b0b0'}
                             }
                         },
 
@@ -1493,7 +1494,7 @@
 
                 if (this.portal.custom_css) this.custom_css = this.portal.custom_css;
                 //met assign doen we de lokale config mergen met de config van de database, elementen die dan lokaal nieuw zijn worden bij die van de database toegevoegd
-                if (this.portal.config) Object.assign(this.theme, JSON.parse(this.portal.config));
+                if (this.portal.config) Object.assign(this.theme, (JSON.parse(this.portal.config)));
                 if (this.portal.local_content_types.length > 0) this.fillContentTypeBackgroundImages();
             },
 

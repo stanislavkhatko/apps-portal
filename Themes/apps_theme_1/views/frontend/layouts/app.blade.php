@@ -54,10 +54,10 @@
             /*--banner-border-color:;*/
             /*--banner-min-height:;*/
 
-            --content-width: {{ $center['style']['content_width'] }}px;
             --content-color: #252525;
             --content-primary-color: #1cdd6e;
             --content-secondary-color: #b0b0b0;
+            --content-width: {{ $center['style']['content_width'] }}px;
             --content-bg-color: {{ $center['style']['background_color']['hex'] }};
             --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
             --content-border-color: {{ $center['style']['border_color']['hex'] ?? 'transparent' }};

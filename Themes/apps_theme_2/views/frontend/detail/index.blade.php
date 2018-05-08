@@ -82,10 +82,10 @@
                         @endif
 
                         @if(strpos($item->download['link'], '.mp4') !== false)
-                        <video width="50%" style="margin: 0 auto;" controls>
-                            <source src="{{ $itemUrl }}" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
+                            <video width="50%" style="margin: 0 auto;" controls>
+                                <source src="{{ $itemUrl }}" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
                         @endif
 
                         @if($item->type === 'upload')

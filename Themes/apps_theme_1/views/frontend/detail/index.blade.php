@@ -19,16 +19,47 @@
             @endif
         </div>
 
-        @include('frontend.partials.item', $item)
+
+        <a href="{{ route('view.contentitem', [$item]) }}" class="app-item-body">
+
+            <div class="app-item-body--main">
+                <img src="{{ $item->preview}}" alt="{{ $item->title }}" class="app-item-body__thumb">
+
+                <div class="app-item-body__title">
+                    {{ $item->title }}
+                </div>
+
+                <div class="app-item-body__description">
+                    {!! $item->description !!}
+                </div>
+
+            </div>
+
+            <div class="app-item-body--details">
+
+                <div class="app-item-body__category">
+                    {{ $item->category->label }}
+                </div>
+
+                <div class="app-item-body__rating">
+                    @for($i = 0; $i < 5; $i++)
+                        <span class="{{ $i < $item->rating ? 'active' : '' }}">☆</span>
+                    @endfor
+                </div>
+
+                <div class="app-item-body__price">
+                    @lang('portal.free')
+                </div>
+
+            </div>
+
+        </a>
+
 
         <div class="app-item-detail">
 
-            @if($item->description)
-                <div class="app-item-detail__title">@lang('portal.description'):</div>
-                <div class="app-item-detail__description">
-                    {!! $item->description !!}
-                </div>
-            @endif
+            <div class="app-item-detail__title">@lang('portal.description'):</div>
+
 
             @if($item->type === 'upload')
                 <a href="{{ route('download.contentitem', $item) }}" class="btn btn-primary app-item-detail__download">
