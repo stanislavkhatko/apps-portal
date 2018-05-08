@@ -54,7 +54,7 @@
             /*--banner-border-color:;*/
             /*--banner-min-height:;*/
 
-            --content-width: 1024px;
+            --content-width: {{ $center['style']['content_width'] }}px;
             --content-color: #252525;
             --content-primary-color: #1cdd6e;
             --content-secondary-color: #b0b0b0;

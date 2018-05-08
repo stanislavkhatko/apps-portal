@@ -302,10 +302,39 @@
                                             <panel header="Style" is-open type="primary">
 
                                                 <form-input
+                                                        type="numberInput"
+                                                        label="Content width"
+                                                        addonLabel="pixels"
+                                                        item="content_width"
+                                                        :model="theme.components.center.style">
+                                                </form-input>
+
+                                                <form-input
                                                     type="colorPicker"
                                                     label="Background color"
                                                     item="background_color"
                                                     :model="theme.components.center.style">
+                                                </form-input>
+
+                                                <form-input
+                                                        type="colorPicker"
+                                                        label="Font color"
+                                                        item="content_color"
+                                                        :model="theme.components.center.style">
+                                                </form-input>
+
+                                                <form-input
+                                                        type="colorPicker"
+                                                        label="Primary text color"
+                                                        item="content_primary_color"
+                                                        :model="theme.components.center.style">
+                                                </form-input>
+
+                                                <form-input
+                                                        type="colorPicker"
+                                                        label="Secondary text color"
+                                                        item="content_secondary_color"
+                                                        :model="theme.components.center.style">
                                                 </form-input>
 
                                                 <form-input
@@ -1356,8 +1385,12 @@ export default {
                             button_color: { hex: "#fff" },
                             button_background_color: { hex: "#00a2e4" },
                             button_border_color: { hex: ""},
-                            button_border_size: 0
-                        }                        
+                            button_border_size: 0,
+                            content_width: 1024,
+                            content_color: { hex: "#000000"},
+                            content_primary_color: { hex: "#1cdd6e"},
+                            content_secondary_color: { hex: "#b0b0b0"}
+                        }
                     },
 
                     footer: {

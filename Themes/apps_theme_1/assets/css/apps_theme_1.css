@@ -581,7 +581,7 @@ button:active {
 }
 
 .app-category-item__price {
-  color: var(--cotent-primary-color);
+  color: var(--content-primary-color);
   text-transform: uppercase;
   font-size: 15px;
   margin-top: 5px;
