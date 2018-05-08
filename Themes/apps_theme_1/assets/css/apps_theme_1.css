@@ -475,14 +475,27 @@ button:active {
   color: var(--content-color);
 }
 
+.app .app-link-back {
+  font-weight: lighter;
+  color: var(--content-color);
+  text-transform: uppercase;
+}
+
 .app-category {
   margin-bottom: 20px;
   background-color: var(--content-bg-color);
+  padding-bottom: 20px;
 }
 
 .app-category-header {
-  margin-top: 20px;
   padding: 0 15px;
+}
+
+.app-category-header__title {
+  font-size: 15px;
+  color: var(--content-secondary-color);
+  text-transform: uppercase;
+  padding: 10px 0;
 }
 
 .app-category-title {
@@ -501,7 +514,7 @@ button:active {
 }
 
 .app-category-title__link {
-  color: var(--content-secondary-color);
+  color: var(--content-color);
   font-weight: lighter;
   text-transform: uppercase;
 }
@@ -616,13 +629,61 @@ button:active {
   padding: 7px 10px;
 }
 
+.app-items {
+  margin-bottom: 20px;
+  background-color: var(--content-bg-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px 7px;
+}
+
+.app-items-header {
+  padding: 0 15px;
+}
+
+.app-items-header__title {
+  font-size: 15px;
+  color: var(--content-secondary-color);
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.app-items .app-category-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20%;
+          flex: 0 0 20%;
+  border-right: none;
+  border-bottom: 1px solid var(--content-secondary-color);
+  margin-bottom: 30px;
+}
+
 .app-item {
   margin-bottom: 20px;
 }
 
 .app-item-header {
-  margin-top: 10px;
   padding: 0 15px;
+}
+
+.app-item-header__title {
+  font-size: 15px;
+  color: var(--content-secondary-color);
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.app-item-header__error {
+  border: 1px solid red;
+  color: red;
+  font-size: 14px;
+  padding: 7px;
+  margin-bottom: 20px;
 }
 
 .app-item-title {
@@ -676,10 +737,6 @@ button:active {
 .app-footer a:hover,
 .app-footer a:active .app-footer a:focus {
   color: var(--footer-color);
-}
-
-.app-link-back {
-  font-weight: bold;
 }
 
 .app-disclaimer {
