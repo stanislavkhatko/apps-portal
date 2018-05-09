@@ -24,7 +24,14 @@
         <div class="app-item-body">
 
             <div class="app-item-body--main">
-                <img src="{{ $item->preview}}" alt="{{ $item->title }}" class="app-item-body__thumb">
+                @if(strpos($item->download['link'], '.mp4') !== false && session()->has('subscription'))
+                    <video width="300" style="margin: 0 auto;" controls>
+                        <source src="{{ $itemUrl }}" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                @else
+                    <img src="{{ $item->preview}}" alt="{{ $item->title }}" class="app-item-body__thumb">
+                @endif
             </div>
 
             <div class="app-item-body--details">
@@ -50,6 +57,7 @@
                 <div class="app-item-body__price">
                     @lang('portal.free')
                 </div>
+
 
                 @if($item->type === 'upload')
                     <a href="{{ route('download.contentitem', $item) }}" class="app-item-body__download">
