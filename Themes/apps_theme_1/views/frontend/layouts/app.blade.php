@@ -88,25 +88,6 @@
             min-height: {{ $header['style']['height'] }}px;
         }
 
-        /** center buttons **/
-        .bttn_light_blue {
-            font-size: {{ $center['style']['button_font_size'] }}px;
-            background-color: {{ $center['style']['button_background_color']['hex'] }};
-            color: {{ $center['style']['button_color']['hex'] }};
-            border-width: {{ $center['style']['button_border_size'] }}px;
-            border-color: {{ $center['style']['button_border_color']['hex'] }};
-            border-style: solid;
-        }
-
-        .download_bttn {
-            font-size: {{ $center['style']['button_font_size'] }}px;
-            background-color: {{ $center['style']['button_background_color']['hex'] }};
-            color: {{ $center['style']['button_color']['hex'] }};
-            border-width: {{ $center['style']['button_border_size'] }}px;
-            border-color: {{ $center['style']['button_border_color']['hex'] }};
-            border-style: solid;
-        }
-
     </style>
 
     <link rel="stylesheet" href="{{ themes('css/apps_theme_1.css') }}">

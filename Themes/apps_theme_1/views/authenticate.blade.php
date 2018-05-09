@@ -2,8 +2,13 @@
 
 @section('content')
 
-        <div class="col-sm-8 col-sm-offset-2">
-            <h1>@lang('portal.login')</h1>
+    <div class="app-auth">
+        <div class="app-auth__title">
+            @lang('portal.login')
+        </div>
+
+        <div class="app-auth-form">
+
             <form action="/authenticate" method="post">
                 {{ csrf_field() }}
                 <div class="form-group @if (session('loginError')) has-error @endif">
@@ -19,6 +24,9 @@
                     <button type="submit" class="btn btn-default">@lang('portal.login')</button>
                 </div>
             </form>
+
         </div>
+    </div>
+
 
 @endsection

@@ -523,6 +523,8 @@ button:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -548,9 +550,9 @@ button:active {
           align-items: center;
   border-right: 1px solid var(--content-secondary-color);
   padding: 0 8px;
-  min-height: 260px;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  min-width: 120px;
+  max-width: 290px;
+  margin-bottom: 20px;
 }
 
 .app-category-item:last-child {
@@ -666,7 +668,7 @@ button:active {
 .app-item {
   margin-bottom: 20px;
   background-color: var(--content-bg-color);
-  padding: 15px;
+  padding: 20px 15px;
 }
 
 .app-item-error {
@@ -684,17 +686,21 @@ button:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   min-height: 260px;
 }
 
 .app-item-body--main {
   margin-right: 20px;
+  min-width: 290px;
 }
 
 .app-item-body--details {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  min-width: 290px;
 }
 
 .app-item-body__thumb {

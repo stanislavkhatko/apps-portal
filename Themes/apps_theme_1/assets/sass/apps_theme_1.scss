@@ -431,6 +431,7 @@ button {
 
     &-items {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       padding: 0 7px;
     }
@@ -443,8 +444,10 @@ button {
       align-items: center;
       border-right: 1px solid var(--content-secondary-color);
       padding: 0 8px;
-      min-height: 260px;
-      transition: all 0.2s ease;
+      min-width: 120px;
+      max-width: 290px;
+      margin-bottom: 20px;
+
 
       &:last-child {
         border: none
@@ -552,7 +555,7 @@ button {
   &-item {
     margin-bottom: 20px;
     background-color: var(--content-bg-color);
-    padding: 15px;
+    padding: 20px 15px;
 
     &-error {
       border: 1px solid red;
@@ -565,13 +568,16 @@ button {
     &-body {
       flex: 1;
       display: flex;
+      flex-wrap: wrap;
       min-height: 260px;
 
       &--main {
         margin-right: 20px;
+        min-width: 290px;
       }
       &--details {
         flex: 1;
+        min-width: 290px;
       }
 
       &__thumb {
@@ -639,8 +645,6 @@ button {
     }
   }
 
-
-
   &-footer {
     background-color: var(--footer-bg-color);
     color: var(--footer-color);
@@ -680,7 +684,9 @@ button {
 }
 
 
+@media only screen and (max-width: 850px) {
 
+}
 
 
 
