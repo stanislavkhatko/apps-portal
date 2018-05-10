@@ -15,6 +15,7 @@ final class SlackLogRecorder implements LogRecorder
 
     public function alert($message)
     {
+
         if(config('logging.slack_alert')){
             $message = $this->modifyMessage($message, debug_backtrace());
             Log::alert($message);

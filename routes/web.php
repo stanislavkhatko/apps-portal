@@ -104,8 +104,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::post('/local-content-type/{id}/upload-icon', ['uses' => 'LocalContentTypeController@uploadIcon']);
 
         /** content item ***/
-        Route::post('/content-item/upload-image', ['uses' => 'ContentItemController@uploadContentItemImage']);  
-        Route::post('/content-item/upload-file', ['uses' => 'ContentItemController@uploadContentItemFile']);     
+        Route::post('/content-item/{id}/upload-image', ['uses' => 'ContentItemController@uploadContentItemImage']);
+        Route::post('/content-item/{id}/upload-file', ['uses' => 'ContentItemController@uploadContentItemFile']);
         Route::post('/content-item', ['uses' => 'ContentItemController@store']);
         Route::patch('/content-item/{content_item}', ['uses' => 'ContentItemController@update']);  
         Route::get('/content-item/content-type/{id}/categories', ['uses' => 'ContentItemController@getCategories']); 

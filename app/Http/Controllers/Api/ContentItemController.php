@@ -74,18 +74,22 @@ class ContentItemController extends Controller
         return $categories;
     }
 
-    public function uploadContentItemImage(Request $request)
+    public function uploadContentItemImage(Request $request, $id)
     {
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $path = $file->hashName('public/temp');
             $image = Image::make($file)->fit(290);
             Storage::put($path, (string)$image->encode());
-            return Storage::url($path);
+
+            return Storage::url($this->moveItemToStorage(
+                Storage::url($path),
+                $request->file('file')->getClientOriginalName(),
+                'public/content-item-images/' . $id));
         }
     }
 
-    public function uploadContentItemFile(Request $request)
+    public function uploadContentItemFile(Request $request, $id)
     {
         if ($request->hasFile('file')) {
             return $request->file('file')->storeAs('public/temp', $request->file('file')->getClientOriginalName());

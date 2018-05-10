@@ -10,6 +10,7 @@
                 </div>
             </div>
             <!-- panel heading -->
+            {{ item }}
 
 
             <div class="panel-body">
@@ -228,7 +229,7 @@
                         <!-- hr -->
 
 
-                        <div class="form-group">
+                        <div class="form-group" v-if="item">
                             <label class="col-sm-2 control-label">Item preview image<br/>(290x290)</label>
                             <div class="col-sm-10">
 
@@ -246,7 +247,7 @@
                                 <template v-else>
                                     <dropzone
                                             id="myVueDropzone"
-                                            url="/admin/api/content-item/upload-image"
+                                            :url="'/admin/api/content-item/' + contentItem.id + '/upload-image'"
                                             :useFontAwesome="true"
                                             :max-number-of-files=1
                                             :thumbnailWidth=240
@@ -260,7 +261,7 @@
                         <!-- form-group -->
 
 
-                        <template v-if="contentItem.provider === 'system'">
+                        <template v-if="item">
 
                             <div class="row">
                                 <div class="col-sm-offset-2 col-sm-10">
@@ -309,13 +310,13 @@
                                     <template v-else>
                                         <dropzone
                                                 id="myVueDropzone2"
-                                                url="/admin/api/content-item/upload-file"
+                                                :url="'/admin/api/content-item/' + contentItem.id + '/upload-file'"
                                                 :useFontAwesome="true"
                                                 :max-number-of-files=1
                                                 :thumbnailHeight=240
                                                 :thumbnailWidth=240
                                                 :maxFileSizeInMB=100
-                                                :timeout=180000
+                                                :timeout=250000
                                                 v-on:vdropzone-success="uploadContentItemFile">
                                             <input type="hidden" name="_token" :value="token">
                                         </dropzone>
@@ -498,8 +499,12 @@
 
             addLanguage() {
 
-                this.$set(this.contentItem.title, this.newSelectedLanguage.value);
-                this.$set(this.contentItem.description, this.newSelectedLanguage.value);
+                this.$set(this.contentItem.title, this.newSelectedLanguage.value, '');
+                // this.contentItem.title = Object.assign({}, {en: ''});
+
+                this.$set(this.contentItem.description, this.newSelectedLanguage.value, '');
+                // this.contentItem.description = Object.assign({}, {en: ''});
+
                 this.newSelectedLanguage = '';
                 this.helpers.activeTab = this.contentItemLanguages.length - 1;
                 this.helpers.showNewLanguageModal = false;
@@ -589,6 +594,7 @@
                                 this.helpers.spinner.save = false;
                                 this.helpers.spinner.saveAndReturn = false;
                                 if (goBack) this.goBack();
+                                location.reload();
                             }
                         });
                 } else {
