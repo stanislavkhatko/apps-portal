@@ -54,10 +54,10 @@
             /*--banner-border-color:;*/
             /*--banner-min-height:;*/
 
-            --content-color: #252525;
-            --content-primary-color: #1cdd6e;
-            --content-secondary-color: #b0b0b0;
-            --content-width: {{ $center['style']['content_width'] }}px;
+            --content-color: {{ $center['style']['content_color']['hex'] ?? '#252525' }};
+            --content-primary-color: {{ $center['style']['content_primary_color']['hex'] ?? '#1cdd6e' }};
+            --content-secondary-color: {{ $center['style']['content_secondary_color']['hex'] ?? '#b0b0b0' }};
+            --content-width: {{ $center['style']['content_width'] ?? 1024 }}px;
             --content-bg-color: {{ $center['style']['background_color']['hex'] }};
             --content-border-size: {{ $center['style']['border_left_right_size'] }}px;
             --content-border-color: {{ $center['style']['border_color']['hex'] ?? 'transparent' }};

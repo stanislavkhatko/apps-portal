@@ -49,6 +49,7 @@ a {
     //--header-menu-align: {{ $navbar['style']['menu_float'] }};
 
     &--wrapper {
+      overflow: hidden;
       flex: 1;
       max-width: var(--content-width);
       display: flex;
@@ -151,7 +152,7 @@ a {
         height: auto;
         width: auto;
         display: inline-block;
-        transform: translate( 0, 0);
+        transform: translate(0, 0);
         box-sizing: border-box;
 
         input {
@@ -279,7 +280,6 @@ a {
 
         font-weight: var(--header-font-weight);
 
-
         &:focus + .dropdown-menu {
           display: block;
           opacity: 1;
@@ -346,6 +346,7 @@ a {
       width: 100%;
       margin: 0 auto;
       max-width: var(--content-width);
+      overflow: scroll;
 
       &-item {
         color: var(--navbar-color);
@@ -371,7 +372,6 @@ a {
           text-overflow: ellipsis;
           text-align: center;
         }
-
 
         &:after {
           content: '';
@@ -459,12 +459,12 @@ a {
       max-width: 290px;
       margin-bottom: 20px;
 
-
       &:last-child {
         border: none
       }
 
-      &--main {}
+      &--main {
+      }
       &--details {
         width: 100%;
       }
@@ -513,7 +513,6 @@ a {
         }
 
       }
-
 
     }
 
@@ -650,9 +649,6 @@ a {
         padding: 3px 10px;
       }
 
-
-
-
     }
   }
 
@@ -754,7 +750,6 @@ a {
 
       $form-width: 500px;
 
-
       &__title {
         color: var(--content-color);
         font-size: 18px;
@@ -850,13 +845,9 @@ a {
   }
 }
 
-
 @media only screen and (max-width: 850px) {
 
 }
-
-
-
 
 .app-disclaimer {
   padding: 15px;
