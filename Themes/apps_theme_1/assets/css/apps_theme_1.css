@@ -28,17 +28,6 @@ a:active {
   text-decoration: none;
 }
 
-button {
-  border: none;
-}
-
-button:hover,
-button:focus,
-button:active {
-  border: none;
-  outline: none;
-}
-
 .app {
   position: relative;
   display: -webkit-box;
@@ -58,6 +47,15 @@ button:active {
   font-weight: var(--header-font-weight);
   border-bottom: var(--header-border-size) solid var(--header-border-color);
   min-height: var(--header-min-height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   /* Burger button toggle menu */
   /* Logo */
   /* Search button */
@@ -66,8 +64,9 @@ button:active {
 }
 
 .app-header--wrapper {
-  width: 100%;
-  margin: 0 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   max-width: var(--content-width);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -78,9 +77,11 @@ button:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 15px;
 }
 
 .app-header__menu-toggle {
+  display: none;
   width: 25px;
   height: 21px;
   position: relative;
@@ -91,6 +92,8 @@ button:active {
   cursor: pointer;
   background-color: var(--header-bg-color);
   margin: 0 10px;
+  border: none;
+  outline: none;
 }
 
 .app-header__menu-toggle span {
@@ -298,7 +301,7 @@ button:active {
   content: '';
   position: absolute;
   top: 18px;
-  left: 15.75px;
+  left: 11.25px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   height: 1.8px;
@@ -849,12 +852,99 @@ button:active {
   line-height: 1.5;
 }
 
+.app-unsubscribe__title {
+  font-size: 15px;
+  color: var(--content-secondary-color);
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.app-unsubscribe-form {
+  padding: 20px 15px;
+  background-color: var(--content-bg-color);
+  margin-bottom: 20px;
+  min-height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app-unsubscribe-form__title {
+  color: var(--content-color);
+  font-size: 18px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.app-unsubscribe-form__label {
+  color: var(--content-color);
+  font-size: 14px;
+  font-weight: lighter;
+  max-width: 500px;
+  margin-bottom: 10px;
+}
+
+.app-unsubscribe-form__submit {
+  font-size: var(--button-font-size);
+  color: var(--button-color);
+  background-color: var(--button-bg-color);
+  border: var(--button-border-size) solid var(--button-border-color);
+  font-weight: lighter;
+  padding: 7px 10px;
+  max-width: 500px;
+  min-width: 290px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.app-unsubscribe-form__back {
+  font-size: var(--button-font-size);
+  color: var(--button-color);
+  border: 1px solid var(--button-bg-color);
+  font-weight: lighter;
+  padding: 7px 10px;
+  max-width: 500px;
+  min-width: 290px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  line-height: 1.5;
+}
+
 .app-footer {
   background-color: var(--footer-bg-color);
   color: var(--footer-color);
   text-align: var(--footer-text-align);
-  min-height: var(--footer-min-height);
   border-top: var(--footer-border-size) solid var(--footer-border-color);
+  min-height: var(--footer-min-height);
 }
 
 .app-footer--wrapper {
@@ -899,9 +989,5 @@ button:active {
 
 .app-page {
   padding: 30px 15px;
-}
-
-.app-unsubscribe {
-  text-align: center;
 }
 

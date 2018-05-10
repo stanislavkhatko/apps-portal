@@ -127,6 +127,10 @@ class AuthController extends Controller
 
     public function unsubscribe(Request $request)
     {
+        return redirect()->route('view.portal');
+
+        // TODO fix unsubscribe function
+
         $subscription = Cookie::get('subscription')['subscription'];
         $client = new \App\Subsyz\Client();
         $result = $client->unsubscribe(subscription('subscription_id'));
@@ -134,7 +138,6 @@ class AuthController extends Controller
         Cookie::queue(cookie('subscription', ['subscription' => $subscription]));
 
         if ($result->success == "true") {
-            //return "uitgeschreven";
             return view('frontend.subscription.unsubscribe');
         } else {
             return redirect()->route('view.portal');

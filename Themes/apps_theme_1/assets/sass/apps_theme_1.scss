@@ -20,14 +20,14 @@ a {
   }
 }
 
-button {
-  border: none;
-
-  &:hover, &:focus, &:active {
-    border: none;
-    outline: none;
-  }
-}
+//button {
+//  border: none;
+//
+//  &:hover, &:focus, &:active {
+//    border: none;
+//    outline: none;
+//  }
+//}
 
 .app {
   position: relative;
@@ -42,20 +42,24 @@ button {
     font-weight: var(--header-font-weight);
     border-bottom: var(--header-border-size) solid var(--header-border-color);
     min-height: var(--header-min-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     //--header-menu-align: {{ $navbar['style']['menu_float'] }};
 
     &--wrapper {
-      width: 100%;
-      margin: 0 auto;
+      flex: 1;
       max-width: var(--content-width);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 15px;
     }
 
     /* Burger button toggle menu */
     &__menu-toggle {
+      display: none;
       width: 25px;
       height: 21px;
       position: relative;
@@ -64,6 +68,8 @@ button {
       cursor: pointer;
       background-color: var(--header-bg-color);
       margin: 0 10px;
+      border: none;
+      outline: none;
 
       & span {
         display: block;
@@ -215,7 +221,7 @@ button {
           content: '';
           position: absolute;
           top: $size/2 + $size/4*1.6 + $size/10;
-          left: $size/2 + $size/4*1.5;
+          left: $size/2 + $size/4*0.5;
           transform: rotate(45deg);
           height: $size/10;
           width: $size/2;
@@ -270,6 +276,7 @@ button {
         position: relative;
         text-transform: uppercase;
         color: var(--header-color);
+
         font-weight: var(--header-font-weight);
 
 
@@ -725,12 +732,92 @@ button {
     }
   }
 
+  &-unsubscribe {
+
+    &__title {
+      font-size: 15px;
+      color: var(--content-secondary-color);
+      text-transform: uppercase;
+      padding: 10px 0;
+    }
+
+    &-form {
+      padding: 20px 15px;
+      background-color: var(--content-bg-color);
+      margin-bottom: 20px;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+
+      $form-width: 500px;
+
+
+      &__title {
+        color: var(--content-color);
+        font-size: 18px;
+        font-weight: lighter;
+        text-transform: uppercase;
+        max-width: $form-width;
+        margin-bottom: 20px;
+      }
+
+      &__label {
+        color: var(--content-color);
+        font-size: 14px;
+        font-weight: lighter;
+        max-width: $form-width;
+        margin-bottom: 10px;
+      }
+
+      &__submit {
+        font-size: var(--button-font-size);
+        color: var(--button-color);
+        background-color: var(--button-bg-color);
+        border: var(--button-border-size) solid var(--button-border-color);
+        font-weight: lighter;
+        padding: 7px 10px;
+        max-width: $form-width;
+        min-width: 290px;
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+
+      &__back {
+        font-size: var(--button-font-size);
+
+        color: var(--button-color);
+        border: 1px solid var(--button-bg-color);
+        font-weight: lighter;
+        padding: 7px 10px;
+        max-width: $form-width;
+        min-width: 290px;
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        line-height: 1.5;
+      }
+
+    }
+  }
+
   &-footer {
     background-color: var(--footer-bg-color);
     color: var(--footer-color);
     text-align: var(--footer-text-align);
-    min-height: var(--footer-min-height);
     border-top: var(--footer-border-size) solid var(--footer-border-color);
+    min-height: var(--footer-min-height);
 
     &--wrapper {
       width: 100%;
@@ -797,10 +884,6 @@ button {
 
 .app-page {
   padding: 30px 15px;
-}
-
-.app-unsubscribe {
-  text-align: center;
 }
 
 
