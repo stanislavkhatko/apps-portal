@@ -315,26 +315,26 @@
                                                         :model="theme.components.center.style">
                                                 </form-input>
 
-                                                <form-input
-                                                        type="colorPicker"
-                                                        label="Font color"
-                                                        item="color"
-                                                        :model="theme.components.center.style">
-                                                </form-input>
+                                                <!--<form-input-->
+                                                        <!--type="colorPicker"-->
+                                                        <!--label="Font color"-->
+                                                        <!--item="content_color"-->
+                                                        <!--:model="theme.components.center.style">-->
+                                                <!--</form-input>-->
 
-                                                <form-input
-                                                        type="colorPicker"
-                                                        label="Primary text color"
-                                                        item="content_primary_color"
-                                                        :model="theme.components.center.style">
-                                                </form-input>
+                                                <!--<form-input-->
+                                                        <!--type="colorPicker"-->
+                                                        <!--label="Primary text color"-->
+                                                        <!--item="content_primary_color"-->
+                                                        <!--:model="theme.components.center.style">-->
+                                                <!--</form-input>-->
 
-                                                <form-input
-                                                        type="colorPicker"
-                                                        label="Secondary text color"
-                                                        item="content_secondary_color"
-                                                        :model="theme.components.center.style">
-                                                </form-input>
+                                                <!--<form-input-->
+                                                        <!--type="colorPicker"-->
+                                                        <!--label="Secondary text color"-->
+                                                        <!--item="content_secondary_color"-->
+                                                        <!--:model="theme.components.center.style">-->
+                                                <!--</form-input>-->
 
                                                 <form-input
                                                         type="numberInput"
