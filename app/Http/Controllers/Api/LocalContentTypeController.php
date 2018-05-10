@@ -22,14 +22,6 @@ class LocalContentTypeController extends Controller
         $localContentType = LocalContentType::find($id);
         $localContentType->fill($request->all());
 
-        // Upload preview image
-        if ($request->icon && Storage::disk('temp')->exists(basename($request->icon))) {
-            $localContentType->icon = $this->moveItemToCloud(
-                $request->icon,
-                $localContentType->id,
-                'local-content-type-images');
-        }
-
         $localContentType->save();
 
         // get local cats which were marked for deletion
@@ -66,14 +58,6 @@ class LocalContentTypeController extends Controller
         // save local content type
         $localContentType = new LocalContentType();
         $localContentType->fill($request->all());
-
-        // Upload preview image
-        if (isset($request->icon) && Storage::disk('temp')->exists(basename($request->icon))) {
-            $localContentType->icon = $this->moveItemToCloud(
-                $request->icon,
-                $localContentType->id,
-                'local-content-type-images');
-        }
 
         $localContentType->save();
 
@@ -141,14 +125,18 @@ class LocalContentTypeController extends Controller
         return response()->json(['success' => true, 'localCategoryItems' => $localCategoryItems, 'categoryItems' => $categoryItems]);
     }
 
-    public function uploadIcon(Request $request)
+    public function uploadIcon(Request $request, $id)
     {
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $path = $file->hashName('public/temp');
-            $image = Image::make($file)->fit(40);
+            $image = Image::make($file)->fit(50);
             Storage::put($path, (string)$image->encode());
-            return Storage::url($path);
+
+            return Storage::url($this->moveItemToStorage(
+                Storage::url($path),
+                $request->file('file')->getClientOriginalName(),
+                'public/local-content-type-images/' . $id));
         }
     }
 }

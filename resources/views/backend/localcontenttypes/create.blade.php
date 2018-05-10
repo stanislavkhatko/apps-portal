@@ -8,7 +8,7 @@
 
             <local-content-type-form
                     :languages="{{ \App\Models\Language::all(['code as value', 'name as label']) }}"
-            ></content-type-form>
+            ></local-content-type-form>
 
         </div>
     </div>

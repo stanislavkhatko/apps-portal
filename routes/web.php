@@ -101,7 +101,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::post('/local-content-type', ['uses' => 'LocalContentTypeController@store']);
         Route::patch('/local-content-type/{content_item}', ['uses' => 'LocalContentTypeController@update']);  
         Route::post('/local-content-type/content-items/sync', ['uses' => 'LocalContentTypeController@syncContentItems']);
-        Route::post('/local-content-type/upload-icon', ['uses' => 'LocalContentTypeController@uploadIcon']); 
+        Route::post('/local-content-type/{id}/upload-icon', ['uses' => 'LocalContentTypeController@uploadIcon']);
 
         /** content item ***/
         Route::post('/content-item/upload-image', ['uses' => 'ContentItemController@uploadContentItemImage']);  
