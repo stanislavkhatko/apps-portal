@@ -10,8 +10,6 @@
                 </div>
             </div>
             <!-- panel heading -->
-            {{ item }}
-
 
             <div class="panel-body">
                 <div class="form-horizontal margin_top_20">

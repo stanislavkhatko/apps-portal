@@ -21,21 +21,13 @@ class ContentItemController extends Controller
         $contentItem->fill($request->all());
 
         // Upload content item
-        $download = isset($request->download) ? $request->input('download') : '';
-        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
-            $contentItem->download = ['link' => $this->moveItemToCloud(
-                $download['link'],
-                $contentItem->id,
-                'content-items')];
-        }
-
-        // Upload preview image
-        if ($request->preview && Storage::disk('temp')->exists(basename($request->preview))) {
-            $contentItem->preview = $this->moveItemToCloud(
-                $request->preview,
-                $contentItem->id,
-                'content-item-images');
-        }
+//        $download = isset($request->download) ? $request->input('download') : '';
+//        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
+//            $contentItem->download = ['link' => $this->moveItemToCloud(
+//                $download['link'],
+//                $contentItem->id,
+//                'content-items')];
+//        }
 
         $contentItem->save();
         return $contentItem;
@@ -48,21 +40,13 @@ class ContentItemController extends Controller
         $contentItem->save();
 
         // Upload content item
-        $download = isset($request->download) ? $request->input('download') : '';
-        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
-            $contentItem->download = ['link' => $this->moveItemToCloud(
-                $download['link'],
-                $contentItem->id,
-                'content-items')];
-        }
-
-        // Upload preview image
-        if ($request->preview && Storage::disk('temp')->exists(basename($request->preview))) {
-            $contentItem->preview = $this->moveItemToCloud(
-                $request->preview,
-                $contentItem->id,
-                'content-item-images');
-        }
+//        $download = isset($request->download) ? $request->input('download') : '';
+//        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
+//            $contentItem->download = ['link' => $this->moveItemToCloud(
+//                $download['link'],
+//                $contentItem->id,
+//                'content-items')];
+//        }
 
         $contentItem->save();
         return $contentItem;
@@ -91,9 +75,12 @@ class ContentItemController extends Controller
 
     public function uploadContentItemFile(Request $request, $id)
     {
-        if ($request->hasFile('file')) {
-            return $request->file('file')->storeAs('public/temp', $request->file('file')->getClientOriginalName());
-        }
+//            return $request->file('file')->storeAs('public/temp', $request->file('file')->getClientOriginalName());
+        if ($request->hasFile('file'))
+            return Storage::url($this->moveItemToStorage(
+                $request->file('file')->store('public/temp'),
+                $request->file('file')->getClientOriginalName(),
+                'public/content-items/' . $id));
     }
     #endregion
 }

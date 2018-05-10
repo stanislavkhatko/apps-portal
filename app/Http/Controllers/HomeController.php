@@ -63,7 +63,7 @@ class HomeController extends Controller
 
     public function downloadItem(ContentItem $item)
     {
-        $item->downloadedBy(session('subscription'));
+        if (session('subscription')) $item->downloadedBy(session('subscription'));
 
         if ($item->type == 'upload') {
             try {
@@ -116,7 +116,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $items = Config::get('currentPortal')->contentItems->where('title',$search);
+        $items = Config::get('currentPortal')->contentItems->where('title', $search);
         return view('frontend.search.index', compact('items', 'search'));
     }
 

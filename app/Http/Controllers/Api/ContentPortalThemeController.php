@@ -40,7 +40,10 @@ class ContentPortalThemeController extends Controller
     public function uploadHeaderImage(Request $request, $id)
     {
         if($request->hasFile('file'))
-            return Storage::url($this->moveItemToStorage($request->file('file')->store('public/temp'), $request->file('file')->getClientOriginalName(), 'public/header-images/' . $id));
+            return Storage::url($this->moveItemToStorage(
+                $request->file('file')->store('public/temp'),
+                $request->file('file')->getClientOriginalName(),
+                'public/header-images/' . $id));
     }
 
     public function uploadNavbarImage(Request $request, $id)
