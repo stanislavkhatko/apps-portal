@@ -41,8 +41,9 @@ class AuthController extends Controller
                 ]
             ]);
         } else {
+            // TODO translate error
             return redirect('/authenticate')
-                ->with('loginError', 'Invalid msisdn.')
+                ->with('loginError', 'Phone number is incorrect')
                 ->withInput();
         }
 

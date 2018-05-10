@@ -1,3 +1,7 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--main-bg-color);
@@ -641,6 +645,82 @@ button {
 
 
 
+
+    }
+  }
+
+  &-auth {
+
+    &__title {
+      font-size: 15px;
+      color: var(--content-secondary-color);
+      text-transform: uppercase;
+      padding: 10px 0;
+    }
+
+    &-form {
+      padding: 20px 15px;
+      background-color: var(--content-bg-color);
+      margin-bottom: 20px;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+
+      $form-width: 500px;
+
+      &__error {
+        border: 1px solid red;
+        color: red;
+        font-size: 14px;
+        padding: 7px;
+        margin-bottom: 20px;
+        max-width: $form-width;
+        width: 100%;
+      }
+
+      &__label {
+        color: var(--content-color);
+        font-weight: lighter;
+        text-transform: uppercase;
+        max-width: $form-width;
+        margin-bottom: 10px;
+      }
+
+      &__msisdn {
+        margin-bottom: 10px;
+        display: block;
+        width: 100%;
+        line-height: 1.5;
+        font-size: var(--button-font-size);
+        color: var(--button-color);
+        background-color: var(--content-bg-color);
+        border: 2px solid var(--button-bg-color);
+        font-weight: lighter;
+        padding: 7px 10px;
+        max-width: $form-width;
+
+      }
+
+      &__submit {
+        font-size: var(--button-font-size);
+        color: var(--button-color);
+        background-color: var(--button-bg-color);
+        border: var(--button-border-size) solid var(--button-border-color);
+        font-weight: lighter;
+        padding: 7px 10px;
+        max-width: $form-width;
+        min-width: 290px;
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        line-height: 1.5;
+      }
 
     }
   }

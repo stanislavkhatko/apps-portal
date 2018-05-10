@@ -7,25 +7,20 @@
             @lang('portal.login')
         </div>
 
-        <div class="app-auth-form">
+        <form action="/authenticate" method="post" class="app-auth-form">
+            {{ csrf_field() }}
+            <label for="msisdn" class="app-auth-form__label">@lang('portal.msisdn')</label>
+            <input class="app-auth-form__msisdn" autofocus placeholder="@lang('portal.msisdn')" name="msisdn" value="{{ old('msisdn') }}" required/>
 
-            <form action="/authenticate" method="post">
-                {{ csrf_field() }}
-                <div class="form-group @if (session('loginError')) has-error @endif">
-                    <label for="msisdn">@lang('portal.msisdn')</label>
-                    <!--  TODO change to required -->
-                    <input class="form-control" name="msisdn" value="{{ old('msisdn') }}" />
-                    <span class="help-block">
-                            {{ session('loginError') }}
-                    </span>
+            @if (session('loginError'))
+                <div class="app-auth-form__error">
+                    {{ session('loginError') }}
                 </div>
+            @endif
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">@lang('portal.login')</button>
-                </div>
-            </form>
+            <button type="submit" class="app-auth-form__submit">@lang('portal.login')</button>
+        </form>
 
-        </div>
     </div>
 
 
