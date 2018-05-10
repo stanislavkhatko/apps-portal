@@ -31,4 +31,16 @@ trait StorageHelper
     {
         return Storage::disk('spaces')->delete($fileName);
     }
+
+    protected function moveItemToStorage($tempInputLink, $newFileName, $storage)
+    {
+        $tempFile = basename($tempInputLink);
+        $fileExtension = pathinfo($tempFile, PATHINFO_EXTENSION);
+        $newFile = $newFileName . '.' . $fileExtension;
+
+        $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $tempFile;
+        Storage::putFileAs($storage, new File($fullFilePath), $newFile);
+        Storage::disk('temp')->delete($tempFile);
+        return $storage . '/' . $newFile;
+    }
 }

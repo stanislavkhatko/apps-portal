@@ -88,9 +88,7 @@ class ContentItemController extends Controller
     public function uploadContentItemFile(Request $request)
     {
         if ($request->hasFile('file')) {
-//            $path = $request->file('file')->store('public/temp');
-            $path = $request->file('file')->storeAs('public/temp', $request->file('file')->getClientOriginalName());
-            return $path;
+            return $request->file('file')->storeAs('public/temp', $request->file('file')->getClientOriginalName());
         }
     }
     #endregion

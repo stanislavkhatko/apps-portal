@@ -37,18 +37,24 @@ class ContentPortalThemeController extends Controller
         ]);
     }
 
-    public function uploadHeaderImage(Request $request)
+    public function uploadHeaderImage(Request $request, $id)
     {
-        $path = Storage::put('public/headers', $request->file('file'));
-        return substr($path, 7);
+        if($request->hasFile('file'))
+            return Storage::url($this->moveItemToStorage($request->file('file')->store('public/temp'), $request->file('file')->getClientOriginalName(), 'public/header-images/' . $id));
     }
 
     public function uploadNavbarImage(Request $request, $id)
     {
-        if ($request->hasFile('file')) {
-            $path = $request->file('file')->store('public/temp');
-            return Storage::disk('spaces')->url($this->moveItemToCloud($path, $id, 'navbar-images'));
-        }
+//        if ($request->hasFile('file')) {
+//            $path = $request->file('file')->store('public/temp');
+//            return Storage::disk('spaces')->url($this->moveItemToCloud($path, $id, 'navbar-images'));
+//        }
+
+        if($request->hasFile('file'))
+            return Storage::url($this->moveItemToStorage(
+                $request->file('file')->store('public/temp'),
+                $request->file('file')->getClientOriginalName(),
+                'public/navbar-images/' . $id));
     }
 
     public function uploadContentTypeHeaderImage(Request $request)
@@ -59,9 +65,14 @@ class ContentPortalThemeController extends Controller
 
     public function uploadFooterImage(Request $request, $id)
     {
-        if ($request->hasFile('file')) {
-            $path = $request->file('file')->store('public/temp');
-            return Storage::disk('spaces')->url($this->moveItemToCloud($path, $id, 'footer-images'));
-        }
+//        if ($request->hasFile('file')) {
+//            $path = $request->file('file')->store('public/temp');
+//            return Storage::disk('spaces')->url($this->moveItemToCloud($path, $id, 'footer-images'));
+//        }
+        if($request->hasFile('file'))
+            return Storage::url($this->moveItemToStorage(
+                $request->file('file')->store('public/temp'),
+                $request->file('file')->getClientOriginalName(),
+                'public/footer-images/' . $id));
     }
 }
