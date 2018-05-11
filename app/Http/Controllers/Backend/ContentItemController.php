@@ -9,7 +9,6 @@ use App\Models\ContentItem;
 use App\Models\ContentType;
 use App\Models\Category;
 use App\Services\Traits\StorageHelper;
-use Illuminate\Support\Facades\Storage;
 
 
 class ContentItemController extends Controller
@@ -18,36 +17,6 @@ class ContentItemController extends Controller
 
     public function index(Request $request)
     {
-
-
-
-
-//        $contentItems = ContentItem::where('type', 'upload')->pluck('download', 'id')->toArray();
-        $contentItems = ContentItem::all();
-
-        foreach ($contentItems as $item) {
-            if($item->preview && Storage::disk('spaces')->exists($item->preview)) {
-                $path = explode('/', $item->preview);
-                $image = Storage::disk('spaces')->get($item->preview);
-                Storage::put('public/' . $path[0] . '/' . $item->id . '/' . $path[1], $image);
-                $item->preview = '/storage/'  . $path[0] . '/' . $item->id . '/' . $path[1];
-                $item->save();
-            }
-        }
-
-
-
-
-
-
-        return 1;
-
-
-
-
-
-
-
         DB::connection()->enableQueryLog();
 
         $providers = ContentItem::select('provider')->get()->unique('provider');
