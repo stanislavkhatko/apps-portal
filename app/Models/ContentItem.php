@@ -90,23 +90,23 @@ class ContentItem extends Model
     {
         return $this->title;
     }
-
-    public function getPreviewAttribute($value)
-    {
-        if (Storage::disk('spaces')->exists($value)) {
-            return Storage::disk('spaces')->url($value);
-        }
-        return $value;
-    }
-
-    public function setPreviewAttribute($value)
-    {
-        if ($value && strstr($value, '.com/')) {
-            $value = substr($value, strpos($value, '.com/') + 5);
-        }
-
-        $this->attributes['preview'] = $value;
-    }
+//
+//    public function getPreviewAttribute($value)
+//    {
+//        if (Storage::disk('spaces')->exists($value)) {
+//            return Storage::disk('spaces')->url($value);
+//        }
+//        return $value;
+//    }
+//
+//    public function setPreviewAttribute($value)
+//    {
+//        if ($value && strstr($value, '.com/')) {
+//            $value = substr($value, strpos($value, '.com/') + 5);
+//        }
+//
+//        $this->attributes['preview'] = $value;
+//    }
 
     public function getCreatedAtAttribute($value)
     {
