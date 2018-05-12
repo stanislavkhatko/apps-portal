@@ -29,24 +29,6 @@ class LocalContentType extends Model
         return $this->localCategories->pluck('contentItems')->collapse()->values();
     }
 
-    public function getIconAttribute($value)
-    {
-        if (Storage::disk('spaces')->exists($value)) {
-            return Storage::disk('spaces')->url($value);
-        }
-
-        return $value;
-    }
-
-    public function setIconAttribute($value)
-    {
-        if ($value && strstr($value, '.com/')) {
-            $value = substr($value, strpos($value, '.com/') + 5);
-        }
-
-        $this->attributes['icon'] = $value;
-    }
-
     public function getCreatedAtAttribute($value)
     {
         return date("d/m/Y", strtotime($value));

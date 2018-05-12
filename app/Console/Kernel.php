@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\contentDownload;
+use App\Console\Commands\ContentUpload;
 use App\Console\Commands\UploadToCloud;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        ContentUpload::class,
         ContentDownload::class,
         Commands\ImportContentCommand::class,
         UploadToCloud::class

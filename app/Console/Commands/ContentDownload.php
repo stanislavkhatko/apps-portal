@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\ContentPortal;
+use App\Models\LocalContentType;
 use Illuminate\Console\Command;
 use App\Models\ContentItem;
 use Illuminate\Support\Facades\Storage;
@@ -62,5 +64,17 @@ class contentDownload extends Command
 //            }
         }
 
+        $localContentTypes = LocalContentType::all();
+
+        foreach ($localContentTypes as $localContentType) {
+            if ($localContentType->icon && Storage::disk('spaces')->exists($localContentType->icon)) {
+                $path = explode('/', $localContentType->icon);
+                $image = Storage::disk('spaces')->get($localContentType->icon);
+                Storage::put('public/' . $path[0] . '/' . $localContentType->id . '/' . $path[1], $image);
+                $localContentType->icon = '/storage/' . $path[0] . '/' . $localContentType->id . '/' . $path[1];
+                $localContentType->save();
+                $this->info('Local type id: ' . $localContentType->id . ' icon image downloaded and saved');
+            }
+        }
     }
 }
