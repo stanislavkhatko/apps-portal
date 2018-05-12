@@ -39,8 +39,8 @@
             --header-menu-align: {{ $navbar['style']['menu_float'] }};
 
             --navbar-bg-color: {{ $navbar['style']['background_color']['hex'] }};
-{{--            --navbar-color: {{ $navbar['style']['color']['hex'] }};--}}
-            --navbar-color: {{ $header['style']['color']['hex'] }};
+            --navbar-color: {{ $navbar['style']['color']['hex'] }};
+{{--            --navbar-color: {{ $header['style']['color']['hex'] }};--}}
             --navbar-font-weight: {{ $navbar['style']['font_weight'] }};
             --navbar-font-size: {{ $navbar['style']['font_size'] }}px;
             --navbar-border-size: {{ $navbar['style']['border_bottom_size'] }}px;
