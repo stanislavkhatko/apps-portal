@@ -1376,7 +1376,7 @@
                                 background_color: {hex: "#333333"},
                                 color: {hex: "#fff"},
                                 font_size: 28,
-                                font_weight: 'normal',
+                                font_weight: 'lighter',
                                 border_bottom_size: 0,
                                 border_color: {hex: ""},
                                 height: 67
@@ -1392,7 +1392,7 @@
                                 background_color: {hex: "#00a2e4"},
                                 color: {hex: "#fff"},
                                 font_size: 14,
-                                font_weight: 'normal',
+                                font_weight: 'lighter',
                                 border_bottom_size: 0,
                                 border_color: {hex: ""},
                                 height: 70,
