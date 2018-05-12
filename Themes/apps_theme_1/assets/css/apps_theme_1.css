@@ -64,7 +64,6 @@ a:active {
 }
 
 .app-header--wrapper {
-  overflow: hidden;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

@@ -49,7 +49,6 @@ a {
     //--header-menu-align: {{ $navbar['style']['menu_float'] }};
 
     &--wrapper {
-      overflow: hidden;
       flex: 1;
       max-width: var(--content-width);
       display: flex;

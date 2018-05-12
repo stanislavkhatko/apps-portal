@@ -28,7 +28,7 @@
                     <!-- portal name section -->
 
                     <div class="form-group" v-if="contentType_">
-                        <label class="col-sm-2 control-label">Content type icon<br/>(Resized to 50x50)</label>
+                        <label class="col-sm-2 control-label">Content type icon<br/>(Resized to 40x40)</label>
                         <div class="col-sm-10">
 
                             <template v-if="contentType.icon">

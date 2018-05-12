@@ -130,7 +130,7 @@ class LocalContentTypeController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $path = $file->hashName('public/temp');
-            $image = Image::make($file)->fit(50);
+            $image = Image::make($file)->fit(40);
             Storage::put($path, (string)$image->encode());
 
             return Storage::url($this->moveItemToStorage(
