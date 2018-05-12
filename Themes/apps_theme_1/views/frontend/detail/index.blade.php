@@ -58,24 +58,10 @@
                     @lang('portal.free')
                 </div>
 
-
-                @if($item->type === 'upload')
-                    <a href="{{ route('download.contentitem', $item) }}" class="app-item-body__download">
-                        @lang('portal.download_label')
-                    </a>
-                @else
-                    @if(strpos($item->download['link'], 'online/') !== false)
-                        <a href="{{ route('play.contentitem', $item) }}" target="_blank"
-                           class="app-item-body__download">
-                            @lang('portal.play')
-                        </a>
-                    @elseif(strpos($item->download['link'], 'www.') !== false || strpos($item->download['link'], 'http') !== false || strpos($item->download['link'], 'https') !== false)
-                        <a href="{{ $item->download['link'] }}" target="_blank"
-                           class=" app-item-body__download">
-                            @lang('portal.play')
-                        </a>
-                    @endif
-                @endif
+                <a href="{{ $item->type === 'upload' ? route('download.contentitem', $item) : route('play.contentitem', $item) }}"
+                   class="app-item-body__download" target="{{ $item->type === 'upload' ? '_self' : '_blank' }}">
+                    @if($item->type === 'upload') @lang('portal.download_label') @else @lang('portal.play') @endif
+                </a>
 
             </div>
 

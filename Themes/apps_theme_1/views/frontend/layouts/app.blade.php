@@ -30,8 +30,8 @@
             --logo-font-weight: {{ $navbar['style']['brand_font_weight'] }};
 
             --header-bg-color: {{ $header['style']['background_color']['hex'] }};
-{{--            --header-color: {{ $header['style']['color']['hex'] }};--}}
-            --header-color: {{ $navbar['style']['color']['hex'] }};
+            {{--            --header-color: {{ $header['style']['color']['hex'] }};--}}
+    --header-color: {{ $navbar['style']['color']['hex'] }};
             --header-font-size: {{ $header['style']['font_size'] }}px;
             --header-font-weight: {{ $header['style']['font_weight'] }};
             --header-border-size: {{ $header['style']['border_bottom_size'] }}px;
@@ -41,8 +41,8 @@
 
             --navbar-bg-color: {{ $navbar['style']['background_color']['hex'] }};
             --navbar-color: {{ $navbar['style']['color']['hex'] }};
-{{--            --navbar-color: {{ $header['style']['color']['hex'] }};--}}
-            --navbar-font-weight: {{ $navbar['style']['font_weight'] }};
+            {{--            --navbar-color: {{ $header['style']['color']['hex'] }};--}}
+    --navbar-font-weight: {{ $navbar['style']['font_weight'] }};
             --navbar-font-size: {{ $navbar['style']['font_size'] }}px;
             --navbar-border-size: {{ $navbar['style']['border_bottom_size'] }}px;
             --navbar-border-color: {{ $navbar['style']['border_color']['hex'] }};
@@ -134,7 +134,8 @@
                     <form action="/search" method="POST" class="form-group">
                         {{ csrf_field() }}
 
-                        <input type="text" name="search" placeholder="@lang('portal.search')" required minlength="4" value="{{ $search ?? '' }}">
+                        <input type="text" name="search" placeholder="@lang('portal.search')" required minlength="4"
+                               value="{{ $search ?? '' }}">
                         <div class="search-icon"></div>
                     </form>
                 </div>
@@ -147,7 +148,8 @@
                 @if(!session()->has('subscription'))
                     <a href="/authenticate" class="app-header__auth-login" title="@lang('portal.login')">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                             id="Capa_1" x="0px" y="0px" width="708.631px" height="708.631px" viewBox="0 0 708.631 708.631"
+                             id="Capa_1" x="0px" y="0px" width="708.631px" height="708.631px"
+                             viewBox="0 0 708.631 708.631"
                              style="enable-background:new 0 0 708.631 708.631;" xml:space="preserve">
                         <g>
                             <g>
@@ -245,14 +247,12 @@
         @yield('content')
     </div>
 
-@include('frontend.footer')
+    @include('frontend.footer')
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <script type="text/javascript">
-    $(function () {
+    (function () {
         @if (Config::get('currentPortal')->exit_url)
             window.onbeforeunload = function () {
             window.setTimeout(function () {
@@ -263,13 +263,13 @@
         };
         @endif
 
-
-        $('.app-header__menu-toggle').click(function () {
-            $(this).toggleClass('open');
-        });
-    });
+        // $('.app-header__menu-toggle').click(function () {
+        //     $(this).toggleClass('open');
+        // });
+    }());
 </script>
 
 @yield('scripts')
+
 </body>
 </html>

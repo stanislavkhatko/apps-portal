@@ -53,12 +53,23 @@ class HomeController extends Controller
         $itemUrl = Storage::disk('spaces')->url(
             $item->download['link'], now()->addMinutes(5)
         );
+
         return view('frontend.detail.index', compact('item', 'itemUrl'));
     }
 
     public function playOnline(ContentItem $item)
     {
-        return view('frontend.content-page', compact('item'));
+        if (strpos($item->download['link'], 'online/') !== false) {
+            // Games stored on server
+            return view('frontend.content-page', compact('item'));
+
+        } else if (strpos($item->download['link'], 'www.') !== false ||
+            strpos($item->download['link'], 'http') !== false ||
+            strpos($item->download['link'], 'https') !== false) {
+
+            // Games on other servers
+            return redirect()->away($item->download['link']);
+        }
     }
 
     public function downloadItem(ContentItem $item)
