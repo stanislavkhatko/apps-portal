@@ -853,7 +853,7 @@ a:active {
   font-size: 15px;
   color: var(--content-secondary-color);
   text-transform: uppercase;
-  padding: 10px 0;
+  padding: 10px 15px;
 }
 
 .app-unsubscribe-form {
@@ -941,13 +941,26 @@ a:active {
   color: var(--footer-color);
   text-align: var(--footer-text-align);
   border-top: var(--footer-border-size) solid var(--footer-border-color);
-  min-height: var(--footer-min-height);
 }
 
 .app-footer--wrapper {
   width: 100%;
   margin: 0 auto;
   max-width: var(--content-width);
+  min-height: var(--footer-min-height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .app-footer a {

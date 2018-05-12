@@ -739,7 +739,7 @@ a {
       font-size: 15px;
       color: var(--content-secondary-color);
       text-transform: uppercase;
-      padding: 10px 0;
+      padding: 10px 15px;
     }
 
     &-form {
@@ -817,12 +817,16 @@ a {
     color: var(--footer-color);
     text-align: var(--footer-text-align);
     border-top: var(--footer-border-size) solid var(--footer-border-color);
-    min-height: var(--footer-min-height);
 
     &--wrapper {
       width: 100%;
       margin: 0 auto;
       max-width: var(--content-width);
+      min-height: var(--footer-min-height);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     & a {

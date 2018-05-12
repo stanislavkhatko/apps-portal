@@ -134,7 +134,7 @@
                     <form action="/search" method="POST" class="form-group">
                         {{ csrf_field() }}
 
-                        <input type="text" placeholder="@lang('portal.search')" required minlength="5">
+                        <input type="text" name="search" placeholder="@lang('portal.search')" required minlength="4" value="{{ $search ?? '' }}">
                         <div class="search-icon"></div>
                     </form>
                 </div>

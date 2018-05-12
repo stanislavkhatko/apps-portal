@@ -115,8 +115,10 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->input('search');
+        $search = trim($request->input('search'));
+
         $items = Config::get('currentPortal')->contentItems->where('title', $search);
+
         return view('frontend.search.index', compact('items', 'search'));
     }
 
