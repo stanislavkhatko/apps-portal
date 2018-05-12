@@ -3,6 +3,7 @@
 @section('content')
 
     <div class="app-auth">
+        @include('frontend.partials.back')
         <div class="app-auth__title">
             @lang('portal.login')
         </div>

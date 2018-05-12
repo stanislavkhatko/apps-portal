@@ -768,15 +768,19 @@ a:active {
   padding: 3px 10px;
 }
 
+.app-auth {
+  padding: 10px 15px;
+}
+
 .app-auth__title {
   font-size: 15px;
   color: var(--content-secondary-color);
   text-transform: uppercase;
-  padding: 10px 15px;
+  padding: 10px 0;
 }
 
 .app-auth-form {
-  padding: 20px 15px;
+  padding: 20px 0;
   background-color: var(--content-bg-color);
   margin-bottom: 20px;
   min-height: 70vh;

@@ -102,7 +102,8 @@
 
 <div class="app">
 
-    @include('frontend.partials.pricebanner')
+    <!-- TODO make styling -->
+{{--    @include('frontend.partials.pricebanner')--}}
 
     <header class="app-header">
 
