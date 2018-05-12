@@ -14,17 +14,16 @@ use Illuminate\Support\Facades\Storage;
 trait StorageHelper
 {
 
-    protected function moveItemToCloud($tempInputLink, $newFileName, $storage)
+    protected function moveItemToCloud($tempInputLink, $storage)
     {
-        $tempFile = basename($tempInputLink);
-        $fileExtension = pathinfo($tempFile, PATHINFO_EXTENSION);
-        $newFile = $newFileName . '.' . $fileExtension;
+        $fileName = basename($tempInputLink);
 
-        $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $tempFile;
+        $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $fileName;
         $file = new File($fullFilePath);
-        Storage::disk('spaces')->putFileAs($storage, $file, $newFile, 'public');
-        Storage::disk('temp')->delete($tempFile);
-        return $storage . '/' . $newFile;
+
+        Storage::disk('spaces')->putFileAs($storage, $file, $fileName, 'public');
+        Storage::disk('temp')->delete($fileName);
+        return $storage . '/' . $fileName;
     }
 
     protected function removeItemFromCloud($fileName)
@@ -35,12 +34,10 @@ trait StorageHelper
     protected function moveItemToStorage($tempInputLink, $newFileName, $storage)
     {
         $tempFile = basename($tempInputLink);
-        $fileExtension = pathinfo($tempFile, PATHINFO_EXTENSION);
-        $newFile = $newFileName . '.' . $fileExtension;
 
         $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $tempFile;
-        Storage::putFileAs($storage, new File($fullFilePath), $newFile);
+        Storage::putFileAs($storage, new File($fullFilePath), $newFileName);
         Storage::disk('temp')->delete($tempFile);
-        return $storage . '/' . $newFile;
+        return $storage . '/' . $newFileName;
     }
 }

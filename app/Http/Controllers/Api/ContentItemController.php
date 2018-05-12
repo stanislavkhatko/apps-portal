@@ -25,8 +25,7 @@ class ContentItemController extends Controller
         if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
             $contentItem->download = ['link' => $this->moveItemToCloud(
                 $download['link'],
-                $contentItem->id,
-                'content-items')];
+                'content-items/' . $contentItem->id)];
         }
 
         $contentItem->save();
