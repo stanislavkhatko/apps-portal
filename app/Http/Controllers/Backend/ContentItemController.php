@@ -9,6 +9,7 @@ use App\Models\ContentItem;
 use App\Models\ContentType;
 use App\Models\Category;
 use App\Services\Traits\StorageHelper;
+use Illuminate\Support\Facades\Storage;
 
 
 class ContentItemController extends Controller
