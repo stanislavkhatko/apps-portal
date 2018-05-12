@@ -335,7 +335,6 @@ a {
 
   &-navbar {
     background-color: var(--navbar-bg-color);
-    border-bottom: var(--navbar-border-size) solid var(--navbar-bg-color);
     display: flex;
     justify-content: center;
 
@@ -353,13 +352,19 @@ a {
         font-size: var(--navbar-font-size);
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         max-width: 100px;
         position: relative;
         margin: 0 5px;
+        border-bottom: var(--navbar-border-size) solid transparent;
+
+        &.active, &:hover {
+          border-bottom: var(--navbar-border-size) solid var(--navbar-border-color);
+        }
 
         &__icon {
+          margin-bottom: 5px;
 
         }
 
@@ -371,22 +376,22 @@ a {
           text-overflow: ellipsis;
           text-align: center;
         }
-
-        &:after {
-          content: '';
-          position: absolute;
-          width: 100px;
-          bottom: calc(-1 * var(--navbar-border-size));
-          display: none;
-          background-color: var(--navbar-border-color);
-          height: var(--navbar-border-size);
-        }
-
-        &:hover, &.active {
-          &:after {
-            display: block;
-          }
-        }
+        //
+        //&:after {
+        //  content: '';
+        //  position: absolute;
+        //  width: 100px;
+        //  bottom: calc(-1 * var(--navbar-border-size));
+        //  display: none;
+        //  background-color: var(--navbar-border-color);
+        //  height: var(--navbar-border-size);
+        //}
+        //
+        //&:hover, &.active {
+        //  &:after {
+        //    display: block;
+        //  }
+        //}
       }
 
     }

@@ -411,7 +411,6 @@ a:active {
 
 .app-navbar {
   background-color: var(--navbar-bg-color);
-  border-bottom: var(--navbar-border-size) solid var(--navbar-bg-color);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -442,14 +441,25 @@ a:active {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   max-width: 100px;
   position: relative;
   margin: 0 5px;
+  border-bottom: var(--navbar-border-size) solid transparent;
+}
+
+.app-navbar-menu-item.active,
+.app-navbar-menu-item:hover {
+  border-bottom: var(--navbar-border-size) solid var(--navbar-border-color);
+}
+
+.app-navbar-menu-item__icon {
+  margin-bottom: 5px;
 }
 
 .app-navbar-menu-item__label {
@@ -459,21 +469,6 @@ a:active {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-}
-
-.app-navbar-menu-item:after {
-  content: '';
-  position: absolute;
-  width: 100px;
-  bottom: calc(-1 * var(--navbar-border-size));
-  display: none;
-  background-color: var(--navbar-border-color);
-  height: var(--navbar-border-size);
-}
-
-.app-navbar-menu-item:hover:after,
-.app-navbar-menu-item.active:after {
-  display: block;
 }
 
 .app-content {
