@@ -352,7 +352,7 @@ a:active {
   position: relative;
   text-transform: uppercase;
   color: var(--header-color);
-  font-weight: var(--header-font-weight);
+  font-weight: lighter;
 }
 
 .app-header__language .dropdown-trigger:focus + .dropdown-menu {
