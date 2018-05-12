@@ -76,5 +76,7 @@ class contentDownload extends Command
                 $this->info('Local type id: ' . $localContentType->id . ' icon image downloaded and saved');
             }
         }
+
+        // Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix()
     }
 }

@@ -27,63 +27,6 @@ final class LocalContentLoader extends ContentLoader
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
-    {
-        $contentItem = ContentItem::find($id);
-        $contentItem->fill($request->get('contentItem'));
-
-        // Upload content item
-        if ($request->input('contentItem')['download']['link'] && $request->input('contentItem')['type'] !== 'reference' && Storage::disk('temp')->exists(basename($request->input('contentItem')['download']['link']))) {
-            // If type is set to cloud upload
-            if($request->input('contentItem')['type'] === 'cloud') {
-                $contentItem->download = $this->moveItemToCloud(
-                    $request->input('contentItem')['download']['link'],
-                    'content-item_' . $contentItem->id . '_' . time(),
-                    'content-items');
-            } else {
-                // Upload file locally
-                $this->deleteOldContentFile(basename($contentItem->download['link']));
-                $contentItem->download = $this->moveToContentFolder($request, $contentItem->id);
-            }
-        }
-
-        // Upload preview image
-        if ($request->input('contentItem')['preview']) {
-            if (Storage::disk('temp')->exists(basename($request->input('contentItem')['preview']))) {
-                $this->deleteOldImageFile(basename($contentItem->preview));
-                $contentItem->preview = $this->moveToImagesFolder($request, $contentItem->id);
-            }
-        }
-
-        $contentItem->save();
-        return $contentItem;
-    }
-
-    public function store(Request $request)
-    {
-        $contentItem = new ContentItem();
-        $contentItem->fill($request->get('contentItem'));
-        $contentItem->save();
-
-        // Upload content item
-        if ($request->input('contentItem')['download']['link'] && $request->input('contentItem')['type'] !== 'reference') {
-            if (Storage::disk('temp')->exists(basename($request->input('contentItem')['download']['link']))) {
-                $this->deleteOldContentFile(basename($contentItem->download['link']));
-                $contentItem->download = $this->moveToContentFolder($request, $contentItem->id);
-            }
-        }
-
-        // Upload preview image
-        if ($request->input('contentItem')['preview']) {
-            if (Storage::disk('temp')->exists(basename($request->input('contentItem')['preview']))) {
-                $this->deleteOldImageFile(basename($contentItem->preview));
-                $contentItem->preview = $this->moveToImagesFolder($request, $contentItem->id);
-            }
-        }
-
-        $contentItem->save();
-        return $contentItem;
-    }
 
     public function delete(ContentItem $contentItem)
     {
@@ -137,26 +80,6 @@ final class LocalContentLoader extends ContentLoader
         ];
     }
 
-    private function deleteOldImageFile($imageFile)
-    {
-        Storage::disk('images')->delete($imageFile);
-    }
 
-    private function deleteOldContentFile($contentFile)
-    {
-        Storage::disk('content')->delete($contentFile);
-    }
 
-    private function moveItemToCloud($tempInputLink, $newFileName, $storage)
-    {
-        $tempFile = basename($tempInputLink);
-        $fileExtension = pathinfo($tempFile, PATHINFO_EXTENSION);
-        $newFile = $newFileName . '.' . $fileExtension;
-
-        $fullFilePath = Storage::disk('temp')->getDriver()->getAdapter()->getPathPrefix() . "/" . $tempFile;
-        $file = new File($fullFilePath);
-        Storage::disk('spaces')->putFileAs($storage, $file, $newFile);
-        return ['link' => $storage . '/' . $newFile];
-    }
-    #endregion
 }
