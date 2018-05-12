@@ -21,13 +21,13 @@ class ContentItemController extends Controller
         $contentItem->fill($request->all());
 
         // Upload content item
-//        $download = isset($request->download) ? $request->input('download') : '';
-//        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
-//            $contentItem->download = ['link' => $this->moveItemToCloud(
-//                $download['link'],
-//                $contentItem->id,
-//                'content-items')];
-//        }
+        $download = isset($request->download) ? $request->input('download') : '';
+        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
+            $contentItem->download = ['link' => $this->moveItemToCloud(
+                $download['link'],
+                $contentItem->id,
+                'content-items')];
+        }
 
         $contentItem->save();
         return $contentItem;
@@ -38,15 +38,6 @@ class ContentItemController extends Controller
         $contentItem = new ContentItem();
         $contentItem->fill($request->all());
         $contentItem->save();
-
-        // Upload content item
-//        $download = isset($request->download) ? $request->input('download') : '';
-//        if (!empty($download['link']) && $request->type !== 'reference' && Storage::disk('temp')->exists(basename($download['link']))) {
-//            $contentItem->download = ['link' => $this->moveItemToCloud(
-//                $download['link'],
-//                $contentItem->id,
-//                'content-items')];
-//        }
 
         $contentItem->save();
         return $contentItem;
@@ -75,12 +66,12 @@ class ContentItemController extends Controller
 
     public function uploadContentItemFile(Request $request, $id)
     {
-//            return $request->file('file')->storeAs('public/temp', $request->file('file')->getClientOriginalName());
-        if ($request->hasFile('file'))
-            return Storage::url($this->moveItemToStorage(
-                $request->file('file')->store('public/temp'),
-                $request->file('file')->getClientOriginalName(),
-                'public/content-items/' . $id));
+            return $request->file('file')->storeAs('public/temp', $request->file('file')->getClientOriginalName());
+//        if ($request->hasFile('file'))
+//            return Storage::url($this->moveItemToStorage(
+//                $request->file('file')->store('public/temp'),
+//                $request->file('file')->getClientOriginalName(),
+//                'public/content-items/' . $id));
     }
     #endregion
 }
