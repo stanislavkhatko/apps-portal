@@ -42,13 +42,15 @@ class ContentUpload extends Command
         $contents = Storage::disk('local')->allFiles('');
 
         foreach ($contents as $imageFile) {
-            dump($imageFile);
             // Take only image files from listed directories
             // Files stored as '/public/cotnent-item-images/2/name.png'
-            if(strpos($imageFile, '/content-item-images/') !== false ||
+            if (strpos($imageFile, '/content-item-images/') !== false ||
                 strpos($imageFile, '/local-content-type-images/') !== false ||
                 strpos($imageFile, '/navbar-images/') !== false ||
                 strpos($imageFile, '/footer-images/') !== false) {
+
+                dump($imageFile);
+
                 //saving image file to cloud
                 $storageFolder = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
                 $fullImagePath = $storageFolder . $imageFile;
