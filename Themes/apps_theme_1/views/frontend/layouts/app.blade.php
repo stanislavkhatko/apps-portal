@@ -29,7 +29,8 @@
             --logo-font-weight: {{ $navbar['style']['brand_font_weight'] }};
 
             --header-bg-color: {{ $header['style']['background_color']['hex'] }};
-            --header-color: {{ $header['style']['color']['hex'] }};
+{{--            --header-color: {{ $header['style']['color']['hex'] }};--}}
+            --header-color: {{ $navbar['style']['color']['hex'] }};
             --header-font-size: {{ $header['style']['font_size'] }}px;
             --header-font-weight: {{ $header['style']['font_weight'] }};
             --header-border-size: {{ $header['style']['border_bottom_size'] }}px;
@@ -38,7 +39,8 @@
             --header-menu-align: {{ $navbar['style']['menu_float'] }};
 
             --navbar-bg-color: {{ $navbar['style']['background_color']['hex'] }};
-            --navbar-color: {{ $navbar['style']['color']['hex'] }};
+{{--            --navbar-color: {{ $navbar['style']['color']['hex'] }};--}}
+            --navbar-color: {{ $header['style']['color']['hex'] }};
             --navbar-font-weight: {{ $navbar['style']['font_weight'] }};
             --navbar-font-size: {{ $navbar['style']['font_size'] }}px;
             --navbar-border-size: {{ $navbar['style']['border_bottom_size'] }}px;
