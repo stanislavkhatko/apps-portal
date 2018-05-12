@@ -26,6 +26,11 @@ class HomeController extends Controller
 
     public function viewPortal()
     {
+        // TODO upload content to cloud
+
+
+
+
         return view('frontend.index', ['portal' => Config::get('currentPortal')]);
     }
 

@@ -39,14 +39,22 @@ class ContentUpload extends Command
      */
     public function handle()
     {
-        // TODO upload content to cloud
-        $contentItems = ContentItem::all();
+        $contents = Storage::disk('local')->allFiles('');
 
-        foreach ($contentItems as $item) {
-            if ($item->preview && Storage::exists($item->preview)) {
-                $image = Storage::get($item->preview);
-                Storage::disc('spaces')->put($item->preview, $image);
-                $this->info('Item id: ' . $item->id . ' preview image uploaded to spaces');
+        foreach ($contents as $imageFile) {
+            dump($imageFile);
+            // Take only image files from listed directories
+            // Files stored as '/public/cotnent-item-images/2/name.png'
+            if(strpos($imageFile, '/content-item-images/') !== false ||
+                strpos($imageFile, '/local-content-type-images/') !== false ||
+                strpos($imageFile, '/navbar-images/') !== false ||
+                strpos($imageFile, '/footer-images/') !== false) {
+                //saving image file to cloud
+                $storageFolder = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+                $fullImagePath = $storageFolder . $imageFile;
+                $handle = fopen($fullImagePath, 'r');
+                Storage::disk('spaces')->put($imageFile, $handle, 'public');
+                fclose($handle);
             }
         }
     }
