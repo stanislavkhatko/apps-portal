@@ -43,7 +43,7 @@ class AuthController extends Controller
         } else {
             // TODO translate error
             return redirect('/authenticate')
-                ->with('loginError', 'Phone number is incorrect')
+                ->with('loginError', trans('portal.subscription_not_found'))
                 ->withInput();
         }
 
