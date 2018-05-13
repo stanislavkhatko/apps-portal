@@ -54,6 +54,7 @@ class HomeController extends Controller
             $item->download['link'], now()->addMinutes(5)
         );
 
+
         return view('frontend.detail.index', compact('item', 'itemUrl'));
     }
 
