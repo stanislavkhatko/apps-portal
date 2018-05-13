@@ -121,7 +121,8 @@ class AuthController extends Controller
 
             return redirect()->route('view.portal');
         } else {
-            return response('No valid subscription', 422);
+//            return response('No valid subscription', 422);
+            return redirect('/authenticate');
         }
     }
 
@@ -130,7 +131,6 @@ class AuthController extends Controller
         return redirect()->route('view.portal');
 
         // TODO fix unsubscribe function
-
         $subscription = Cookie::get('subscription')['subscription'];
         $client = new \App\Subsyz\Client();
         $result = $client->unsubscribe(subscription('subscription_id'));

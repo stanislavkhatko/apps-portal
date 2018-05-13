@@ -229,7 +229,8 @@
                         if (response.data) {
                             this.helpers.spinner.save = false;
                             this.helpers.spinner.saveAndReturn = false;
-                            if (goBack) window.location.href = '/admin/translations';
+                            if (goBack) window.location.href = '/admin/portal';
+                            else window.location.href = '/admin/translations';
                         }
                     });
             }
