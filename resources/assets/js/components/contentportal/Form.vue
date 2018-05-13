@@ -6,7 +6,7 @@
             <div class="panel-heading">
                 <div>
                     <template v-if="id == 0">
-                       Create portal
+                        Create portal
                     </template>
                     <template v-else>
                         Edit portal - {{ form.title }}
@@ -18,13 +18,14 @@
             <div class="panel-body">
 
                 <form class="form-horizontal margin_top_20" role="form" @submit.prevent="submitForm">
-                    
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Portal name</label>
 
                         <div class="col-sm-10">
-                            <input type="text" autocomplete="off" class="form-control" placeholder="Type a name" v-model="form.title">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Type a name"
+                                   v-model="form.title">
                         </div>
                     </div>
                     <!-- portal name section -->
@@ -34,11 +35,13 @@
                         <label class="col-sm-2 control-label">Portal domain</label>
 
                         <div class="col-sm-3 column_padding_right_zero">
-                            <input type="text" autocomplete="off" class="form-control"  placeholder="Optional subdomain name (e.g. apps)" v-model="form.subdomain">
+                            <input type="text" autocomplete="off" class="form-control"
+                                   placeholder="Optional subdomain name (e.g. apps)" v-model="form.subdomain">
                         </div>
 
                         <div class="col-sm-7">
-                            <input type="text" autocomplete="off" class="form-control"  placeholder="Type a domain name (e.g. portal.com)" v-model="form.host">
+                            <input type="text" autocomplete="off" class="form-control"
+                                   placeholder="Type a domain name (e.g. portal.com)" v-model="form.host">
                         </div>
                     </div>
                     <!-- domain section -->
@@ -77,7 +80,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <hr />
+                                <hr/>
                             </div>
                         </div>
                         <!-- hr -->
@@ -100,19 +103,19 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <hr />
+                                <hr/>
                             </div>
                         </div>
                         <!-- hr -->
 
-                        
+
                         <div class="form-group margin_top_20">
                             <label class="col-sm-2 control-label">Featured apps</label>
                             <div class="col-sm-10">
-                                
-                                <featured-app 
-                                    :form="form" 
-                                    :featuredModal="featuredModal">                                        
+
+                                <featured-app
+                                        :form="form"
+                                        :featuredModal="featuredModal">
                                 </featured-app>
 
                             </div>
@@ -122,7 +125,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <hr />
+                                <hr/>
                             </div>
                         </div>
                         <!-- hr -->
@@ -132,9 +135,9 @@
                             <label class="col-sm-2 control-label padding_top_10">Content</label>
                             <div class="col-sm-10">
 
-                                <static-pages 
-                                    :form="form"
-                                    :froalaConfig="froalaConfig">
+                                <static-pages
+                                        :form="form"
+                                        :froalaConfig="froalaConfig">
                                 </static-pages>
 
                             </div>
@@ -145,7 +148,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <hr />
+                                <hr/>
                             </div>
                         </div>
                         <!-- hr -->
@@ -155,9 +158,9 @@
                             <label class="col-sm-2 control-label padding_top_10">Footer pages</label>
                             <div class="col-sm-10">
 
-                                <dynamic-pages 
-                                    :form="form"
-                                    :froalaConfig="froalaConfig">
+                                <dynamic-pages
+                                        :form="form"
+                                        :froalaConfig="froalaConfig">
                                 </dynamic-pages>
 
                             </div>
@@ -168,7 +171,7 @@
 
                         <div class="row">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <hr />
+                                <hr/>
                             </div>
                         </div>
                         <!-- hr -->
@@ -177,11 +180,11 @@
                             <label class="col-sm-2 control-label">Show welcome page</label>
 
                             <div class="col-sm-10">
-                                <v-select 
-                                    v-model="form.options.show_welcome_page" 
-                                    :options="helpers.yesNo" 
-                                    placeholder="Select an option"
-                                  ></v-select>
+                                <v-select
+                                        v-model="form.options.show_welcome_page"
+                                        :options="helpers.yesNo"
+                                        placeholder="Select an option"
+                                ></v-select>
                             </div>
                         </div>
 
@@ -189,11 +192,11 @@
                             <label class="col-sm-2 control-label">Show cancel option</label>
 
                             <div class="col-sm-10">
-                                <v-select 
-                                    v-model="form.options.show_cancel_page" 
-                                    :options="helpers.yesNo" 
-                                    placeholder="Select an option"
-                                  ></v-select>
+                                <v-select
+                                        v-model="form.options.show_cancel_page"
+                                        :options="helpers.yesNo"
+                                        placeholder="Select an option"
+                                ></v-select>
                             </div>
                         </div>
 
@@ -201,7 +204,8 @@
                             <label class="col-sm-2 control-label">Offer URL</label>
 
                             <div class="col-sm-10">
-                                <input type="text" autocomplete="off" class="form-control" placeholder="(Optional) Type an offer URL" v-model="form.offer_url">
+                                <input type="text" autocomplete="off" class="form-control"
+                                       placeholder="(Optional) Type an offer URL" v-model="form.offer_url">
                             </div>
                         </div>
 
@@ -210,7 +214,8 @@
                             <label class="col-sm-2 control-label">Exit URL</label>
 
                             <div class="col-sm-10">
-                                <input type="text" autocomplete="off" class="form-control" placeholder="(Optional) Type an exit URL" v-model="form.exit_url">
+                                <input type="text" autocomplete="off" class="form-control"
+                                       placeholder="(Optional) Type an exit URL" v-model="form.exit_url">
                             </div>
                         </div>
 
@@ -220,25 +225,27 @@
 
 
                     <div class="form-group margin_top_40">
-                        <div class="col-sm-offset-2 col-sm-10 text-right"> 
-                            
+                        <div class="col-sm-offset-2 col-sm-10 text-right">
+
                             <button class="btn btn-default min_width_100 pull-left" @click="goBack">
                                 Cancel
-                            </button>       
-                            
-                            <button class="btn btn-success min_width_100" 
-                                    @click="save(true)" 
-                                    :class="helpers.spinner.saveAndReturn || helpers.spinner.save ? 'disabled' : ''">                                
-                                Save & return
-                                <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw bttn_spinner" v-show="helpers.spinner.saveAndReturn"></i>
-                            </button>    
+                            </button>
 
                             <button class="btn btn-success min_width_100"
-                                    @click="save()" 
-                                    :class="helpers.spinner.saveAndReturn || helpers.spinner.save ? 'disabled' : ''">                                
+                                    @click="save(true)"
+                                    :class="helpers.spinner.saveAndReturn || helpers.spinner.save ? 'disabled' : ''">
+                                Save & return
+                                <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw bttn_spinner"
+                                   v-show="helpers.spinner.saveAndReturn"></i>
+                            </button>
+
+                            <button class="btn btn-success min_width_100"
+                                    @click="save()"
+                                    :class="helpers.spinner.saveAndReturn || helpers.spinner.save ? 'disabled' : ''">
                                 Save
-                                <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw bttn_spinner" v-show="helpers.spinner.save"></i>
-                            </button>    
+                                <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw bttn_spinner"
+                                   v-show="helpers.spinner.save"></i>
+                            </button>
 
                         </div>
                     </div>
@@ -255,7 +262,7 @@
 </template>
 
 <script>
-    import { tabs, tab, tabGroup, tabset, modal, select } from 'vue-strap'
+    import {tabs, tab, tabGroup, tabset, modal, select} from 'vue-strap'
     import FeaturedApp from './FeaturedApp.vue'
 
     import _ from 'lodash'
@@ -287,8 +294,8 @@
                     yesNo: [
                         {value: false, label: 'No'},
                         {value: true, label: 'Yes'}
-                    ]                              
-                },  
+                    ]
+                },
                 featuredModal: {
                     show: false,
                     contentItems: [],
@@ -296,13 +303,13 @@
                     featuredApp: {
                         content_item_title: '',
                         content_item_id: '',
-                        banner: '',                                             
+                        banner: '',
                         created_at: '',
                         visible: 1
                     }
-                    
-                },    
-                staticPageTypes: ['price-banner', 'slider', /*'home',*/ 'disclaimer'/*, 'footer'*/],         
+
+                },
+                staticPageTypes: ['price-banner', 'slider', /*'home',*/ 'disclaimer'/*, 'footer'*/],
                 form: {
                     title: '',
                     subdomain: '',
@@ -333,14 +340,14 @@
             }
         },
 
-        methods: {            
+        methods: {
 
             fetchData() {
-                axios.get('/admin/api/portal/'+this.id)
+                axios.get('/admin/api/portal/' + this.id)
                     .then(response => {
                         let portal = response.data;
                         console.log(portal);
-                        
+
                         this.form.title = portal.title;
                         this.form.host = portal.host;
                         this.form.languagesShort = response.data.languages;
@@ -352,7 +359,7 @@
                         if (portal.default_language) {
                             this.form.default_language = this.findLanguageByCode(portal.default_language);
                         }
-                        
+
                         response.data.languages.forEach((language) => {
                             this.form.languages.push(this.findLanguageByCode(language));
                         });
@@ -426,26 +433,22 @@
 
                 goBack ? this.helpers.spinner.saveAndReturn = true : this.helpers.spinner.save = true;
 
-                //console.log();
+                console.log(this.id);
 
                 this.form.languagesShort = _.map(this.form.languages, 'value');
 
                 // update
                 if (this.id > 0) {
-
-                    axios.patch('/admin/api/portal/' + this.id , {form: this.form})
+                    axios.patch('/admin/api/portal/' + this.id, {form: this.form})
                         .then((response) => {
                             if (response.data) {
                                 this.helpers.spinner.save = false;
                                 this.helpers.spinner.saveAndReturn = false;
                                 if (goBack) this.goBack()
-                                else window.location.href = '/admin/portal/' + response.data.portal.id + '/edit';
+                                else window.location.href = '/admin/portal/' + this.id + '/edit';
                             }
                         });
-                }
-
-                // new
-                else {
+                } else {
                     axios.post('/admin/api/portal/', {form: this.form})
                         .then((response) => {
                             if (response.data) {
@@ -454,7 +457,7 @@
                                 window.location.href = '/admin/portal/' + response.data.portal.id + '/edit';
                             }
                         });
-                }            
+                }
             },
 
             goBack() {
@@ -466,27 +469,27 @@
             dateToday() {
                 var date = new Date();
                 return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-            }     
+            }
         },
 
         watch: {
-            'form.languages': function(languages) {
+            'form.languages': function (languages) {
                 var me = this;
 
                 // loop langs selected and check if we have staticpages including that lang, if not add them
                 languages.forEach((language, index) => {
-                    if (! _.map(this.form.staticPages, 'lang_code').includes(language.value)) {
+                    if (!_.map(this.form.staticPages, 'lang_code').includes(language.value)) {
 
                         // add static pages for each static page type
                         this.staticPageTypes.forEach((staticPageType) => {
                             var staticPage = {
                                 id: 0,
                                 lang_code: language.value,
-                                type: staticPageType,                                
+                                type: staticPageType,
                                 title: '',
                                 body: '',
                                 visible: false,
-                                created_at: this.dateToday,                                
+                                created_at: this.dateToday,
                                 showModal: false
                             }
 
@@ -494,21 +497,21 @@
                         });
                     }
                 });
-                
+
                 // if language removed, remove static pages also
-                _.forEachRight(this.form.staticPages, function(staticPage, key) {                    
-                    if (! _.map(me.form.languages, 'value').includes(staticPage.lang_code)) {
+                _.forEachRight(this.form.staticPages, function (staticPage, key) {
+                    if (!_.map(me.form.languages, 'value').includes(staticPage.lang_code)) {
                         me.form.staticPages.splice(key, 1);
-                        $('[href="#s_page0"]').click(); 
+                        $('[href="#s_page0"]').click();
                     }
                 });
 
                 // if language removed, remove dynamic pages also
-                _.forEachRight(this.form.pages, function(page, key) {                    
-                    if (! _.map(me.form.languages, 'value').includes(page.lang_code)) {
+                _.forEachRight(this.form.pages, function (page, key) {
+                    if (!_.map(me.form.languages, 'value').includes(page.lang_code)) {
                         me.form.pages.splice(key, 1);
                         //me.resetPagePositions();
-                        $('[href="#d_page0"]').click(); 
+                        $('[href="#d_page0"]').click();
                     }
                 });
             }
