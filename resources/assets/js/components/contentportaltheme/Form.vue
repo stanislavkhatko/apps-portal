@@ -43,7 +43,7 @@
                                 <tabs v-model="helpers.activeTab" nav-style="tabs" class="tabs_with_accordion"
                                       justified>
 
-                                    <tab header="Price banner">
+                                    <tab header="Header">
 
                                         <accordion :one-at-atime="true" type="info">
 
@@ -113,8 +113,8 @@
                                         </accordion>
 
                                     </tab>
-                                    <!-- Header -->
 
+                                    <!-- Header -->
 
                                     <tab header="Navbar (menu)">
 
@@ -315,26 +315,26 @@
                                                         :model="theme.components.center.style">
                                                 </form-input>
 
-                                                <!--<form-input-->
-                                                        <!--type="colorPicker"-->
-                                                        <!--label="Font color"-->
-                                                        <!--item="content_color"-->
-                                                        <!--:model="theme.components.center.style">-->
-                                                <!--</form-input>-->
+                                                <form-input
+                                                        type="colorPicker"
+                                                        label="Font color"
+                                                        item="content_color"
+                                                        :model="theme.components.center.style">
+                                                </form-input>
 
-                                                <!--<form-input-->
-                                                        <!--type="colorPicker"-->
-                                                        <!--label="Primary text color"-->
-                                                        <!--item="content_primary_color"-->
-                                                        <!--:model="theme.components.center.style">-->
-                                                <!--</form-input>-->
+                                                <form-input
+                                                        type="colorPicker"
+                                                        label="Primary text color"
+                                                        item="content_primary_color"
+                                                        :model="theme.components.center.style">
+                                                </form-input>
 
-                                                <!--<form-input-->
-                                                        <!--type="colorPicker"-->
-                                                        <!--label="Secondary text color"-->
-                                                        <!--item="content_secondary_color"-->
-                                                        <!--:model="theme.components.center.style">-->
-                                                <!--</form-input>-->
+                                                <form-input
+                                                        type="colorPicker"
+                                                        label="Secondary text color"
+                                                        item="content_secondary_color"
+                                                        :model="theme.components.center.style">
+                                                </form-input>
 
                                                 <form-input
                                                         type="numberInput"
@@ -1393,8 +1393,8 @@
                                 color: {hex: "#fff"},
                                 font_size: 14,
                                 font_weight: 'lighter',
-                                border_bottom_size: 0,
-                                border_color: {hex: ""},
+                                border_bottom_size: 3,
+                                border_color: {hex: "#00a2e4"},
                                 height: 70,
                                 menu_float: 'right',
                                 brand_color: {hex: "#fff"},

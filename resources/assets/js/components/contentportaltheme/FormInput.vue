@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <template v-if="type == 'colorPicker'">
+        <template v-if="type === 'colorPicker'">
             
             <div class="form-group">
 
@@ -48,7 +48,7 @@
 
 
 
-        <template v-if="type == 'numberInput'">
+        <template v-if="type === 'numberInput'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>
@@ -67,7 +67,7 @@
 
 
 
-        <template v-if="type == 'textInput'">
+        <template v-if="type === 'textInput'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>
@@ -83,7 +83,7 @@
 
 
 
-        <template v-if="type == 'alignSelect'">
+        <template v-if="type === 'alignSelect'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>
@@ -103,7 +103,7 @@
 
 
 
-        <template v-if="type == 'floatSelect'">
+        <template v-if="type === 'floatSelect'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>
@@ -123,7 +123,7 @@
 
         
 
-        <template v-if="type == 'fontWeightSelect'">
+        <template v-if="type === 'fontWeightSelect'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>
@@ -143,7 +143,7 @@
 
 
 
-        <template v-if="type == 'fontFamilySelect'">
+        <template v-if="type === 'fontFamilySelect'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>
@@ -162,7 +162,7 @@
         <!-- FONT FAMILY SELECT -->
 
 
-        <template v-if="type == 'fontFamilyGlobalSelect'">
+        <template v-if="type === 'fontFamilyGlobalSelect'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>
@@ -182,7 +182,7 @@
 
 
 
-        <template v-if="type == 'yesNoSelect'">
+        <template v-if="type === 'yesNoSelect'">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ label }}</label>

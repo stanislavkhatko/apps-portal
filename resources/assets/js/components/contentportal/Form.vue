@@ -438,7 +438,8 @@
                             if (response.data) {
                                 this.helpers.spinner.save = false;
                                 this.helpers.spinner.saveAndReturn = false;
-                                if (goBack) this.goBack();
+                                if (goBack) this.goBack()
+                                else window.location.href = '/admin/portal/' + response.data.portal.id + '/edit';
                             }
                         });
                 }

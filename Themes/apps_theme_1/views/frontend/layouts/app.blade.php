@@ -30,8 +30,7 @@
             --logo-font-weight: {{ $navbar['style']['brand_font_weight'] }};
 
             --header-bg-color: {{ $header['style']['background_color']['hex'] }};
-            {{--            --header-color: {{ $header['style']['color']['hex'] }};--}}
-    --header-color: {{ $navbar['style']['color']['hex'] }};
+            --header-color: {{ $header['style']['color']['hex'] }};
             --header-font-size: {{ $header['style']['font_size'] }}px;
             --header-font-weight: {{ $header['style']['font_weight'] }};
             --header-border-size: {{ $header['style']['border_bottom_size'] }}px;
@@ -41,21 +40,11 @@
 
             --navbar-bg-color: {{ $navbar['style']['background_color']['hex'] }};
             --navbar-color: {{ $navbar['style']['color']['hex'] }};
-            {{--            --navbar-color: {{ $header['style']['color']['hex'] }};--}}
-    --navbar-font-weight: {{ $navbar['style']['font_weight'] }};
+            --navbar-font-weight: {{ $navbar['style']['font_weight'] }};
             --navbar-font-size: {{ $navbar['style']['font_size'] }}px;
             --navbar-border-size: {{ $navbar['style']['border_bottom_size'] }}px;
             --navbar-border-color: {{ $navbar['style']['border_color']['hex'] }};
             --navbar-min-height: {{ $navbar['style']['height'] }}px;
-
-            /*--banner-bg-color: ;*/
-            /*--banner-text-align:;*/
-            /*--banner-color:;*/
-            /*--banner-font-size:;*/
-            /*--banner-font-weight:;*/
-            /*--banner-border-size:;*/
-            /*--banner-border-color:;*/
-            /*--banner-min-height:;*/
 
             --content-color: {{ $center['style']['content_color']['hex'] ?? '#252525' }};
             --content-primary-color: {{ $center['style']['content_primary_color']['hex'] ?? '#1cdd6e' }};
@@ -103,7 +92,7 @@
 <div class="app">
 
     <!-- TODO make styling -->
-{{--    @include('frontend.partials.pricebanner')--}}
+    {{--    @include('frontend.partials.pricebanner')--}}
 
     <header class="app-header">
 
