@@ -433,12 +433,9 @@
 
                 goBack ? this.helpers.spinner.saveAndReturn = true : this.helpers.spinner.save = true;
 
-                console.log(this.id);
-
                 this.form.languagesShort = _.map(this.form.languages, 'value');
 
-                // update
-                if (this.id > 0) {
+                if (this.id) {
                     axios.patch('/admin/api/portal/' + this.id, {form: this.form})
                         .then((response) => {
                             if (response.data) {
