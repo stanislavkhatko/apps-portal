@@ -28,16 +28,11 @@ return [
     |                    "errorlog", "custom", "stack"
     |
     */
-    'slack_alert'=> env('SLACK_ALERT',false),
-
-    'slack_debug'=> env('SLACK_DEBUG',false),
-
-    'slack_debug_file'=> env('SLACK_DEBUG_FILE', false),
 
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single','slack_debug','slack_errors', 'slack'],
+            'channels' => ['single', 'slack'],
         ],
 
         'slack' => [
@@ -59,22 +54,6 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
             'days' => 7,
-        ],
-
-        'slack_debug' => [
-            'driver' => 'slack',
-            'url' => env('SLACK_WEB_HOOK_DEBUG','http://example.com'),
-            'username' => env('LOG_SLACK_USER','Server Machine'),
-            'emoji' => ':speech_balloon:',
-            'level' => 'debug',
-        ],
-
-        'slack_errors' => [
-            'driver' => 'slack',
-            'url' => env('SLACK_WEB_HOOK_ERROR','http://example.com'),
-            'username' => env('LOG_SLACK_USER','Server Machine'),
-            'emoji' => ':boom:',
-            'level' => 'error',
         ],
 
         'syslog' => [

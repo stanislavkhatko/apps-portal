@@ -46,7 +46,7 @@ class AuthController extends Controller
 //                $token = $result->subscription['token'];
 //                $shortcode = $result->subscription['shortcode'];
 //                $keyword = $result->subscription['keyword'];
-                $error = trans('portal.phone_number_incorrect');
+                $error = trans('portal.subscription_not_found');
 //                $sms = 'sms:' . $shortcode . ';?&body=' . $keyword . ' ' . $token;
 //
 //                $agent = new \Jenssegers\Agent\Agent();
