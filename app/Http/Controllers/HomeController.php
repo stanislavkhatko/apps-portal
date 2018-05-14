@@ -50,10 +50,9 @@ class HomeController extends Controller
 
     public function showItem(ContentItem $item)
     {
-        $itemUrl = Storage::disk('spaces')->url(
+        $itemUrl = Storage::disk('spaces')->temporaryUrl(
             $item->download['link'], now()->addMinutes(5)
         );
-
 
         return view('frontend.detail.index', compact('item', 'itemUrl'));
     }

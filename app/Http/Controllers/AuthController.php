@@ -23,6 +23,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+
         $client = new \App\Subsyz\Client();
         $result = $client->validateMsisdn($request->input('msisdn'));
 
@@ -30,21 +31,50 @@ class AuthController extends Controller
             session([
                 'subscription' => [
                     'msisdn' => env('TEST_NUMBER'),
-                    'subscription_id' => 100,
+                    'subscription' => 1,
                 ]
             ]);
-        } else if($result && $result->success == 'true') {
+        } else if ($result && $result->success) {
             session([
                 'subscription' => [
-                    'msisdn' => $request->input('msisdn'),
-                    'subscription_id' => $result->subscription,
+                    'msisdn' => $result->msisdn,
+                    'subscription' => $result->subscription,
                 ]
             ]);
+        } else if ($result && $result->subscribe) {
+
+//                $token = $result->subscription['token'];
+//                $shortcode = $result->subscription['shortcode'];
+//                $keyword = $result->subscription['keyword'];
+                $error = trans('portal.phone_number_incorrect');
+//                $sms = 'sms:' . $shortcode . ';?&body=' . $keyword . ' ' . $token;
+//
+//                $agent = new \Jenssegers\Agent\Agent();
+//                if ($agent->isDesktop()) {
+//                    $sms = '';
+//                }
+//
+//                $subscribe = [
+//                    'token' => $token,
+//                    'shortcode' => $shortcode,
+//                    'keyword' => $keyword,
+//                    'sms' => $sms,
+//                ];
+
+            $d = [
+                'token' => 12323,
+                'keyword' => 'Yes',
+                'shortcode' => 555555,
+                'sms' => 'sms:555555;?&body=Yes 12323',
+            ];
+
+
+            return redirect('/authenticate')->with([
+                'subscribe' => $d,
+                'error' => $error,
+            ])->withInput();
         } else {
-            // TODO translate error
-            return redirect('/authenticate')
-                ->with('loginError', trans('portal.subscription_not_found'))
-                ->withInput();
+            return redirect('/authenticate')->with(['error' => trans('portal.phone_number_incorrect'),])->withInput();
         }
 
         return redirect()->route('view.portal');

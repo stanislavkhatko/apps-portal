@@ -405,7 +405,7 @@ a:active {
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
   padding: 0;
-  width: 63px;
+  width: calc(var(--header-font-size) * 2.2);
 }
 
 .app-header__language .dropdown-menu a {
@@ -702,8 +702,8 @@ a:active {
 }
 
 .app-item-error {
-  border: 1px solid red;
-  color: red;
+  border: 1px solid var(--content-primary-color);
+  color: var(--content-primary-color);
   font-size: 14px;
   padding: 7px;
   margin-bottom: 20px;
@@ -824,10 +824,10 @@ a:active {
 }
 
 .app-auth-form__error {
-  border: 1px solid red;
-  color: red;
+  border: 1px solid var(--content-primary-color);
+  color: var(--content-primary-color);
   font-size: 14px;
-  padding: 7px;
+  padding: 10px;
   margin-bottom: 20px;
   max-width: 500px;
   width: 100%;
@@ -874,6 +874,39 @@ a:active {
       -ms-user-select: none;
           user-select: none;
   line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.app-auth-form-subscribe {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.app-auth-form-subscribe__login {
+  text-decoration: underline;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--content-secondary-color);
+}
+
+.app-auth-form-subscribe__login:hover {
+  text-decoration: none;
+}
+
+.app-auth-form-subscribe__keyword {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--content-primary-color);
+}
+
+.app-auth-form-subscribe__shortcode {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--content-primary-color);
 }
 
 .app-unsubscribe__title {

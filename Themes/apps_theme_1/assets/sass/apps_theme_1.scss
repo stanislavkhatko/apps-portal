@@ -303,7 +303,7 @@ a {
         opacity: 0;
         transition: opacity 0.5s ease;
         padding: 0;
-        width: 63px;
+        width: calc(var(--header-font-size) * 2.2);
 
         a {
           color: var(--header-color);
@@ -373,22 +373,6 @@ a {
           text-overflow: ellipsis;
           text-align: center;
         }
-        //
-        //&:after {
-        //  content: '';
-        //  position: absolute;
-        //  width: 100px;
-        //  bottom: calc(-1 * var(--navbar-border-size));
-        //  display: none;
-        //  background-color: var(--navbar-border-color);
-        //  height: var(--navbar-border-size);
-        //}
-        //
-        //&:hover, &.active {
-        //  &:after {
-        //    display: block;
-        //  }
-        //}
       }
 
     }
@@ -570,8 +554,8 @@ a {
     padding: 20px 15px;
 
     &-error {
-      border: 1px solid red;
-      color: red;
+      border: 1px solid var(--content-primary-color);
+      color: var(--content-primary-color);
       font-size: 14px;
       padding: 7px;
       margin-bottom: 20px;
@@ -678,10 +662,10 @@ a {
       $form-width: 500px;
 
       &__error {
-        border: 1px solid red;
-        color: red;
+        border: 1px solid var(--content-primary-color);
+        color: var(--content-primary-color);
         font-size: 14px;
-        padding: 7px;
+        padding: 10px;
         margin-bottom: 20px;
         max-width: $form-width;
         width: 100%;
@@ -707,7 +691,6 @@ a {
         font-weight: lighter;
         padding: 7px 10px;
         max-width: $form-width;
-
       }
 
       &__submit {
@@ -726,8 +709,40 @@ a {
         vertical-align: middle;
         user-select: none;
         line-height: 1.5;
+        margin-bottom: 20px;
       }
 
+      &-subscribe {
+        font-size: 14px;
+        line-height: 1.5;
+
+        &__login {
+          text-decoration: underline;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          font-size: 14px;
+          color: var(--content-secondary-color);
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
+        &__keyword {
+          display: inline-block;
+          text-transform: uppercase;
+          font-weight: bold;
+          color: var(--content-primary-color);
+        }
+
+        &__shortcode {
+          display: inline-block;
+          text-transform: uppercase;
+          font-weight: bold;
+          color: var(--content-primary-color);
+        }
+      }
     }
   }
 
@@ -791,7 +806,6 @@ a {
 
       &__back {
         font-size: var(--button-font-size);
-
         color: var(--button-color);
         border: 1px solid var(--button-bg-color);
         font-weight: lighter;
