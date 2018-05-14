@@ -449,7 +449,7 @@ a:active {
   margin: 0 auto;
   max-width: var(--content-width);
   overflow: scroll;
-  min-height: var(--navbar-min-height);
+  height: var(--navbar-min-height);
 }
 
 .app-navbar-menu-item {
@@ -482,6 +482,7 @@ a:active {
 
 .app-navbar-menu-item__icon {
   margin-bottom: 5px;
+  height: 50%;
 }
 
 .app-navbar-menu-item__label {

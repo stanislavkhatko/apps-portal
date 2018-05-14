@@ -341,7 +341,7 @@ a {
       margin: 0 auto;
       max-width: var(--content-width);
       overflow: scroll;
-      min-height: var(--navbar-min-height);
+      height: var(--navbar-min-height);
 
       &-item {
         color: var(--navbar-color);
@@ -362,7 +362,7 @@ a {
 
         &__icon {
           margin-bottom: 5px;
-
+          height: 50%;
         }
 
         &__label {
