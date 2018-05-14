@@ -37,7 +37,15 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single','slack_debug','slack_errors'],
+            'channels' => ['single','slack_debug','slack_errors', 'slack'],
+        ],
+
+        'slack' => [
+            'driver' => 'slack',
+            'url' => env('LOG_SLACK_WEBHOOK_URL'),
+            'username' => env('LOG_SLACK_USER','Server Portal'),
+            'emoji' => ':boom:',
+            'level' => env('APP_LOG_LEVEL', 'critical')
         ],
 
         'single' => [
