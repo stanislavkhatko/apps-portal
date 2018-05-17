@@ -23,10 +23,6 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-
-        $client = new \App\Subsyz\Client();
-        $result = $client->validateMsisdn($request->input('msisdn'));
-
         if ($request->input('msisdn') == env('TEST_NUMBER')) {
             session([
                 'subscription' => [
@@ -34,50 +30,51 @@ class AuthController extends Controller
                     'subscription' => 1,
                 ]
             ]);
-        } else if ($result && $result->success) {
-            session([
-                'subscription' => [
-                    'msisdn' => $result->msisdn,
-                    'subscription' => $result->subscription,
-                ]
-            ]);
-        } else if ($result && $result->subscribe) {
 
-//                $token = $result->subscription['token'];
-//                $shortcode = $result->subscription['shortcode'];
-//                $keyword = $result->subscription['keyword'];
-                $error = trans('portal.subscription_not_found');
-//                $sms = 'sms:' . $shortcode . ';?&body=' . $keyword . ' ' . $token;
-//
-//                $agent = new \Jenssegers\Agent\Agent();
-//                if ($agent->isDesktop()) {
-//                    $sms = '';
-//                }
-//
-//                $subscribe = [
-//                    'token' => $token,
-//                    'shortcode' => $shortcode,
-//                    'keyword' => $keyword,
-//                    'sms' => $sms,
-//                ];
-
-            $d = [
-                'token' => 12323,
-                'keyword' => 'Yes',
-                'shortcode' => 555555,
-                'sms' => 'sms:555555;?&body=Yes 12323',
-            ];
-
-
-            return redirect('/authenticate')->with([
-                'subscribe' => $d,
-                'error' => $error,
-            ])->withInput();
-        } else {
-            return redirect('/authenticate')->with(['error' => trans('portal.phone_number_incorrect'),])->withInput();
+            return redirect()->route('view.portal');
         }
 
-        return redirect()->route('view.portal');
+        $client = new \App\Subsyz\Client();
+        $result = $client->validateMsisdn($request->input('msisdn'));
+
+        if ($result && $result->subscription) {
+            session([
+                'subscription' => [
+                    'msisdn' => $result->subscription['msisdn'],
+                    'subscription' => $result->subscription['subscription_id'],
+                ]
+            ]);
+
+            return redirect()->route('view.portal');
+        }
+
+        if ($result && $result->subscribe) {
+
+            $shortcode = $result->subscribe->shortcode;
+            $keyword = $result->subscribe->keyword;
+            $sms = 'sms:' . $shortcode . ';?&body=' . $keyword;
+
+            $agent = new \Jenssegers\Agent\Agent();
+            if ($agent->isDesktop()) {
+                $sms = '';
+            }
+
+            $subscribe = [
+                'shortcode' => $shortcode,
+                'keyword' => $keyword,
+                'sms' => $sms,
+                'price' => $result->subscribe->price
+            ];
+
+            return redirect('/authenticate')->with([
+                'subscribe' => $subscribe
+            ])->withInput();
+
+        } else if ($result && $result->error) {
+            return redirect('/authenticate')->with(['error' => trans('portal.' . $result->error),])->withInput();
+        }
+
+        return redirect('/authenticate')->with(['error' => 'Something wrong with server',])->withInput();
     }
 
 
@@ -158,16 +155,12 @@ class AuthController extends Controller
 
     public function unsubscribe(Request $request)
     {
-        return redirect()->route('view.portal');
-
         // TODO fix unsubscribe function
-        $subscription = Cookie::get('subscription')['subscription'];
-        $client = new \App\Subsyz\Client();
-        $result = $client->unsubscribe(subscription('subscription_id'));
-        $subscription['status'] = 'stopped';
-        Cookie::queue(cookie('subscription', ['subscription' => $subscription]));
 
-        if ($result->success == "true") {
+        $client = new \App\Subsyz\Client();
+        $result = $client->unsubscribe(session('subscription')['subscription']);
+
+        if ($result->success) {
             return view('frontend.subscription.unsubscribe');
         } else {
             return redirect()->route('view.portal');

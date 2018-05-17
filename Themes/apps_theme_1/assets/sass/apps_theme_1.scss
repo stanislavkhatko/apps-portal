@@ -649,7 +649,7 @@ a {
     }
 
     &-form {
-      padding: 20px 0;
+      padding: 20px 10px;
       background-color: var(--content-bg-color);
       margin-bottom: 20px;
       min-height: 70vh;
@@ -822,6 +822,20 @@ a {
       }
 
     }
+  }
+
+  &-unsubscribed {
+    margin: 20px 15px;
+    padding: 20px 15px;
+    background-color: var(--content-bg-color);
+    color: var(--content-color);
+    font-size: 24px;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
   }
 
   &-footer {

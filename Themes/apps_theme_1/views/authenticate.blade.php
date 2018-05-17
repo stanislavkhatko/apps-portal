@@ -12,7 +12,7 @@
             {{ csrf_field() }}
             <label for="msisdn" class="app-auth-form__label">@lang('portal.msisdn')</label>
             <input class="app-auth-form__msisdn" autofocus placeholder="@lang('portal.msisdn')" name="msisdn"
-                   value="{{ old('msisdn') }}" required/>
+                   value="{{ old('msisdn') }}" required min="6"/>
 
             @if (session('error'))
                 <div class="app-auth-form__error">
@@ -34,7 +34,7 @@
                     @lang('portal.send_sms')
 
                     <div class="app-auth-form-subscribe__keyword">
-                        {{ session('subscribe')['keyword'] . ' ' . session('subscribe')['token'] }}
+                        {{ session('subscribe')['keyword'] }}
                     </div>
 
                     @lang('portal.to')
