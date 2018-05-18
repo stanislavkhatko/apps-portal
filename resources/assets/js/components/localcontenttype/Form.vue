@@ -603,7 +603,7 @@
                                 this.helpers.spinner.save = false;
                                 this.helpers.spinner.saveAndReturn = false;
                                 if (goBack) this.goBack();
-                                location.reload();
+                                else location.reload();
                             }
                         });
                 } else {
