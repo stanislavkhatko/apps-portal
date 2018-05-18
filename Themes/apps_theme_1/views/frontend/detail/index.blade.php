@@ -8,7 +8,7 @@
         @include('frontend.partials.back')
 
         <div class="app-category-header__title">
-            {{ $item->category->contenttype->label }} - {{ $item->category->label }}
+            {{ $item->localCategory->first()->localContentType->label }} - {{ $item->localCategory->first()->label }}
         </div>
 
     </div>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="app-item-body__category">
-                    {{ $item->category->label }}
+                    {{ $item->localCategory->first()->label }}
                 </div>
 
                 <div class="app-item-body__rating">

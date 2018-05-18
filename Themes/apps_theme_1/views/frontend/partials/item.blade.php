@@ -11,7 +11,7 @@
     <div class="app-category-item--details">
 
         <div class="app-category-item__category">
-            {{ $item->category->label }}
+            {{ $item->localCategory->first()->label }}
         </div>
 
         <div class="app-category-item__rating">
