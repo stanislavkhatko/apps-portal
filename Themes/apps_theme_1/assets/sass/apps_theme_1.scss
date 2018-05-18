@@ -591,6 +591,7 @@ a {
 
       &__description {
         font-size: 14px;
+        margin-bottom: 5px;
       }
 
       &__category {
@@ -701,7 +702,7 @@ a {
         font-weight: lighter;
         padding: 7px 10px;
         max-width: $form-width;
-        min-width: 290px;
+        min-width: 270px;
         cursor: pointer;
         display: block;
         text-align: center;
@@ -793,7 +794,7 @@ a {
         font-weight: lighter;
         padding: 7px 10px;
         max-width: $form-width;
-        min-width: 290px;
+        min-width: 270px;
         cursor: pointer;
         display: block;
         text-align: center;
@@ -880,7 +881,11 @@ a {
   }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 500px) {
+
+  .app-header-logo__link {
+    font-size: 0;
+  }
 
 }
 

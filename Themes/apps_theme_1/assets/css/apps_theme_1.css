@@ -748,6 +748,7 @@ a:active {
 
 .app-item-body__description {
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .app-item-body__category {
@@ -863,7 +864,7 @@ a:active {
   font-weight: lighter;
   padding: 7px 10px;
   max-width: 500px;
-  min-width: 290px;
+  min-width: 270px;
   cursor: pointer;
   display: block;
   text-align: center;
@@ -962,7 +963,7 @@ a:active {
   font-weight: lighter;
   padding: 7px 10px;
   max-width: 500px;
-  min-width: 290px;
+  min-width: 270px;
   cursor: pointer;
   display: block;
   text-align: center;
@@ -1055,6 +1056,12 @@ a:active {
 .app-footer a:hover,
 .app-footer a:active .app-footer a:focus {
   color: var(--footer-color);
+}
+
+@media only screen and (max-width: 500px) {
+  .app-header-logo__link {
+    font-size: 0;
+  }
 }
 
 .app-disclaimer {
