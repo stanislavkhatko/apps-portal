@@ -687,9 +687,9 @@ a:active {
 }
 
 .app-items .app-category-item {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 20%;
-          flex: 0 0 20%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 20%;
+          flex: 1 1 20%;
   border-right: none;
   border-bottom: 1px solid var(--content-secondary-color);
   margin-bottom: 30px;
