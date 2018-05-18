@@ -40,8 +40,8 @@ class AuthController extends Controller
         if ($result && $result->subscription) {
             session([
                 'subscription' => [
-                    'msisdn' => $result->subscription['msisdn'],
-                    'subscription' => $result->subscription['subscription_id'],
+                    'msisdn' => $result->subscription->msisdn,
+                    'subscription' => $result->subscription->subscription_id,
                 ]
             ]);
 
@@ -156,7 +156,6 @@ class AuthController extends Controller
     public function unsubscribe(Request $request)
     {
         // TODO fix unsubscribe function
-
         $client = new \App\Subsyz\Client();
         $result = $client->unsubscribe(session('subscription')['subscription']);
 
