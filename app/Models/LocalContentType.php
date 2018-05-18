@@ -25,7 +25,6 @@ class LocalContentType extends Model
 
     public function getContentItemsAttribute()
     {
-        //return $this->hasManyThrough(ContentItem::class, LocalCategory::class);
         return $this->localCategories->pluck('contentItems')->collapse()->values();
     }
 

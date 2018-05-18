@@ -23,58 +23,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        if ($request->input('msisdn') == env('TEST_NUMBER')) {
-            session([
-                'subscription' => [
-                    'msisdn' => env('TEST_NUMBER'),
-                    'subscription' => 1,
-                ]
-            ]);
-
-            return redirect()->route('view.portal');
-        }
-
-        $client = new \App\Subsyz\Client();
-        $result = $client->validateMsisdn($request->input('msisdn'));
-
-        if ($result && $result->subscription) {
-            session([
-                'subscription' => [
-                    'msisdn' => $result->subscription->msisdn,
-                    'subscription' => $result->subscription->subscription_id,
-                ]
-            ]);
-
-            return redirect()->route('view.portal');
-        }
-
-        if ($result && $result->subscribe) {
-
-            $shortcode = $result->subscribe->shortcode;
-            $keyword = $result->subscribe->keyword;
-            $sms = 'sms:' . $shortcode . ';?&body=' . $keyword;
-
-            $agent = new \Jenssegers\Agent\Agent();
-            if ($agent->isDesktop()) {
-                $sms = '';
-            }
-
-            $subscribe = [
-                'shortcode' => $shortcode,
-                'keyword' => $keyword,
-                'sms' => $sms,
-                'price' => $result->subscribe->price
-            ];
-
-            return redirect('/authenticate')->with([
-                'subscribe' => $subscribe
-            ])->withInput();
-
-        } else if ($result && $result->error) {
-            return redirect('/authenticate')->with(['error' => trans('portal.' . $result->error),])->withInput();
-        }
-
-        return redirect('/authenticate')->with(['error' => 'Something wrong with server',])->withInput();
+        return $this->validateMsisdn($request->input('msisdn'));
     }
 
 
@@ -123,39 +72,62 @@ class AuthController extends Controller
 
     public function validateMsisdn($msisdn)
     {
-        $client = new \App\Subsyz\Client();
-        $result = $client->validateMsisdn($msisdn);
-
-        if ($result && $result->success == 'true') {
-            \Cookie::queue(cookie('subscription', [
-                'subscription' => [
-                    'msisdn' => $result->msisdn,
-                    'status' => $result->status,
-                    'remote_tracking_id' => $result->remote_tracking_id,
-                    'subscription_id' => $result->subscription,
-                    'operator' => $result->operator ?? '',
-                    'confirmed_at' => $result->confirmed_at->date ?? '',
-                    'closed_at' => $result->closed_at ?? '',
-                ]
-            ]));
-
+        if ($msisdn == env('TEST_NUMBER')) {
             session([
                 'subscription' => [
-                    'msisdn' => $msisdn,
-                    'subscription_id' => $result->subscription,
+                    'msisdn' => env('TEST_NUMBER'),
+                    'subscription' => 1,
                 ]
             ]);
 
             return redirect()->route('view.portal');
-        } else {
-//            return response('No valid subscription', 422);
-            return redirect('/authenticate');
         }
+
+        $client = new \App\Subsyz\Client();
+        $result = $client->validateMsisdn($msisdn);
+
+        if ($result && $result->subscription) {
+            session([
+                'subscription' => [
+                    'msisdn' => $result->subscription->msisdn,
+                    'subscription' => $result->subscription->subscription_id,
+                ]
+            ]);
+
+            return redirect()->route('view.portal');
+        }
+
+        if ($result && $result->subscribe) {
+
+            $shortcode = $result->subscribe->shortcode;
+            $keyword = $result->subscribe->keyword;
+            $sms = 'sms:' . $shortcode . ';?&body=' . $keyword;
+
+            $agent = new \Jenssegers\Agent\Agent();
+            if ($agent->isDesktop()) {
+                $sms = '';
+            }
+
+            $subscribe = [
+                'shortcode' => $shortcode,
+                'keyword' => $keyword,
+                'sms' => $sms,
+                'price' => $result->subscribe->price
+            ];
+
+            return redirect('/authenticate')->with([
+                'subscribe' => $subscribe
+            ])->withInput();
+
+        } else if ($result && $result->error) {
+            return redirect('/authenticate')->with(['error' => trans('portal.' . $result->error),])->withInput();
+        }
+
+        return redirect('/authenticate')->with(['error' => 'Something wrong with server',])->withInput();
     }
 
     public function unsubscribe(Request $request)
     {
-        // TODO fix unsubscribe function
         $client = new \App\Subsyz\Client();
         $result = $client->unsubscribe(session('subscription')['subscription']);
 

@@ -1003,6 +1003,7 @@ a:active {
   background-color: var(--content-bg-color);
   color: var(--content-color);
   font-size: 24px;
+  font-weight: lighter;
   min-height: 70vh;
   display: -webkit-box;
   display: -ms-flexbox;

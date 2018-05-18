@@ -63,7 +63,6 @@ class ContentItem extends Model
 
     public function downloadedBy($subscription)
     {
-
         \App\Models\ContentDownload::create([
             'subscription_id' => $subscription['subscription_id'],
             'msisdn' => $subscription['msisdn'],
