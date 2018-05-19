@@ -478,6 +478,7 @@ a {
       }
 
       &__price {
+        display: none;
         color: var(--content-primary-color);
         text-transform: uppercase;
         font-size: 15px;
@@ -605,6 +606,7 @@ a {
       }
 
       &__price {
+        display: none;
         color: var(--content-primary-color);
         text-transform: uppercase;
         font-size: 15px;
