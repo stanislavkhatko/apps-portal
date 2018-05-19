@@ -297,6 +297,7 @@ a {
         transition: opacity 0.5s ease;
         padding: 0;
         width: calc(var(--header-font-size) * 2.2);
+        z-index: 1;
 
         a {
           color: var(--header-color);

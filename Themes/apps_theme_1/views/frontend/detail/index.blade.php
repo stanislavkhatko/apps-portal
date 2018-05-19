@@ -25,7 +25,7 @@
 
             <div class="app-item-body--main">
                 @if(strpos($item->download['link'], '.mp4') !== false && session()->has('subscription'))
-                    <video width="480" style="margin: 0 auto;" controls>
+                    <video width="290" style="margin: 0 auto;" controls poster="{{ $item->preview}}">
                         <source src="{{ $itemUrl }}" type="video/mp4">
                         Your browser does not support HTML5 video.
                     </video>
