@@ -516,7 +516,7 @@ a:active {
 .app-category {
   margin-bottom: 20px;
   background-color: var(--content-bg-color);
-  border-bottom: 1px solid var(--content-secondary-color);
+  border-bottom: 1px solid var(--content-border-color);
   padding-bottom: 20px;
 }
 
@@ -581,7 +581,7 @@ a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-right: 1px solid var(--content-secondary-color);
+  border-right: 1px solid var(--content-border-color);
   padding: 0 8px;
   min-width: 120px;
   max-width: 290px;
