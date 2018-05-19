@@ -254,14 +254,13 @@
         @endif
 
 
-//        var menu = document.getElementById("menu-toggle");
-//        menu.onclick = toggleMenu;
-//        function toggleMenu() {
-//            menu.classList.toggle("open");
-//        }
+        //        var menu = document.getElementById("menu-toggle");
+        //        menu.onclick = toggleMenu;
+        //        function toggleMenu() {
+        //            menu.classList.toggle("open");
+        //        }
 
-        // Bind Click event to the drop down navigation button
-        document.querySelector('.dropdown-trigger').addEventListener('click', function() {
+        document.querySelector('.dropdown-trigger').addEventListener('click', function () {
             this.parentNode.classList.toggle('active')
         }, false);
 
