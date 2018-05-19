@@ -616,6 +616,7 @@ a {
       }
 
       &__rating {
+        margin-bottom: 10px;
         unicode-bidi: bidi-override;
         direction: ltr;
 
@@ -639,6 +640,7 @@ a {
         background-color: var(--button-bg-color);
         border: var(--button-border-size) solid var(--button-border-color);
         padding: 3px 10px;
+        min-width: 200px;
       }
 
     }
