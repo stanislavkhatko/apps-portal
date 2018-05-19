@@ -64,7 +64,7 @@ a {
       transition: .5s ease-in-out;
       cursor: pointer;
       background-color: var(--header-bg-color);
-      margin: 0 10px;
+      margin-right: 10px;
       border: none;
       outline: none;
 
@@ -337,8 +337,10 @@ a {
 
     &-menu {
       display: flex;
-      flex-wrap: wrap;
+      overflow: hidden;
       width: 100%;
+      //overflow-x: hidden;
+      //overflow-y: auto;
       margin: 0 auto;
       padding: 0 15px;
       max-width: var(--content-width);
@@ -885,6 +887,10 @@ a {
 
 
 @media only screen and (max-width: 500px) {
+
+  .app-header__menu-toggle {
+    //display: block;
+  }
 
   .app-header-logo__link {
     font-size: 0;

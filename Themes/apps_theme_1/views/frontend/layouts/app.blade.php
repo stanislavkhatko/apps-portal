@@ -99,7 +99,7 @@
         <div class="app-header--wrapper">
 
             <!-- Collapsed Hamburger -->
-            <button class="app-header__menu-toggle">
+            <button class="app-header__menu-toggle" id="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -253,9 +253,15 @@
         };
         @endif
 
-        // $('.app-header__menu-toggle').click(function () {
-        //     $(this).toggleClass('open');
-        // });
+
+//        var menu = document.getElementById("menu-toggle");
+//
+//        menu.onclick = toggleMenu;
+//
+//        function toggleMenu() {
+//            menu.classList.toggle("open");
+//        }
+
     }());
 </script>
 
