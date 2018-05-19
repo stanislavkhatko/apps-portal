@@ -882,8 +882,8 @@ a:active {
 }
 
 .app-auth-form-subscribe {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 2;
 }
 
 .app-auth-form-subscribe__login {

@@ -29,7 +29,7 @@
                 @endif
 
                 <div class="app-auth-form-subscribe">
-                    <button type="submit" class="app-auth-form-subscribe__login">@lang('portal.login')</button>
+                    <button type="submit" class="app-auth-form-subscribe__login">@lang('portal.login')</button></br>
 
                     @lang('portal.send_sms')
 
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="app-auth-form-price">
-                    @lang('portal.subscription_price') {{ session('subscribe')['price'] }}
+                    @lang('portal.subscription_price') {{ session('subscribe')['price'] }} @lang('portal.' . session('subscribe')['currency'])
                 </div>
 
             @else

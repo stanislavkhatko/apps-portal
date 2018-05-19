@@ -112,7 +112,8 @@ class AuthController extends Controller
                 'shortcode' => $shortcode,
                 'keyword' => $keyword,
                 'sms' => $sms,
-                'price' => $result->subscribe->price
+                'price' => $result->subscribe->price,
+                'currency' => $result->subscribe->currency
             ];
 
             return redirect('/authenticate')->with([
