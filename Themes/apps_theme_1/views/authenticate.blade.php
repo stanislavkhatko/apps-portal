@@ -44,6 +44,10 @@
                     </div>
                 </div>
 
+                <div class="app-auth-form-price">
+                    @lang('portal.subscription_price') {{ session('subscribe')['price'] }}
+                </div>
+
             @else
                 <button type="submit" class="app-auth-form__submit">@lang('portal.login')</button>
             @endif

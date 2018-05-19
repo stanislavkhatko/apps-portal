@@ -1024,6 +1024,11 @@ a:active {
           align-items: center;
 }
 
+.app-disclaimer {
+  padding: 15px;
+  text-align: left;
+}
+
 .app-footer {
   background-color: var(--footer-bg-color);
   color: var(--footer-color);
@@ -1033,6 +1038,7 @@ a:active {
 
 .app-footer--wrapper {
   width: 100%;
+  padding: 0 15px;
   margin: 0 auto;
   max-width: var(--content-width);
   min-height: var(--footer-min-height);
@@ -1066,11 +1072,6 @@ a:active {
   .app-header-logo__link {
     font-size: 0;
   }
-}
-
-.app-disclaimer {
-  padding: 15px;
-  text-align: center;
 }
 
 .app-pricebanner {

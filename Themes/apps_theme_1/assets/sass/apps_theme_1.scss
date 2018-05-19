@@ -747,6 +747,10 @@ a {
           color: var(--content-primary-color);
         }
       }
+
+      &-price {
+
+      }
     }
   }
 
@@ -843,6 +847,11 @@ a {
     align-items: center;
   }
 
+  &-disclaimer {
+    padding: 15px;
+    text-align: left;
+  }
+
   &-footer {
     background-color: var(--footer-bg-color);
     color: var(--footer-color);
@@ -851,6 +860,7 @@ a {
 
     &--wrapper {
       width: 100%;
+      padding: 0 15px;
       margin: 0 auto;
       max-width: var(--content-width);
       min-height: var(--footer-min-height);
@@ -898,10 +908,6 @@ a {
 
 }
 
-.app-disclaimer {
-  padding: 15px;
-  text-align: center;
-}
 
 .app-pricebanner {
   display: block;
