@@ -76,7 +76,7 @@ class AuthController extends Controller
             session([
                 'subscription' => [
                     'msisdn' => env('TEST_NUMBER'),
-                    'subscription' => 1,
+                    'subscription_id' => 1,
                 ]
             ]);
 
@@ -90,7 +90,7 @@ class AuthController extends Controller
             session([
                 'subscription' => [
                     'msisdn' => $result->subscription->msisdn,
-                    'subscription' => $result->subscription->subscription_id,
+                    'subscription_id' => $result->subscription->subscription_id,
                 ]
             ]);
 
@@ -130,7 +130,7 @@ class AuthController extends Controller
     public function unsubscribe(Request $request)
     {
         $client = new \App\Subsyz\Client();
-        $result = $client->unsubscribe(session('subscription')['subscription']);
+        $result = $client->unsubscribe(session('subscription')['subscription_id']);
 
         if ($result->success) {
             return view('frontend.subscription.unsubscribe');

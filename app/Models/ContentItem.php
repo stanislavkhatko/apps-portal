@@ -7,35 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Support\Facades\Storage;
 
-/**
- * App\Models\ContentItem
- *
- * @mixin \Eloquent
- * @property int $id
- * @property int $remote_id
- * @property int $category_id
- * @property string $title
- * @property string $content_artist
- * @property mixed $description
- * @property mixed $preview
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereCategoryId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereContentArtist($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem wherePreview($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereRemoteId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereTitle($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereUpdatedAt($value)
- * @property mixed $info
- * @property array $compatibility
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereCompatibility($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContentItem whereInfo($value)
- * @property-read \App\Models\Category $category
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ContentDownload[] $downloads
- */
 class ContentItem extends Model
 {
     use HasTranslations;
@@ -89,23 +60,6 @@ class ContentItem extends Model
     {
         return $this->title;
     }
-//
-//    public function getPreviewAttribute($value)
-//    {
-//        if (Storage::disk('spaces')->exists($value)) {
-//            return Storage::disk('spaces')->url($value);
-//        }
-//        return $value;
-//    }
-//
-//    public function setPreviewAttribute($value)
-//    {
-//        if ($value && strstr($value, '.com/')) {
-//            $value = substr($value, strpos($value, '.com/') + 5);
-//        }
-//
-//        $this->attributes['preview'] = $value;
-//    }
 
     public function getCreatedAtAttribute($value)
     {
