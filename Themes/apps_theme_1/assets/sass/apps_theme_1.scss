@@ -337,21 +337,23 @@ a {
 
     &-menu {
       display: flex;
+      flex-wrap: wrap;
       width: 100%;
       margin: 0 auto;
+      padding: 0 15px;
       max-width: var(--content-width);
-      overflow: scroll;
-      height: var(--navbar-min-height);
+      min-height: var(--navbar-min-height);
 
       &-item {
         color: var(--navbar-color);
         font-weight: var(--navbar-font-weight);
         font-size: var(--navbar-font-size);
         display: flex;
+        flex: 1 1 80px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        max-width: 100px;
+        max-width: 90px;
         position: relative;
         margin: 0 5px;
         border-bottom: var(--navbar-border-size) solid transparent;
@@ -367,7 +369,6 @@ a {
 
         &__label {
           text-transform: uppercase;
-          width: 100px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
