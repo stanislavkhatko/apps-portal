@@ -365,7 +365,7 @@ a:active {
   position: relative;
 }
 
-.app-header__language:hover > .dropdown-menu {
+.app-header__language.active .dropdown-menu {
   display: block;
   opacity: 1;
 }
@@ -375,11 +375,6 @@ a:active {
   text-transform: uppercase;
   color: var(--header-color);
   font-weight: lighter;
-}
-
-.app-header__language .dropdown-trigger:focus + .dropdown-menu {
-  display: block;
-  opacity: 1;
 }
 
 .app-header__language .dropdown-trigger::after {
@@ -395,7 +390,6 @@ a:active {
 
 .app-header__language .dropdown-menu {
   background-color: var(--header-bg-color);
-  display: inline-block;
   text-align: right;
   position: absolute;
   top: 10px;

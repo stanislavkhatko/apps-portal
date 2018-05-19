@@ -18,7 +18,7 @@ class CreateFeaturedContentItemsTable extends Migration
             $table->unsignedInteger('content_item_id');
             $table->tinyInteger('visible');
             $table->primary(['content_portal_id', 'content_item_id'], 'cp_ci_pk');
-            $table->string('banner');
+            $table->string('banner')->nullable();
         });
     }
 
