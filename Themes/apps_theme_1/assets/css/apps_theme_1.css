@@ -893,6 +893,7 @@ a:active {
   font-weight: lighter;
   padding: 7px 10px;
   max-width: 500px;
+  text-align: center;
 }
 
 .app-auth-form__submit {
