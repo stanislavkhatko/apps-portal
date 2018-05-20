@@ -899,18 +899,25 @@ a {
       align-items: center;
     }
 
-    & a {
-      font-weight: var(--footer-font-weight);
-      color: var(--footer-color);
-      font-size: var(--footer-font-size);
+    //& a {
+    //  font-weight: var(--footer-font-weight);
+    //  color: var(--footer-color);
+    //  font-size: var(--footer-font-size);
+    //
+    //  &:hover, &:active &:focus {
+    //    color: var(--footer-color);
+    //  }
+    //}
 
-      &:hover, &:active &:focus {
-        color: var(--footer-color);
-      }
+    &-pages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
     }
 
     &__page {
-
+      padding: 10px 15px;
     }
 
     &__cancel {
@@ -918,7 +925,7 @@ a {
     }
 
     &__copyright {
-
+      font-weight: var(--footer-font-weight);
     }
 
   }

@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- TODO make styling -->
-{{--    @include('frontend.partials.flashbanner')--}}
+    {{--    @include('frontend.partials.flashbanner')--}}
 
     @include('frontend.partials.featured')
 

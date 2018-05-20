@@ -8,11 +8,13 @@
 
     <div class="app-category-items">
         @if (Request::segment(3) == 'categories')
-            @foreach($localContentType->contentItems()->orderBy('rating', 'desc')->take(5)->get() as $item)
+            {{ dump(1) }}
+            @foreach($localContentType->contentItems()->inRandomOrder()->take(5)->get() as $item)
                 @include('frontend.partials.item', $item)
             @endforeach
         @else
-            @foreach($localContentType->localCategories()->first()->contentItems()->orderBy('rating', 'desc')->take(5)->get() as $item)
+{{--            {{ dd($localContentType->contentItems()->get()) }}--}}
+            @foreach($localContentType->localCategories()->first()->contentItems()->inRandomOrder()->take(5)->get() as $item)
                 @include('frontend.partials.item', $item)
             @endforeach
         @endif

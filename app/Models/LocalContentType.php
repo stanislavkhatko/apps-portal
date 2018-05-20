@@ -18,6 +18,13 @@ class LocalContentType extends Model
         return $this->hasMany(LocalCategory::class);
     }
 
+    public function contentItems()
+    {
+//        return $this->hasMany(LocalCategory::class);
+
+        return $this->hasManyThrough(ContentItem::class, LocalCategory::class, 'local_category_content_item', 'local_category_id', 'local_category_content_item', 'id');
+    }
+
     public function portals()
     {
         return $this->belongsToMany(ContentPortal::class);
@@ -32,7 +39,7 @@ class LocalContentType extends Model
     {
         return date("d/m/Y", strtotime($value));
     }
-    
+
     public function getUpdatedAtAttribute($value)
     {
         return date("d/m/Y", strtotime($value));

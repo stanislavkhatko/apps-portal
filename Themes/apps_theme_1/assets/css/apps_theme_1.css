@@ -1094,15 +1094,23 @@ a:active {
           align-items: center;
 }
 
-.app-footer a {
-  font-weight: var(--footer-font-weight);
-  color: var(--footer-color);
-  font-size: var(--footer-font-size);
+.app-footer-pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.app-footer a:hover,
-.app-footer a:active .app-footer a:focus {
-  color: var(--footer-color);
+.app-footer__page {
+  padding: 10px 15px;
+}
+
+.app-footer__copyright {
+  font-weight: var(--footer-font-weight);
 }
 
 @media only screen and (max-width: 500px) {
