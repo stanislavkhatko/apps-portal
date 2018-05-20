@@ -149,7 +149,7 @@ class ContentPortalController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $path = $file->hashName('public/temp');
-            $image = Image::make($file)->fit(600, 300, function ($constraint) {
+            $image = Image::make($file)->fit(600, 400, function ($constraint) {
                 $constraint->aspectRatio();
             });
 

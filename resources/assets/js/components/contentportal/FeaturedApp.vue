@@ -117,7 +117,7 @@
                                     :url="'/admin/api/portal/featured-app/' + portalId + '/upload-banner'"
 	                                :useFontAwesome="true"
 	                                :max-number-of-files=1
-	                                :thumbnailHeight=300
+	                                :thumbnailHeight=400
 	                                :thumbnailWidth=600
 	                                v-on:vdropzone-success="uploadFeaturedAppBanner">
 	                                <input type="hidden" name="_token" :value="token">
