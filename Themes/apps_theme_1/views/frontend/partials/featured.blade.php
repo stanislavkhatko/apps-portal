@@ -6,7 +6,7 @@
         <div class="app-featured-items">
             @foreach($portal->activeFeaturedItems as $item)
                 @if($item->pivot->banner)
-                    <a href="{{ route('view.contentitem', [$item]) }}" class="app-featured-item">
+                    <a href="{{ $item->download['link'] }}" class="app-featured-item">
                         <img src="{{ $item->pivot->banner }}" class="app-featured-item__banner">
                     </a>
                 @else
