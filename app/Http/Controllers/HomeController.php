@@ -26,7 +26,7 @@ class HomeController extends Controller
 
     public function viewPortal()
     {
-//        return Config::get('currentPortal')->disclaimers;
+//        return Config::get('currentPortal')->activeFeaturedItems;
         return view('frontend.index', ['portal' => Config::get('currentPortal')]);
     }
 

@@ -86,6 +86,11 @@ class ContentPortal extends Model
         return $this->belongsToMany(ContentItem::class, 'featured_items')->withPivot('banner', 'visible');
     }
 
+    public function activeFeaturedItems()
+    {
+        return $this->belongsToMany(ContentItem::class, 'featured_items')->wherePivot('visible', 1)->withPivot('banner', 'visible');
+    }
+
     public function pages()
     {
         return $this->hasMany(Page::class);
@@ -130,10 +135,10 @@ class ContentPortal extends Model
     {
         $iconLang = $value;
 
-        if($value == 'en') $iconLang = 'gb';
-        if($value == 'el') $iconLang = 'gr';
-        if($value == 'sr') $iconLang = 'rs';
-        if($value == 'uk') $iconLang = 'ua';
+        if ($value == 'en') $iconLang = 'gb';
+        if ($value == 'el') $iconLang = 'gr';
+        if ($value == 'sr') $iconLang = 'rs';
+        if ($value == 'uk') $iconLang = 'ua';
 
         return $iconLang;
     }

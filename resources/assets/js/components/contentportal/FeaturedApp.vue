@@ -99,7 +99,7 @@
                     <hr>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Upload featured banner<br />(800x300 px)</label>       
+                        <label class="col-sm-2 control-label">Upload featured banner<br />(600x300 px)</label>
                         <div class="col-sm-10">  
 
                         	<template v-if="featuredModal.featuredApp.banner">
@@ -118,7 +118,7 @@
 	                                :useFontAwesome="true"
 	                                :max-number-of-files=1
 	                                :thumbnailHeight=300
-	                                :thumbnailWidth=800
+	                                :thumbnailWidth=600
 	                                v-on:vdropzone-success="uploadFeaturedAppBanner">
 	                                <input type="hidden" name="_token" :value="token">
 	                            </dropzone>

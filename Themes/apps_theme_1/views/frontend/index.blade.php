@@ -5,7 +5,6 @@
     <!-- TODO make styling -->
 {{--    @include('frontend.partials.flashbanner')--}}
 
-    <!-- TODO make styling -->
     @include('frontend.partials.featured')
 
     @foreach($portal->localContentTypes as $localContentType)

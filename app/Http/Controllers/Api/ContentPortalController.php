@@ -146,20 +146,10 @@ class ContentPortalController extends Controller
 
     public function uploadFeateredAppBanner(Request $request, $id)
     {
-//        $file = $request->file('file');
-//        $path = $file->hashName('public/featured');
-//        $image = Image::make($file);
-//        $image->fit(800, 300, function ($constraint) {
-//            $constraint->aspectRatio();
-//        });
-//
-//        Storage::put($path, (string) $image->encode());
-//        return substr($path, 7);
-
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $path = $file->hashName('public/temp');
-            $image = Image::make($file)->fit(800, 300, function ($constraint) {
+            $image = Image::make($file)->fit(600, 300, function ($constraint) {
                 $constraint->aspectRatio();
             });
 
