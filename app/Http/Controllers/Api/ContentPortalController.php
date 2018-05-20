@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ContentPortal;
 use App\Models\ContentItem;
-use App\models\FeaturedItem;
+use App\Services\Traits\StorageHelper;
 use App\models\Page;
-use Image;
-use Storage;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ContentPortalController extends Controller
 {
+    use StorageHelper;
+
     public function show(ContentPortal $portal)
     {
         return $portal;
@@ -22,7 +24,7 @@ class ContentPortalController extends Controller
     public function store(Request $request)
     {
         $form = $request->form;
-        
+
         $form['languages'] = $form['languagesShort']; // e.g. ['en', 'pt']
         $form['domain'] = $form['subdomain'] . '.' . $form['host'];
         $form['localContentTypes'] = array_column($form['localContentTypes'], "value"); // get id's
@@ -42,9 +44,9 @@ class ContentPortalController extends Controller
         $featuredItems = collect();
         foreach ($request->form['featuredApps'] as $featuredItem) {
             $featuredItems->put(
-                $featuredItem['content_item_id'], 
+                $featuredItem['content_item_id'],
                 [
-                    'banner' => $featuredItem['banner'], 
+                    'banner' => $featuredItem['banner'],
                     'visible' => $featuredItem['visible']
                 ]
             );
@@ -63,7 +65,7 @@ class ContentPortalController extends Controller
             $cp->pages()->updateOrCreate(['id' => $page['id']], $page);
         }
 
-        
+
         return response()->json(['success' => true, 'portal' => $cp]);
     }
 
@@ -71,9 +73,9 @@ class ContentPortalController extends Controller
     public function update(Request $request, $id)
     {
         $form = $request->form;
-        
+
         $form['languages'] = $form['languagesShort']; // e.g. ['en', 'pt']
-        $form['domain'] = $form['subdomain'].'.'.$form['host']; 
+        $form['domain'] = $form['subdomain'] . '.' . $form['host'];
         $form['localContentTypes'] = array_column($form['localContentTypes'], "value"); // get id's
         $form['default_language'] = $form['default_language']['value'];
 
@@ -91,16 +93,16 @@ class ContentPortalController extends Controller
         $featuredItems = collect();
         foreach ($request->form['featuredApps'] as $featuredItem) {
             $featuredItems->put(
-                $featuredItem['content_item_id'], 
+                $featuredItem['content_item_id'],
                 [
-                    'banner' => $featuredItem['banner'], 
+                    'banner' => $featuredItem['banner'],
                     'visible' => $featuredItem['visible']
                 ]
             );
         }
         $cp->featuredItems()->sync($featuredItems);
 
-        
+
         /*** delete pages which are not being used anymore ***/
         $pagesIDs = array_merge(array_pluck($request->form['pages'], 'id'), array_pluck($request->form['staticPages'], 'id'));
         $pagesToBeDeleted = Page::where('content_portal_id', $id)->whereNotIn('id', $pagesIDs)->delete();
@@ -117,12 +119,12 @@ class ContentPortalController extends Controller
             $cp->pages()->updateOrCreate(['id' => $page['id']], $page);
         }
 
-        
+
         return response()->json(['success' => true, 'portal' => $pagesToBeDeleted]);
     }
 
 
-    public function searchContentItems(Request $request) 
+    public function searchContentItems(Request $request)
     {
         $items = ContentItem::whereRaw('LOWER(title) LIKE ?', '%' . $request->search . '%')->limit(14)->get();
         return $items;
@@ -142,24 +144,35 @@ class ContentPortalController extends Controller
     }
 
 
-    public function uploadFeateredAppBanner(Request $request)
+    public function uploadFeateredAppBanner(Request $request, $id)
     {
-        $file = $request->file('file');
+//        $file = $request->file('file');
+//        $path = $file->hashName('public/featured');
+//        $image = Image::make($file);
+//        $image->fit(800, 300, function ($constraint) {
+//            $constraint->aspectRatio();
+//        });
+//
+//        Storage::put($path, (string) $image->encode());
+//        return substr($path, 7);
 
-        $path = $file->hashName('public/featured');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $path = $file->hashName('public/temp');
+            $image = Image::make($file)->fit(800, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            });
 
-        $image = Image::make($file);
+            Storage::put($path, (string)$image->encode());
 
-        $image->fit(800, 300, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-
-        Storage::put($path, (string) $image->encode());
-
-        return substr($path, 7); 
+            return Storage::url($this->moveItemToStorage(
+                Storage::url($path),
+                $request->file('file')->getClientOriginalName(),
+                'public/featured-app-banners/' . $id));
+        }
     }
 
-    public function fetchPortals() 
+    public function fetchPortals()
     {
         return response()->json(['success' => true, 'portals' => ContentPortal::all()]);
     }

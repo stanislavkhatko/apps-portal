@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::get('/portal/contentitems/{search}', ['uses' => 'ContentPortalController@searchContentItems']);
         Route::get('/portal/contentitem/{id}', ['uses' => 'ContentPortalController@fetchContentItem']);
         Route::get('/portal/{portal}', ['uses' => 'ContentPortalController@show']);
-        Route::post('/portal/featured-app/upload', ['uses' => 'ContentPortalController@uploadFeateredAppBanner']); 
+        Route::post('/portal/featured-app/{id}/upload-banner', ['uses' => 'ContentPortalController@uploadFeateredAppBanner']);
         Route::post('/portal', ['uses' => 'ContentPortalController@store']);
         Route::patch('/portal/{id}', ['uses' => 'ContentPortalController@update']); 
 

@@ -8,6 +8,7 @@
         </div>
         <!-- new button -->
 
+
         <table class="table table-borderless m-b-none table_pages" v-if="form.featuredApps.length > 0">
             <thead>
                 <tr>
@@ -24,7 +25,7 @@
                     </td>
                     <td>
                     	<template v-if="app.banner">
-                    		<img :src="'/storage/' + app.banner" class="img-responsive" />
+                    		<img :src="app.banner" class="img-responsive" />
                     	</template>
                     	<template v-else>
                     		<i>(No banner)</i>
@@ -102,7 +103,7 @@
                         <div class="col-sm-10">  
 
                         	<template v-if="featuredModal.featuredApp.banner">
-                        		<img :src="'/storage/' + featuredModal.featuredApp.banner" class="img-responsive">
+                        		<img :src="featuredModal.featuredApp.banner" class="img-responsive">
                         		<div class="text-center margin_top_10">
                         			<button class="btn btn-danger min_width_100" @click="featuredModal.featuredApp.banner = ''">
                         				Remove banner
@@ -112,8 +113,8 @@
 
                         	<template v-else>
 	                            <dropzone 
-	                                id="myVueDropzone" 
-	                                url="/admin/api/portal/featured-app/upload" 
+	                                id="myVueDropzone"
+                                    :url="'/admin/api/portal/featured-app/' + portalId + '/upload-banner'"
 	                                :useFontAwesome="true"
 	                                :max-number-of-files=1
 	                                :thumbnailHeight=300
@@ -159,6 +160,7 @@ export default {
     props: {
         form: {},
         featuredModal: {},
+        portalId: {}
     },
 
     data() {

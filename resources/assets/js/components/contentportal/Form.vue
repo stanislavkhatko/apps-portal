@@ -109,11 +109,12 @@
                         <!-- hr -->
 
 
-                        <div class="form-group margin_top_20">
+                        <div class="form-group margin_top_20" v-if="id">
                             <label class="col-sm-2 control-label">Featured apps</label>
                             <div class="col-sm-10">
 
                                 <featured-app
+                                        :portalId="id"
                                         :form="form"
                                         :featuredModal="featuredModal">
                                 </featured-app>

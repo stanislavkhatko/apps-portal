@@ -391,13 +391,34 @@ a {
   }
 
   .app-featured {
-    padding: 0 15px;
-    display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 20px;
+    background-color: var(--content-bg-color);
+    border-bottom: 1px solid var(--content-border-color);
+    padding: 10px 0 20px;
+
+    &-title {
+      padding: 0 15px;
+      font-size: 20px;
+      color: var(--content-color);
+      font-weight: lighter;
+    }
+
+    &-items {
+      padding: 0 7px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
 
     &-item {
-      display: block;
-      margin: 20px auto 10px;
+      flex: 1 1 290px;
+      padding: 0 8px;
+      margin: 10px 0;
+
+      &__banner {
+        width: 100%;
+
+      }
     }
   }
 
@@ -413,7 +434,6 @@ a {
       &__title {
         font-size: 15px;
         color: var(--content-secondary-color);
-        text-transform: uppercase;
         padding: 10px 0;
       }
     }
@@ -422,14 +442,12 @@ a {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      font-weight: bold;
       padding: 10px 15px;
       font-size: 20px;
 
       &__link {
         color: var(--content-color);
         font-weight: lighter;
-        text-transform: uppercase;
       }
 
     }
@@ -457,8 +475,7 @@ a {
         border: none
       }
 
-      &--main {
-      }
+      &--main {}
       &--details {
         width: 100%;
       }
@@ -500,7 +517,7 @@ a {
           display: inline-block;
           position: relative;
           width: 1.1em;
-          color: gold;
+          color: var(--content-secondary-color);
 
           &.active:before {
             content: "\2605";
@@ -631,7 +648,7 @@ a {
           display: inline-block;
           position: relative;
           width: 1.1em;
-          color: gold;
+          color: var(--content-secondary-color);
 
           &.active:before {
             content: "\2605";
