@@ -20,9 +20,13 @@ class LocalContentType extends Model
 
     public function contentItems()
     {
+        // TODO relation
 //        return $this->hasMany(LocalCategory::class);
 
-        return $this->hasManyThrough(ContentItem::class, LocalCategory::class, 'local_category_content_item', 'local_category_id', 'local_category_content_item', 'id');
+        // 'local_category_content_item', 'local_category_id', 'local_category_content_item', 'id'
+
+
+//        return $this->hasMany(ContentItem::class, 'id', 'local_category_content_item');
     }
 
     public function portals()
