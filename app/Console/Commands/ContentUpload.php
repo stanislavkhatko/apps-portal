@@ -45,6 +45,7 @@ class ContentUpload extends Command
             // Take only image files from listed directories
             // Files stored as '/public/cotnent-item-images/2/name.png'
             if (strpos($imageFile, '/content-item-images/') !== false ||
+                strpos($imageFile, '/featured-app-banners/') !== false ||
                 strpos($imageFile, '/local-content-type-images/') !== false ||
                 strpos($imageFile, '/navbar-images/') !== false ||
                 strpos($imageFile, '/footer-images/') !== false) {
