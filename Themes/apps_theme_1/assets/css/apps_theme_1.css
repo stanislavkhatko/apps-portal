@@ -831,6 +831,11 @@ a:active {
   min-width: 200px;
 }
 
+.app .app-page {
+  padding: 30px 15px;
+  font-size: 14px;
+}
+
 .app-auth {
   padding: 10px 15px;
 }
@@ -1062,7 +1067,8 @@ a:active {
 }
 
 .app-disclaimer {
-  padding: 15px;
+  padding: 30px 15px;
+  font-size: 14px;
   text-align: left;
 }
 
@@ -1106,10 +1112,21 @@ a:active {
 }
 
 .app-footer__page {
-  padding: 10px 15px;
+  padding: 5px 15px;
+  font-weight: var(--footer-font-weight);
+  color: var(--footer-color);
+  font-size: var(--footer-font-size);
+}
+
+.app-footer__cancel {
+  padding: 5px 15px;
+  font-weight: var(--footer-font-weight);
+  color: var(--footer-color);
+  font-size: var(--footer-font-size);
 }
 
 .app-footer__copyright {
+  padding: 5px 0;
   font-weight: var(--footer-font-weight);
 }
 
@@ -1122,9 +1139,5 @@ a:active {
 .app-pricebanner {
   display: block;
   text-decoration: none;
-}
-
-.app-page {
-  padding: 30px 15px;
 }
 

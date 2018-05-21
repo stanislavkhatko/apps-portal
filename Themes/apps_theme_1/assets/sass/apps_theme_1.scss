@@ -21,8 +21,12 @@ a {
 }
 
 @keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .app {
@@ -475,7 +479,8 @@ a {
         border: none
       }
 
-      &--main {}
+      &--main {
+      }
       &--details {
         width: 100%;
       }
@@ -668,6 +673,11 @@ a {
       }
 
     }
+  }
+
+  .app-page {
+    padding: 30px 15px;
+    font-size: 14px;
   }
 
   &-auth {
@@ -877,7 +887,8 @@ a {
   }
 
   &-disclaimer {
-    padding: 15px;
+    padding: 30px 15px;
+    font-size: 14px;
     text-align: left;
   }
 
@@ -899,38 +910,33 @@ a {
       align-items: center;
     }
 
-    //& a {
-    //  font-weight: var(--footer-font-weight);
-    //  color: var(--footer-color);
-    //  font-size: var(--footer-font-size);
-    //
-    //  &:hover, &:active &:focus {
-    //    color: var(--footer-color);
-    //  }
-    //}
-
     &-pages {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-
     }
 
     &__page {
-      padding: 10px 15px;
+      padding: 5px 15px;
+      font-weight: var(--footer-font-weight);
+      color: var(--footer-color);
+      font-size: var(--footer-font-size);
     }
 
     &__cancel {
-
+      padding: 5px 15px;
+      font-weight: var(--footer-font-weight);
+      color: var(--footer-color);
+      font-size: var(--footer-font-size);
     }
 
     &__copyright {
+      padding: 5px 0;
       font-weight: var(--footer-font-weight);
     }
 
   }
 }
-
 
 @media only screen and (max-width: 500px) {
 
@@ -939,10 +945,6 @@ a {
   }
 
 }
-
-
-
-
 
 .app-pricebanner {
   display: block;
@@ -953,8 +955,5 @@ a {
   //padding: 15px;
 }
 
-.app-page {
-  padding: 30px 15px;
-}
 
 
