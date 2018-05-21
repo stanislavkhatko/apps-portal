@@ -13,6 +13,6 @@
         @include('frontend.partials.category', $localContentType)
     @endforeach
 
-    @include('frontend.disclaimer')
+    @include('frontend.partials.disclaimer')
 
 @endsection

@@ -33,13 +33,13 @@
                                 
                                 <td :class="!page.visible ? 'line_through' : ''">
                                     
-                                    <span v-if="page.type == 'disclaimer'">
-                                        Disclaimer (bottom page)
+                                    <span v-if="page.type === 'disclaimer'">
+                                        Disclaimer section (authentication)
                                     </span> 
-                                    <span v-if="page.type == 'price-banner'">
-                                        Price banner (header)
+                                    <span v-if="page.type === 'price-banner'">
+                                        Price section (authentication)
                                     </span> 
-                                    <span v-if="page.type == 'slider'">
+                                    <span v-if="page.type === 'slider'">
                                         Newsflash slider (header)
                                     </span> 
 

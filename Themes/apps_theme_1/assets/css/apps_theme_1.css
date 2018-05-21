@@ -1066,12 +1066,6 @@ a:active {
           align-items: center;
 }
 
-.app-disclaimer {
-  padding: 30px 15px;
-  font-size: 14px;
-  text-align: left;
-}
-
 .app-footer {
   background-color: var(--footer-bg-color);
   color: var(--footer-color);

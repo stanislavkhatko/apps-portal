@@ -29,7 +29,8 @@
                 @endif
 
                 <div class="app-auth-form-subscribe">
-                    <button type="submit" class="app-auth-form-subscribe__login">@lang('portal.login')</button></br>
+                    <button type="submit" class="app-auth-form-subscribe__login">@lang('portal.login')</button>
+                    </br>
 
                     @lang('portal.send_sms')
 
@@ -45,7 +46,14 @@
                 </div>
 
                 <div class="app-auth-form-price">
-                    @lang('portal.subscription_price') {{ session('subscribe')['price'] }} @lang('portal.' . session('subscribe')['currency'])
+
+                    @include('frontend.partials.pricebanner')
+
+                    {{--                    @lang('portal.subscription_price') {{ session('subscribe')['price'] }} @lang('portal.' . session('subscribe')['currency'])--}}
+                </div>
+
+                <div class="app-auth-form-disclaimer">
+                    @include('frontend.partials.disclaimer')
                 </div>
 
             @else

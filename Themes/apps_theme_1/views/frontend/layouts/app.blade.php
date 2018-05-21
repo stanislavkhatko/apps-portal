@@ -70,16 +70,6 @@
             --footer-min-height: {{ $footer['style']['height'] }}px;
         }
 
-        .app-pricebanner {
-            background-color: {{ $header['style']['background_color']['hex'] }};
-            text-align: {{ $header['style']['text_align'] }};
-            color: {{ $header['style']['color']['hex'] }};
-            font-size: {{ $header['style']['font_size'] }}px;
-            font-weight: {{ $header['style']['font_weight'] }};
-            border-bottom: {{ $header['style']['border_bottom_size'] }}px solid{{ $header['style']['border_color']['hex'] ?? 'transparent' }};
-            min-height: {{ $header['style']['height'] }}px;
-        }
-
     </style>
 
     <link rel="stylesheet" href="{{ themes('css/apps_theme_1.css') }}">
@@ -90,9 +80,6 @@
 <body>
 
 <div class="app">
-
-    <!-- TODO make styling -->
-    {{--    @include('frontend.partials.pricebanner')--}}
 
     <header class="app-header">
 

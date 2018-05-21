@@ -13,6 +13,4 @@
 
     @endforeach
 
-    @include('frontend.disclaimer')
-
 @endsection

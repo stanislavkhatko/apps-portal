@@ -86,6 +86,4 @@
 
     </div>
 
-    @include('frontend.disclaimer')
-
 @endsection
