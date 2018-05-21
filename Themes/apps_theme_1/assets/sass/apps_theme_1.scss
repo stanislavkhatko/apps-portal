@@ -683,6 +683,8 @@ a {
   &-auth {
     padding: 10px 15px;
 
+    $form-width: 500px;
+
     &__title {
       font-size: 15px;
       color: var(--content-secondary-color);
@@ -700,8 +702,6 @@ a {
       justify-content: center;
       text-align: center;
       align-items: center;
-
-      $form-width: 500px;
 
       &__error {
         border: 1px solid var(--content-primary-color);
@@ -758,6 +758,7 @@ a {
       &-subscribe {
         font-size: 15px;
         line-height: 2;
+        max-width: $form-width;
 
         &__login {
           text-decoration: underline;
@@ -788,7 +789,11 @@ a {
       }
 
       &-price {
+        max-width: $form-width;
+      }
 
+      &-disclaimer {
+        max-width: $form-width;
       }
     }
   }

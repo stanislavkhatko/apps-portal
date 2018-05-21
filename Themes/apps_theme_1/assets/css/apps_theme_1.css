@@ -926,6 +926,7 @@ a:active {
 .app-auth-form-subscribe {
   font-size: 15px;
   line-height: 2;
+  max-width: 500px;
 }
 
 .app-auth-form-subscribe__login {
@@ -953,6 +954,14 @@ a:active {
   text-transform: uppercase;
   font-weight: bold;
   color: var(--content-primary-color);
+}
+
+.app-auth-form-price {
+  max-width: 500px;
+}
+
+.app-auth-form-disclaimer {
+  max-width: 500px;
 }
 
 .app-unsubscribe__title {
