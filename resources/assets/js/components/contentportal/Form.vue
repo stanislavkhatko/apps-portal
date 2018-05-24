@@ -46,6 +46,16 @@
                     </div>
                     <!-- domain section -->
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Analytic tag</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Type analytic tag"
+                                   v-model="form.analytic_tag">
+                        </div>
+                    </div>
+                    <!-- Gtag analitycs -->
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Languages</label>
@@ -315,6 +325,7 @@
                     title: '',
                     subdomain: '',
                     host: '',
+                    analytic_tag: '',
                     default_language: '',
                     localContentTypes: [],
                     languages: [],
@@ -352,6 +363,7 @@
                         this.form.title = portal.title;
                         this.form.host = portal.host;
                         this.form.languagesShort = response.data.languages;
+                        this.form.analytic_tag = portal.analytic_tag;
                         this.form.subdomain = portal.subdomain;
                         this.form.offer_url = portal.offer_url;
                         this.form.exit_url = portal.exit_url;
