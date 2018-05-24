@@ -827,8 +827,10 @@ a:active {
   color: var(--button-color);
   background-color: var(--button-bg-color);
   border: var(--button-border-size) solid var(--button-border-color);
-  padding: 3px 10px;
+  font-weight: lighter;
+  padding: 7px 10px;
   min-width: 200px;
+  text-align: center;
 }
 
 .app .app-page {
