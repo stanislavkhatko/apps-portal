@@ -85,7 +85,7 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', {{ Config::get('currentPortal')->analytic_tag }});
+        gtag('config', '{{ Config::get('currentPortal')->analytic_tag }}');
     </script>
 
 <body>
