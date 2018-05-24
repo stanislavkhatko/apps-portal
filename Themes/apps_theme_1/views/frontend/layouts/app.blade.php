@@ -77,6 +77,17 @@
     <style type="text/css">
         {!! Config::get('currentPortal')->custom_css  !!}
     </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ Config::get('currentPortal')->analytic_tag }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', {{ Config::get('currentPortal')->analytic_tag }});
+    </script>
+
 <body>
 
 <div class="app">
