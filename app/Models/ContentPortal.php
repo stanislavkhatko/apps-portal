@@ -53,7 +53,7 @@ class ContentPortal extends Model
 
     protected $with = ['featuredItems', 'localContentTypes', 'pages'];
 
-    protected $fillable = ['title', 'subdomain', 'host', 'domain', 'default_language', 'languages', 'offer_url', 'exit_url', 'options'];
+    protected $fillable = ['title', 'subdomain', 'host', 'domain', 'analytic_tag', 'default_language', 'languages', 'offer_url', 'exit_url', 'options'];
 
     public function sluggable()
     {
