@@ -37,6 +37,7 @@ Route::group(['middleware' => ['currentPortal', 'locale']], function() {
     Route::get('/contenttype/{localContentType}', ['as' => 'view.contenttype', 'uses' => 'HomeController@showContentType']);
     Route::get('/contenttype/{localContentType}/categories', ['as' => 'view.categories', 'uses' => 'HomeController@showCategories']);
     Route::get('/contenttype/{localContentType}/categories/{localCategory}', ['as' => 'view.category', 'uses' => 'HomeController@showCategory']);
+    Route::get('/play-trial/{contentItem}', ['as' => 'play-trial.contentitem', 'uses' => 'HomeController@playTrial']);
 });
 
 Route::group(['middleware' => 'portal'], function() {
