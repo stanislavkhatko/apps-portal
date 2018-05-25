@@ -785,6 +785,7 @@ a:active {
 .app-item-body__description {
   font-size: 14px;
   margin-bottom: 5px;
+  line-height: 20px;
 }
 
 .app-item-body__category {

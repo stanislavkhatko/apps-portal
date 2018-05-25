@@ -11,7 +11,7 @@
         <form action="/authenticate" method="post" class="app-auth-form">
             {{ csrf_field() }}
             <label for="msisdn" class="app-auth-form__label">@lang('portal.msisdn')</label>
-            <input class="app-auth-form__msisdn" autofocus placeholder="@lang('portal.msisdn')" name="msisdn"
+            <input class="app-auth-form__msisdn" autofocus placeholder="@lang('portal.msisdn_format')" name="msisdn"
                    value="{{ old('msisdn') }}" required min="6"/>
 
             @if (session('error'))
@@ -49,7 +49,6 @@
 
                     @include('frontend.partials.pricebanner')
 
-                    {{--                    @lang('portal.subscription_price') {{ session('subscribe')['price'] }} @lang('portal.' . session('subscribe')['currency'])--}}
                 </div>
 
                 <div class="app-auth-form-disclaimer">
