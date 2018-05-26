@@ -26,7 +26,7 @@ class ContentPortalController extends Controller
         $form = $request->form;
 
         $form['languages'] = $form['languagesShort']; // e.g. ['en', 'pt']
-        $form['domain'] = $form['subdomain'] . '.' . $form['host'];
+        $form['domain'] = $form['subdomain'] ? $form['subdomain'] . '.' . $form['host'] : $form['host'];
         $form['localContentTypes'] = array_column($form['localContentTypes'], "value"); // get id's
         $form['default_language'] = $form['default_language']['value'];
 
@@ -75,7 +75,7 @@ class ContentPortalController extends Controller
         $form = $request->form;
 
         $form['languages'] = $form['languagesShort']; // e.g. ['en', 'pt']
-        $form['domain'] = $form['subdomain'] . '.' . $form['host'];
+        $form['domain'] = $form['subdomain'] ? $form['subdomain'] . '.' . $form['host'] : $form['host'];
         $form['localContentTypes'] = array_column($form['localContentTypes'], "value"); // get id's
         $form['default_language'] = $form['default_language']['value'];
 
