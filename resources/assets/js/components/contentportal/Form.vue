@@ -56,6 +56,16 @@
                     </div>
                     <!-- Gtag analitycs -->
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Facebook pixel</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Type fb pixel"
+                                   v-model="form.facebook_pixel">
+                        </div>
+                    </div>
+                    <!-- Gtag analitycs -->
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Languages</label>
@@ -326,6 +336,7 @@
                     subdomain: '',
                     host: '',
                     analytic_tag: '',
+                    facebook_pixel: '',
                     default_language: '',
                     localContentTypes: [],
                     languages: [],
@@ -364,6 +375,7 @@
                         this.form.host = portal.host;
                         this.form.languagesShort = response.data.languages;
                         this.form.analytic_tag = portal.analytic_tag;
+                        this.form.facebook_pixel = portal.facebook_pixel;
                         this.form.subdomain = portal.subdomain;
                         this.form.offer_url = portal.offer_url;
                         this.form.exit_url = portal.exit_url;
