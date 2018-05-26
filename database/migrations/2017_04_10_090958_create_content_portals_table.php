@@ -16,7 +16,7 @@ class CreateContentPortalsTable extends Migration
         Schema::create('content_portals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('subdomain')->nullable();
             $table->string('analytic_tag')->nullable();
             $table->string('facebook_pixel')->nullable();
