@@ -72,7 +72,6 @@ class ContentPortalController extends Controller
 
     public function update(Request $request, $id)
     {
-        return 1;
         $form = $request->form;
 
         $form['languages'] = $form['languagesShort']; // e.g. ['en', 'pt']
