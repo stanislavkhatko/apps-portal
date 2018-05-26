@@ -60,6 +60,20 @@ class ContentPortalThemeController extends Controller
                 'public/navbar-images/' . $id));
     }
 
+    public function uploadBodyImage(Request $request, $id)
+    {
+//        if ($request->hasFile('file')) {
+//            $path = $request->file('file')->store('public/temp');
+//            return Storage::disk('spaces')->url($this->moveItemToCloud($path, $id, 'navbar-images'));
+//        }
+
+        if($request->hasFile('file'))
+            return Storage::url($this->moveItemToStorage(
+                $request->file('file')->store('public/temp'),
+                $request->file('file')->getClientOriginalName(),
+                'public/body-images/' . $id));
+    }
+
     public function uploadContentTypeHeaderImage(Request $request)
     {
         $path = Storage::put('public/content-type/headers', $request->file('file'));

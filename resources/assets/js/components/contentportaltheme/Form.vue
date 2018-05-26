@@ -293,6 +293,40 @@
                                                         :model="theme.components.body.style">
                                                 </form-input>
 
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">
+                                                        Background image<br>
+                                                        <small><i>(image will be repeated on background)</i></small>
+                                                    </label>
+
+                                                    <div class="col-sm-10">
+
+                                                        <template v-if="theme.components.body.style.image">
+                                                            <img :src="theme.components.body.style.image"
+                                                                 class="img-responsive">
+                                                            <div class="text-center margin_top_10">
+                                                                <button class="btn btn-danger min_width_100"
+                                                                        @click="theme.components.body.style.image = ''">
+                                                                    Remove image
+                                                                </button>
+                                                            </div>
+                                                        </template>
+
+                                                        <template v-else>
+                                                            <dropzone
+                                                                    id="myVueDropzone1"
+                                                                    :url="bodyUploadRoute"
+                                                                    :useFontAwesome="true"
+                                                                    :max-number-of-files=1
+                                                                    v-on:vdropzone-success="uploadBodyImage">
+                                                                <input type="hidden" name="_token" :value="token">
+                                                            </dropzone>
+                                                        </template>
+
+                                                    </div>
+                                                </div>
+                                                <!-- form-group -->
+
                                             </panel>
                                             <!-- panel -->
 
@@ -1406,6 +1440,7 @@
 
                         body: {
                             style: {
+                                image: '',
                                 background_color: {hex: '#e0edf6'}
                             }
                         },
@@ -1475,6 +1510,9 @@
                     return false;
                 }
             },
+            bodyUploadRoute() {
+                return '/admin/api/portal-theme/body/' + this.portal.id + '/upload';
+            },
             navbarUploadRoute() {
                 return '/admin/api/portal-theme/navbar/' + this.portal.id + '/upload';
             },
@@ -1488,6 +1526,8 @@
             fillTheme() {
                 this.themes.selected.id = this.portal.content_portal_theme_id;
                 this.themes.options = this.themes_;
+
+                console.log(JSON.parse(this.portal.config).components);
 
                 if (this.portal.custom_css) this.custom_css = this.portal.custom_css;
                 if (this.portal.config) Object.assign(this.theme, (JSON.parse(this.portal.config)));
@@ -1559,6 +1599,10 @@
 
             uploadNavbarImage(file, response) {
                 this.theme.components.navbar.content.image = response;
+            },
+
+            uploadBodyImage(file, response) {
+                this.theme.components.body.style.image = response;
             },
 
             uploadFooterImage(file, response) {

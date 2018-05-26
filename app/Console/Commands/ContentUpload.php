@@ -48,6 +48,7 @@ class ContentUpload extends Command
                 strpos($imageFile, '/featured-app-banners/') !== false ||
                 strpos($imageFile, '/local-content-type-images/') !== false ||
                 strpos($imageFile, '/navbar-images/') !== false ||
+                strpos($imageFile, '/body-images/') !== false ||
                 strpos($imageFile, '/footer-images/') !== false) {
 
                 dump($imageFile);

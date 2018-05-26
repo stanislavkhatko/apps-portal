@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
         Route::patch('/portal-theme/{id}', ['uses' => 'ContentPortalThemeController@update']);
         Route::post('/portal-theme/header/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadHeaderImage']);
         Route::post('/portal-theme/navbar/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadNavbarImage']);
+        Route::post('/portal-theme/body/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadBodyImage']);
         Route::post('/portal-theme/footer/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadFooterImage']);
         Route::post('/portal-theme/contentTypeHeader/{id}/upload', ['uses' => 'ContentPortalThemeController@uploadContentTypeHeaderImage']);
 
