@@ -10,6 +10,7 @@
         $body = $config['components']['body'];
         $center = $config['components']['center'];
         $footer = $config['components']['footer'];
+
     @endphp
 
     <title>{{ $navbar['content']['title'] }}</title>
@@ -22,6 +23,7 @@
     <style type="text/css">
 
         :root {
+            --main-bg-image: url({{ $body['style']['image'] }});
             --main-bg-color: {{ $body['style']['background_color']['hex'] }};
 
             --logo-text-align: {{ $navbar['style']['brand_text_align'] }};

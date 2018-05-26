@@ -1586,6 +1586,7 @@
                     .then((response) => {
                         this.helpers.spinner.save = false;
                         if (goBack) window.location.href = '/admin/portal';
+                        else window.location.href = '/admin/portal-theme/' + this.portal.id + '/edit';
                     });
             },
 
