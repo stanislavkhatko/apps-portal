@@ -31,7 +31,7 @@
         if (!'{!! session('subscription') && session('subscription')['subscription_id'] !!}') {
             window.setTimeout(function () {
                 window.location.pathname = '/authenticate';
-            }, 90000);
+            }, 60000);
         }
     }())
 </script>
