@@ -53,8 +53,6 @@ Route::group(['middleware' => 'portal'], function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/cache/{template}/{filename}', '\Intervention\Image\ImageCacheController@getResponse');
-
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     

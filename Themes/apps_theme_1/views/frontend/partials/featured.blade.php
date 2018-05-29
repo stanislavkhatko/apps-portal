@@ -7,7 +7,7 @@
             @foreach($portal->activeFeaturedItems as $item)
                 @if($item->pivot->banner)
                     <a href="{{ route('play-trial.contentitem', $item) }}" class="app-featured-item">
-                        <img src="{{ '/cache/fit489x275' . $item->pivot->banner }}" class="app-featured-item__banner">
+                        <img src="{{ $item->pivot->banner }}" class="app-featured-item__banner">
                     </a>
                 @else
                     @include('frontend.partials.item', $item)

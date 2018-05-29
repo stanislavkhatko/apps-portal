@@ -1,7 +1,7 @@
 <a href="{{ route('view.contentitem', [$item]) }}" class="app-category-item">
 
     <div class="app-category-item--main">
-        <img src="{{ '/cache/fit185'. $item->preview}}" alt="{{ $item->title }}" class="app-category-item__thumb">
+        <img src="{{ $item->preview}}" alt="{{ $item->title }}" class="app-category-item__thumb">
 
         <div class="app-category-item__title">
             {{ $item->title }}
