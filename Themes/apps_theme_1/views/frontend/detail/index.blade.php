@@ -30,7 +30,7 @@
                         Your browser does not support HTML5 video.
                     </video>
                 @else
-                    <img src="{{ $item->preview}}" alt="{{ $item->title }}" class="app-item-body__thumb">
+                    <img src="{{ '/cache/original' . $item->preview}}" alt="{{ $item->title }}" class="app-item-body__thumb">
                 @endif
             </div>
 
