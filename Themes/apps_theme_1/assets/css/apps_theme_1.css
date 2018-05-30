@@ -59,8 +59,6 @@ a:active {
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100vh;
-  -webkit-animation: fadein 1s;
-          animation: fadein 1s;
 }
 
 .app-header {

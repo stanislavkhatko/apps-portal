@@ -20,13 +20,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('view.portal');
-//        return Config::get('currentPortal');
+        return view('frontend.index', ['portal' => Config::get('currentPortal')]);
     }
 
     public function viewPortal()
     {
-//        return Config::get('currentPortal')->activeFeaturedItems;
         return view('frontend.index', ['portal' => Config::get('currentPortal')]);
     }
 
