@@ -23,6 +23,15 @@ class HomeController extends Controller
         return view('frontend.index', ['portal' => Config::get('currentPortal')]);
     }
 
+    public function allItems()
+    {
+        $items = Config::get('currentPortal')->contentItems;
+
+        $search = 'all';
+
+        return view('frontend.search.index', compact('items', 'search'));
+    }
+
     public function showContentType(LocalContentType $localContentType)
     {
         $contentItems = $localContentType->contentItems;
