@@ -27,7 +27,6 @@ Route::group(['middleware' => ['currentPortal', 'locale']], function() {
     Route::get('/category', 'HomeController@showCategory');
     Route::get('/detail', 'HomeController@showDetail');
     Route::get('page/{page}', ['as' => 'view.page', 'uses' => 'HomeController@viewPage']);
-    Route::get('/portal', ['as' => 'view.portal', 'uses' => 'HomeController@viewPortal']);
     Route::get('/cancel', ['as' => 'subscription.cancel', 'uses' => 'AuthController@cancelSubscription']);
     Route::post('/cancel', ['as' => 'subscription.unsubscribe', 'uses' => 'AuthController@unsubscribe']);
     Route::post('/change-language', ['as' => 'view.change.language', 'uses' => 'HomeController@changeLocale']);

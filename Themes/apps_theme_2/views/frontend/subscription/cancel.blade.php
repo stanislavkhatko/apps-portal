@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-6 text-center" style="margin-top: 10px">
                         <p>
-                            <a href="{{ route('view.portal') }}" class="btn btn-lg btn-success">
+                            <a href="{{ route('home') }}" class="btn btn-lg btn-success">
                                 @lang('portal.continue_button')
                             </a>
                         </p>

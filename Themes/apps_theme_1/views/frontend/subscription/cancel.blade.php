@@ -18,7 +18,7 @@
                 @lang('portal.cancel_subscription_description')
             </div>
 
-            <a href="{{ route('view.portal') }}" class="app-unsubscribe-form__submit">
+            <a href="{{ route('home') }}" class="app-unsubscribe-form__submit">
                 @lang('portal.back')
             </a>
 

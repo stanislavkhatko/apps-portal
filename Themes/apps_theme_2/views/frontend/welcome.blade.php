@@ -17,7 +17,7 @@
                           href="{{ route('view.contentitem', \Cookie::get('contentItem', null)) }}">HOME</a></p>
                 @elseif (subscription('offer_id') != 2)
                     <p><a class="btn btn-success btn-lg" style="width: 150px;"
-                          href="{{ route('view.portal') }}">HOME</a></p>
+                          href="{{ route('home') }}">HOME</a></p>
                 @else
                     <p><a class="btn btn-success btn-lg" style="width: 150px;"
                           href="{{ route('view.contentitem', 677) }}">HOME</a></p>

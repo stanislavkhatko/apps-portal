@@ -104,7 +104,7 @@ class HomeController extends Controller
         // if route is a static page, show homepage
         $url = redirect()->back()->getTargetUrl();
         $url_segments = explode('/', $url);
-        if ($url_segments[3] == 'page') return redirect()->route('view.portal');
+        if ($url_segments[3] == 'page') return redirect()->route('home');
 
         return redirect()->back();
     }

@@ -54,12 +54,7 @@ class AuthController extends Controller
                 ]
             ]);
 
-//            $seconds = Carbon::now()->diffInSeconds(Carbon::parse($result->confirmed_at->date));
-//            if ($seconds > 30) {
-//                return redirect()->route('view.portal');
-//            }
-
-            return redirect()->route('view.portal');
+            return redirect()->route('home');
         } else {
             return response('No valid subscription', 422);
         }
@@ -80,7 +75,7 @@ class AuthController extends Controller
                 ]
             ]);
 
-            return redirect()->route('view.portal');
+            return redirect()->route('home');
         }
 
         $client = new \App\Subsyz\Client();
@@ -94,7 +89,7 @@ class AuthController extends Controller
                 ]
             ]);
 
-            return redirect()->route('view.portal');
+            return redirect()->route('home');
         }
 
         if ($result && $result->subscribe) {
@@ -135,7 +130,7 @@ class AuthController extends Controller
         if ($result->success) {
             return view('frontend.subscription.unsubscribe');
         } else {
-            return redirect()->route('view.portal');
+            return redirect()->route('home');
         }
 
     }
