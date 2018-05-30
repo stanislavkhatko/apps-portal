@@ -14,7 +14,7 @@ const {mix} = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('Themes/apps_theme_1/assets/sass/apps_theme_1.scss', 'Themes/apps_theme_1/assets/css')
-    .sass('Themes/apps_theme_2/assets/sass/apps_theme_2.scss', 'Themes/apps_theme_2/assets/css')
+    // .sass('Themes/apps_theme_2/assets/sass/apps_theme_2.scss', 'Themes/apps_theme_2/assets/css')
     .browserSync({
         proxy: 'adportal.test',
         notify: false

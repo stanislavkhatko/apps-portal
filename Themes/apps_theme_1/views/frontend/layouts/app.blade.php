@@ -2,23 +2,66 @@
 <html lang="en">
 <head>
 
-    @php
-        $config = json_decode(Config::get('currentPortal')->config, true);
+@php
+    $config = json_decode(Config::get('currentPortal')->config, true);
 
-        $header = $config['components']['header'];
-        $navbar = $config['components']['navbar'];
-        $body = $config['components']['body'];
-        $center = $config['components']['center'];
-        $footer = $config['components']['footer'];
+    $header = $config['components']['header'];
+    $navbar = $config['components']['navbar'];
+    $body = $config['components']['body'];
+    $center = $config['components']['center'];
+    $footer = $config['components']['footer'];
 
-    @endphp
+@endphp
+
+<!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{{ Config::get('currentPortal')->facebook_pixel }}');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id={{ Config::get('currentPortal')->facebook_pixel }}&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id={{ Config::get('currentPortal')->analytic_tag }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', '{{ Config::get('currentPortal')->analytic_tag }}');
+    </script>
 
     <title>{{ $navbar['content']['title'] }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
           rel="stylesheet">
-    <link rel="shortcut icon" href="{{ $config['components']['navbar']['content']['image'] }}">
+    <link rel="shortcut icon" href="{{ '/cache/fit32' . $config['components']['navbar']['content']['image'] }}">
 
     <style type="text/css">
 
@@ -74,55 +117,12 @@
 
     </style>
 
-    <link rel="stylesheet" href="{{ themes('css/apps_theme_1.css') }}">
+    <link rel="stylesheet" href="{{ mix('/Themes/apps_theme_1/assets/css/apps_theme_1.css') }}">
 
     <style type="text/css">
         {!! Config::get('currentPortal')->custom_css  !!}
     </style>
-
-    <!-- Facebook Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{{ Config::get('currentPortal')->facebook_pixel }}');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-                   src="https://www.facebook.com/tr?id={{ Config::get('currentPortal')->facebook_pixel }}&ev=PageView&noscript=1"
-        /></noscript>
-    <!-- End Facebook Pixel Code -->
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async
-            src="https://www.googletagmanager.com/gtag/js?id={{ Config::get('currentPortal')->analytic_tag }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', '{{ Config::get('currentPortal')->analytic_tag }}');
-    </script>
+</head>
 
 <body>
 

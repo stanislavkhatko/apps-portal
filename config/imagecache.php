@@ -55,6 +55,7 @@ return array(
         'small' => 'Intervention\Image\Templates\Small',
         'medium' => 'Intervention\Image\Templates\Medium',
         'large' => 'Intervention\Image\Templates\Large',
+        'fit32' => 'App\FIlters\Fit32',
         'fit185' => 'App\Filters\Fit185',
         'fit489x275' => 'App\Filters\Fit489x275'
     ),
