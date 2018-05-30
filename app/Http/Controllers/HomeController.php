@@ -23,11 +23,6 @@ class HomeController extends Controller
         return view('frontend.index', ['portal' => Config::get('currentPortal')]);
     }
 
-    public function viewPortal()
-    {
-        return view('frontend.index', ['portal' => Config::get('currentPortal')]);
-    }
-
     public function showContentType(LocalContentType $localContentType)
     {
         $contentItems = $localContentType->contentItems;
