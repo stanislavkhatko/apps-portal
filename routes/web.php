@@ -11,13 +11,6 @@
 |
 */
 
-
-
-//Route::get('hoi', function () {
-//    Theme::set('apps_theme_1');
-//    return view('apps_theme_1::welcome');
-//});
-
 Route::group(['middleware' => ['currentPortal', 'locale']], function() {
     Route::get('authenticate', 'AuthController@show');
     Route::post('authenticate', 'AuthController@login');
