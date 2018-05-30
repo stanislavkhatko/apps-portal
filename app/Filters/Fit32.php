@@ -9,6 +9,6 @@ class Fit32 implements FilterInterface
 {
     public function applyFilter(Image $image)
     {
-        return $image->fit(32);
+        return $image->fit(32)->encode('png');
     }
 }
