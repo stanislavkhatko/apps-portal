@@ -17,6 +17,11 @@ body {
   font-size: 12px;
 }
 
+iframe {
+  width: 100%;
+  min-height: 100vh;
+}
+
 a {
   text-decoration: none;
   -webkit-transition: all 0.2s ease-out;
@@ -911,7 +916,7 @@ a:active {
   font-weight: lighter;
   padding: 7px 10px;
   max-width: 500px;
-  min-width: 270px;
+  min-width: 290px;
   cursor: pointer;
   display: block;
   text-align: center;
@@ -1019,7 +1024,7 @@ a:active {
   font-weight: lighter;
   padding: 7px 10px;
   max-width: 500px;
-  min-width: 270px;
+  min-width: 290px;
   cursor: pointer;
   display: block;
   text-align: center;

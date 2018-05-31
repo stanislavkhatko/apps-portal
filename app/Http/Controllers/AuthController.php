@@ -15,7 +15,7 @@ class AuthController extends Controller
      */
     public function show()
     {
-        return view('authenticate');
+        return view('pages.login');
     }
 
     /**
@@ -62,7 +62,7 @@ class AuthController extends Controller
 
     public function cancelSubscription()
     {
-        return view('frontend.subscription.cancel');
+        return view('pages.subscription-cancel');
     }
 
     public function validateMsisdn($msisdn)
@@ -128,7 +128,7 @@ class AuthController extends Controller
         $result = $client->unsubscribe(session('subscription')['subscription_id']);
 
         if ($result->success) {
-            return view('frontend.subscription.unsubscribe');
+            return view('pages.subscription-canceled');
         } else {
             return redirect()->route('home');
         }

@@ -7,10 +7,6 @@
 
     @include('frontend.partials.featured')
 
-    @foreach($portal->localContentTypes as $localContentType)
-
-        @include('frontend.partials.category', $localContentType)
-
-    @endforeach
+    @include('frontend.partials.category', $localContentType, ['categories' => $portal->localContentTypes])
 
 @endsection

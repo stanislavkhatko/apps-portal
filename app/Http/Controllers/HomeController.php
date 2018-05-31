@@ -13,14 +13,9 @@ use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('frontend.index', ['portal' => Config::get('currentPortal')]);
+        return view('pages.home', ['portal' => Config::get('currentPortal')]);
     }
 
     public function allItems()
@@ -29,7 +24,7 @@ class HomeController extends Controller
 
         $search = 'all';
 
-        return view('frontend.search.index', compact('items', 'search'));
+        return view('pages.search', compact('items', 'search'));
     }
 
     public function showContentType(LocalContentType $localContentType)
@@ -43,12 +38,12 @@ class HomeController extends Controller
 
     public function showCategories(LocalContentType $localContentType)
     {
-        return view('frontend.categories.index', compact('localContentType'));
+        return view('pages.categories', compact('localContentType'));
     }
 
     public function showCategory($id, LocalCategory $localCategory)
     {
-        return view('frontend.category.index', compact('localCategory'));
+        return view('pages.category', compact('localCategory'));
     }
 
     public function showItem(ContentItem $item)
@@ -57,17 +52,17 @@ class HomeController extends Controller
             $item->download['link'], now()->addMinutes(5)
         );
 
-        return view('frontend.detail.index', compact('item', 'itemUrl'));
+        return view('pages.item', compact('item', 'itemUrl'));
     }
 
     public function playTrial(ContentItem $item)
     {
-        return view('frontend.content-page', compact('item'));
+        return view('pages.play', compact('item'));
     }
 
     public function playOnline(ContentItem $item)
     {
-        return view('frontend.content-page', compact('item'));
+        return view('pages.play', compact('item'));
     }
 
     public function downloadItem(ContentItem $item)
@@ -98,7 +93,7 @@ class HomeController extends Controller
             \App::setLocale($page->lang_code);
         }
 
-        return view('frontend.page', compact('page'));
+        return view('pages.page', compact('page'));
     }
 
     public function changeLocale(Request $request)
@@ -128,7 +123,7 @@ class HomeController extends Controller
 
         $items = Config::get('currentPortal')->contentItems->where('title', $search);
 
-        return view('frontend.search.index', compact('items', 'search'));
+        return view('pages.search', compact('items', 'search'));
     }
 
     private function paginateCollection($items, $per_page)

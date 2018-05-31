@@ -12,6 +12,12 @@ body {
   font-size: 12px;
 }
 
+
+iframe {
+  width: 100%;
+  min-height: 100vh;
+}
+
 a {
   text-decoration: none;
   transition: all 0.2s ease-out;
@@ -748,7 +754,7 @@ a {
         font-weight: lighter;
         padding: 7px 10px;
         max-width: $form-width;
-        min-width: 270px;
+        min-width: 290px;
         cursor: pointer;
         display: block;
         text-align: center;
@@ -849,7 +855,7 @@ a {
         font-weight: lighter;
         padding: 7px 10px;
         max-width: $form-width;
-        min-width: 270px;
+        min-width: 290px;
         cursor: pointer;
         display: block;
         text-align: center;

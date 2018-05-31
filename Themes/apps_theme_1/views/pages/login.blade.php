@@ -1,9 +1,11 @@
-@extends('frontend.layouts.app')
+@extends('pages.index')
+
+@section('title', lang('portal.login'))
 
 @section('content')
 
     <div class="app-auth">
-        @include('frontend.partials.back')
+        @include('partials.back')
         <div class="app-auth__title">
             @lang('portal.login')
         </div>
@@ -47,12 +49,20 @@
 
                 <div class="app-auth-form-price">
 
-                    @include('frontend.partials.pricebanner')
+                    @foreach(Config::get('currentPortal')->priceBanners as $priceBanner)
+                        @if (App::getLocale() == $priceBanner->lang_code)
+                            {!! $priceBanner->body !!}
+                        @endif
+                    @endforeach
 
                 </div>
 
                 <div class="app-auth-form-disclaimer">
-                    @include('frontend.partials.disclaimer')
+                    @foreach(Config::get('currentPortal')->disclaimers as $disclaimer)
+                        @if (App::getLocale() == $disclaimer->lang_code)
+                            {!! $disclaimer->body !!}
+                        @endif
+                    @endforeach
                 </div>
 
             @else
