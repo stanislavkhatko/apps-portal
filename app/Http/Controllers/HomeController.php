@@ -29,6 +29,8 @@ class HomeController extends Controller
 
     public function showContentType(LocalContentType $localContentType)
     {
+        // TODO remove or use somewhere this route
+
         $contentItems = $localContentType->contentItems;
 
         $contentItems = $this->paginateCollection($contentItems, 20);
