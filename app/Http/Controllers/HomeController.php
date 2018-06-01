@@ -15,6 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+//        return json_decode(Config::get('currentPortal')->config, true);
         return view('pages.home', ['portal' => Config::get('currentPortal')]);
     }
 

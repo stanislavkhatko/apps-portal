@@ -1407,13 +1407,13 @@
                             },
                             style: {
                                 text_align: 'center',
-                                background_color: {hex: "#333333"},
-                                color: {hex: "#fff"},
-                                font_size: 28,
-                                font_weight: 'lighter',
+                                background_color: {hex: "#FDFFFC"},
+                                color: {hex: "#000000"},
+                                font_size: 22,
+                                font_weight: 'normal',
                                 border_bottom_size: 0,
                                 border_color: {hex: ""},
-                                height: 67
+                                height: 50
                             }
                         },
 
@@ -1423,42 +1423,42 @@
                                 image: ''
                             },
                             style: {
-                                background_color: {hex: "#00a2e4"},
-                                color: {hex: "#fff"},
-                                font_size: 14,
+                                background_color: {hex: "#2ec4b6"},
+                                color: {hex: "#011627"},
+                                font_size: 13,
                                 font_weight: 'lighter',
                                 border_bottom_size: 3,
-                                border_color: {hex: "#00a2e4"},
-                                height: 70,
+                                border_color: {hex: "#FDFFFC"},
+                                height: 60,
                                 menu_float: 'right',
-                                brand_color: {hex: "#fff"},
+                                brand_color: {hex: "#ff9f1c"},
                                 brand_text_align: 'left',
-                                brand_font_size: 26,
-                                brand_font_weight: 'bold'
+                                brand_font_size: 28,
+                                brand_font_weight: 'normal'
                             }
                         },
 
                         body: {
                             style: {
                                 image: '',
-                                background_color: {hex: '#e0edf6'}
+                                background_color: {hex: '#FDFFFC'}
                             }
                         },
 
                         center: {
                             style: {
-                                background_color: {hex: '#fff'},
-                                border_left_right_size: 0,
-                                border_color: {hex: ""},
-                                button_font_size: 14,
-                                button_color: {hex: '#fff'},
-                                button_background_color: {hex: '#00a2e4'},
+                                background_color: {hex: '#ffffff'},
+                                border_left_right_size: 5,
+                                border_color: {hex: "ff9f1c"},
+                                button_font_size: 20,
+                                button_color: {hex: '#000000'},
+                                button_background_color: {hex: '#d9f4f1'},
                                 button_border_color: {hex: ""},
                                 button_border_size: 0,
                                 content_width: 1024,
-                                content_color: {hex: '#000000'},
-                                content_primary_color: {hex: '#1cdd6e'},
-                                content_secondary_color: {hex: '#b0b0b0'}
+                                content_color: {hex: '#182b3a'},
+                                content_primary_color: {hex: '#e71d36'},
+                                content_secondary_color: {hex: '#e8911a'}
                             }
                         },
 
@@ -1469,13 +1469,13 @@
                             },
                             style: {
                                 text_align: 'center',
-                                background_color: {hex: '#333333'},
+                                background_color: {hex: '#2ec4b6'},
                                 color: {hex: '#fff'},
                                 font_size: 14,
-                                font_weight: 'normal',
+                                font_weight: 'lighter',
                                 border_top_size: 0,
                                 border_color: {hex: ""},
-                                height: 50
+                                height: 60
                             }
                         },
                     }

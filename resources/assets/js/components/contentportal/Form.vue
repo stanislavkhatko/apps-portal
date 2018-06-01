@@ -349,7 +349,7 @@
 
                     options: {
                         // default values for filling purposes
-                        show_cancel_page: {value: false, label: 'Yes'},
+                        show_cancel_page: {value: false, label: 'No'},
                         show_welcome_page: {value: false, label: 'No'}
                     }
                 }
