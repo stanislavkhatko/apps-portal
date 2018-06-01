@@ -1449,7 +1449,7 @@
                             style: {
                                 background_color: {hex: '#ffffff'},
                                 border_left_right_size: 5,
-                                border_color: {hex: "ff9f1c"},
+                                border_color: {hex: "#ff9f1c"},
                                 button_font_size: 20,
                                 button_color: {hex: '#000000'},
                                 button_background_color: {hex: '#d9f4f1'},
