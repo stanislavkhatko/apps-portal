@@ -113,13 +113,13 @@ class AuthController extends Controller
 
             return redirect('/authenticate')->with([
                 'subscribe' => $subscribe
-            ])->withInput();
+            ])->withInput(['msisdn' => $msisdn]);
 
         } else if ($result && $result->error) {
-            return redirect('/authenticate')->with(['error' => trans('portal.' . $result->error),])->withInput();
+            return redirect('/authenticate')->with(['error' => trans('portal.' . $result->error)])->withInput(['msisdn' => $msisdn]);
         }
 
-        return redirect('/authenticate')->with(['error' => 'Something wrong with server',])->withInput();
+        return redirect('/authenticate')->with(['error' => 'Something wrong with server'])->withInput(['msisdn' => $msisdn]);
     }
 
     public function unsubscribe(Request $request)
