@@ -45,8 +45,6 @@ Route::group(['middleware' => 'portal'], function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     
     Route::group(['namespace' => 'Backend'], function() {

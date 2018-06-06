@@ -1,6 +1,6 @@
 @extends('pages.index')
 
-@section('title', lang('portal.login'))
+@section('title', trans('portal.login'))
 
 @section('content')
 

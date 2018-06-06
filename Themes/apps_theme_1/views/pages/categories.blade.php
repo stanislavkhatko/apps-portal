@@ -1,5 +1,7 @@
 @extends('pages.index')
 
+@section('title', $localContentType->label)
+
 @section('content')
 
     <div class="app-category-header">

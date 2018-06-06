@@ -1,5 +1,7 @@
 @extends('pages.index')
 
+@section('title', trans('portal.search'))
+
 @section('content')
 
     <div class="app-items-header">
