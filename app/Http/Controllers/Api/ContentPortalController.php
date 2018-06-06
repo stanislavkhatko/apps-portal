@@ -20,7 +20,6 @@ class ContentPortalController extends Controller
         return $portal;
     }
 
-
     public function store(Request $request)
     {
         $form = $request->form;
@@ -68,7 +67,6 @@ class ContentPortalController extends Controller
 
         return response()->json(['success' => true, 'portal' => $cp]);
     }
-
 
     public function update(Request $request, $id)
     {
@@ -123,26 +121,17 @@ class ContentPortalController extends Controller
         return response()->json(['success' => true, 'portal' => $pagesToBeDeleted]);
     }
 
-
     public function searchContentItems(Request $request)
     {
         $items = ContentItem::whereRaw('LOWER(title) LIKE ?', '%' . $request->search . '%')->limit(14)->get();
         return $items;
     }
 
-    public function searchContentItemsFromPortal(Request $request)
-    {
-        $contentPortal = ContentPortal::find($request->id);
-        //
-    }
-
-
     public function fetchContentItem(Request $request)
     {
         $item = ContentItem::findOrFail($request->id);
         return $item;
     }
-
 
     public function uploadFeateredAppBanner(Request $request, $id)
     {
@@ -164,9 +153,8 @@ class ContentPortalController extends Controller
 
     public function fetchPortals()
     {
-        return response()->json(['success' => true, 'portals' => ContentPortal::all()]);
+        return response()->json(ContentPortal::all());
     }
-
 
     public function fetchContentItems($id)
     {

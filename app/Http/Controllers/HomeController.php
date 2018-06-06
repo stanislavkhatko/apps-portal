@@ -122,9 +122,10 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $search = trim($request->input('search'));
+        $search = strtolower(trim($request->input('search')));
 
-        $items = Config::get('currentPortal')->contentItems->where('title', $search);
+//        $items = Config::get('currentPortal')->contentItems->where('title', $search);
+        $items = ContentItem::whereRaw('LOWER(title) LIKE ?', '%' . $search . '%')->limit(14)->get();
 
         return view('pages.search', compact('items', 'search'));
     }
