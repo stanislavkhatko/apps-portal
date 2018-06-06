@@ -15,7 +15,7 @@
 
 @endphp
 
-    <!-- Facebook Pixel Code -->
+<!-- Facebook Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return;
@@ -62,7 +62,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext"
+          rel="stylesheet">
     <link rel="shortcut icon" href="{{ '/cache/original' . $config['components']['navbar']['content']['image'] }}">
 
     <style type="text/css">

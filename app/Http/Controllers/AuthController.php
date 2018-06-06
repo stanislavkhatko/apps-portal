@@ -65,6 +65,14 @@ class AuthController extends Controller
         return view('pages.subscription-cancel');
     }
 
+    private function redirectToPortal() {
+        if(session()->has('url.intended')) {
+           return redirect()->route('view.contentitem', session('url.intended'));
+        } else {
+            return redirect()->route('home');
+        }
+    }
+
     public function validateMsisdn($msisdn)
     {
         if ($msisdn == env('TEST_NUMBER')) {
@@ -75,7 +83,7 @@ class AuthController extends Controller
                 ]
             ]);
 
-            return redirect()->route('home');
+            return $this->redirectToPortal();
         }
 
         $client = new \App\Subsyz\Client();
@@ -89,7 +97,7 @@ class AuthController extends Controller
                 ]
             ]);
 
-            return redirect()->route('home');
+            return $this->redirectToPortal();
         }
 
         if ($result && $result->subscribe) {

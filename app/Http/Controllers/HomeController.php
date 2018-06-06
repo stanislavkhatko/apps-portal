@@ -55,6 +55,8 @@ class HomeController extends Controller
             $item->download['link'], now()->addMinutes(5)
         );
 
+        session(['url.intended' => $item->id]);
+
         return view('pages.item', compact('item', 'itemUrl'));
     }
 
