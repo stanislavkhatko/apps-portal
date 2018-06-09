@@ -18,6 +18,7 @@ class CreateContentPortalsTable extends Migration
             $table->string('title');
             $table->string('slug')->nullable();
             $table->string('subdomain')->nullable();
+            $table->string('phonecode')->nullable();
             $table->string('analytic_tag')->nullable();
             $table->string('facebook_pixel')->nullable();
             $table->unsignedInteger('content_portal_theme_id')->default(1);

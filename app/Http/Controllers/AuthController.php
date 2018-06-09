@@ -23,7 +23,16 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        return $this->validateMsisdn($request->input('msisdn'));
+        $msisdn = $request->input('msisdn');
+        if ($request->has('phonecode')) {
+            $code = preg_replace('/[^0-9.]+/', '', $request->input('phonecode'));
+
+            if (strpos($request->input('msisdn'), $code) === false) {
+                $msisdn = $code . $request->input('msisdn');
+            }
+        }
+
+        return $this->validateMsisdn($msisdn);
     }
 
 
@@ -65,9 +74,10 @@ class AuthController extends Controller
         return view('pages.subscription-cancel');
     }
 
-    private function redirectToPortal() {
-        if(session()->has('url.intended')) {
-           return redirect()->route('view.contentitem', session('url.intended'));
+    private function redirectToPortal()
+    {
+        if (session()->has('url.intended')) {
+            return redirect()->route('view.contentitem', session('url.intended'));
         } else {
             return redirect()->route('home');
         }

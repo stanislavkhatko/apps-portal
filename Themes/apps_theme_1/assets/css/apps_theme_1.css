@@ -893,9 +893,20 @@ a:active {
   margin-bottom: 10px;
 }
 
+.app-auth-form-input {
+  width: 100%;
+  max-width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
 .app-auth-form__msisdn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   margin-bottom: 10px;
-  display: block;
   width: 100%;
   line-height: 1.5;
   font-size: var(--button-font-size);
@@ -903,8 +914,19 @@ a:active {
   background-color: var(--content-bg-color);
   border: 2px solid var(--button-bg-color);
   font-weight: lighter;
+  padding: 7px 10px 7px 50px;
+  text-align: left;
+}
+
+.app-auth-form__phonecode {
+  position: absolute;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-size: var(--button-font-size);
+  color: var(--content-color);
+  border: 2px solid transparent;
+  font-weight: lighter;
   padding: 7px 10px;
-  max-width: 500px;
   text-align: left;
 }
 

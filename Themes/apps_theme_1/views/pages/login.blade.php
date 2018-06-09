@@ -13,8 +13,14 @@
         <form action="/authenticate" method="post" class="app-auth-form">
             {{ csrf_field() }}
             <label for="msisdn" class="app-auth-form__label">@lang('portal.msisdn')</label>
-            <input class="app-auth-form__msisdn" autofocus placeholder="@lang('portal.msisdn_format')" name="msisdn"
-                   value="{{ old('msisdn') }}" required min="6"/>
+
+            <div class="app-auth-form-input">
+                <input type="hidden" name="phonecode" value="{{ Config::get('currentPortal')->phonecode }}">
+                <span class="app-auth-form__phonecode" >{{ Config::get('currentPortal')->phonecode }}</span>
+                <input class="app-auth-form__msisdn" autofocus placeholder="@lang('portal.msisdn_format')" name="msisdn"
+                       value="{{ old('msisdn') }}" required min="6"/>
+            </div>
+
 
             @if (session('error'))
                 <div class="app-auth-form__error">
@@ -47,27 +53,30 @@
                     </div>
                 </div>
 
-                <div class="app-auth-form-price">
-
-                    @foreach(Config::get('currentPortal')->priceBanners as $priceBanner)
-                        @if (App::getLocale() == $priceBanner->lang_code)
-                            {!! $priceBanner->body !!}
-                        @endif
-                    @endforeach
-
-                </div>
-
-                <div class="app-auth-form-disclaimer">
-                    @foreach(Config::get('currentPortal')->disclaimers as $disclaimer)
-                        @if (App::getLocale() == $disclaimer->lang_code)
-                            {!! $disclaimer->body !!}
-                        @endif
-                    @endforeach
-                </div>
-
             @else
                 <button type="submit" class="app-auth-form__submit">@lang('portal.login')</button>
+
             @endif
+
+
+            <div class="app-auth-form-price">
+
+                @foreach(Config::get('currentPortal')->priceBanners as $priceBanner)
+                    @if (App::getLocale() == $priceBanner->lang_code)
+                        {!! $priceBanner->body !!}
+                    @endif
+                @endforeach
+
+            </div>
+
+            <div class="app-auth-form-disclaimer">
+                @foreach(Config::get('currentPortal')->disclaimers as $disclaimer)
+                    @if (App::getLocale() == $disclaimer->lang_code)
+                        {!! $disclaimer->body !!}
+                    @endif
+                @endforeach
+            </div>
+
         </form>
 
     </div>

@@ -47,6 +47,15 @@
                     <!-- domain section -->
 
                     <div class="form-group">
+                        <label class="col-sm-2 control-label">Country code (+38)</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Type country code"
+                                   v-model="form.phonecode">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-sm-2 control-label">Analytic tag</label>
 
                         <div class="col-sm-10">
@@ -64,7 +73,6 @@
                                    v-model="form.facebook_pixel">
                         </div>
                     </div>
-                    <!-- Gtag analitycs -->
 
 
                     <div class="form-group">
@@ -335,6 +343,7 @@
                     title: '',
                     subdomain: '',
                     host: '',
+                    phonecode: '',
                     analytic_tag: '',
                     facebook_pixel: '',
                     default_language: '',
@@ -374,6 +383,7 @@
                         this.form.title = portal.title;
                         this.form.host = portal.host;
                         this.form.languagesShort = response.data.languages;
+                        this.form.phonecode = portal.phonecode;
                         this.form.analytic_tag = portal.analytic_tag;
                         this.form.facebook_pixel = portal.facebook_pixel;
                         this.form.subdomain = portal.subdomain;

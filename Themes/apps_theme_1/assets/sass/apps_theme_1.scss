@@ -12,7 +12,6 @@ body {
   font-size: 12px;
 }
 
-
 iframe {
   width: 100%;
   min-height: 100vh;
@@ -731,9 +730,16 @@ a {
         margin-bottom: 10px;
       }
 
+      &-input {
+        width: 100%;
+        max-width: $form-width;
+        display: flex;
+        position: relative;
+      }
+
       &__msisdn {
+        flex: 1;
         margin-bottom: 10px;
-        display: block;
         width: 100%;
         line-height: 1.5;
         font-size: var(--button-font-size);
@@ -741,8 +747,19 @@ a {
         background-color: var(--content-bg-color);
         border: 2px solid var(--button-bg-color);
         font-weight: lighter;
+        padding: 7px 10px 7px 50px;
+        text-align: left;
+      }
+
+      &__phonecode {
+        position: absolute;
+        margin-bottom: 10px;
+        line-height: 1.5;
+        font-size: var(--button-font-size);
+        color: var(--content-color);
+        border: 2px solid transparent;
+        font-weight: lighter;
         padding: 7px 10px;
-        max-width: $form-width;
         text-align: left;
       }
 
