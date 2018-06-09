@@ -47,10 +47,10 @@
                     <!-- domain section -->
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Country code (+38)</label>
+                        <label class="col-sm-2 control-label">Phone code (+)</label>
 
                         <div class="col-sm-10">
-                            <input type="text" autocomplete="off" class="form-control" placeholder="Type country code"
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Type phone code"
                                    v-model="form.phonecode">
                         </div>
                     </div>
