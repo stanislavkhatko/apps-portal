@@ -19,7 +19,7 @@ class CurrentPortal
     public function handle($request, Closure $next)
     {
         if (config('app.env') == 'local') {
-            $portal = ContentPortal::find(2);
+            $portal = ContentPortal::find(3);
         } else {
             $portal = ContentPortal::where('domain', $request->getHost())->first();
             if (! $portal) {

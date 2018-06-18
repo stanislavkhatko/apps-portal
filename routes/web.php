@@ -110,4 +110,4 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     });
 
 });
-Route::get('{msisdn}', 'AuthController@validateMsisdn');
+//Route::get('{msisdn}', 'AuthController@validateMsisdn');
