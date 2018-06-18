@@ -687,6 +687,7 @@ a {
   .app-page {
     padding: 30px 15px;
     font-size: 14px;
+    line-height: 20px
   }
 
   &-auth {
@@ -711,6 +712,7 @@ a {
       justify-content: center;
       text-align: center;
       align-items: center;
+      font-size: 14px;
 
       &__error {
         border: 1px solid var(--content-primary-color);
@@ -802,7 +804,7 @@ a {
 
         &__keyword {
           display: inline-block;
-          text-transform: uppercase;
+          text-transform: lowercase;
           font-weight: bold;
           color: var(--content-primary-color);
         }
@@ -817,10 +819,14 @@ a {
 
       &-price {
         max-width: $form-width;
+        font-size: 14px;
+        line-height: 20px;
       }
 
       &-disclaimer {
         max-width: $form-width;
+        line-height: 20px;
+        font-size: 14px;
       }
     }
   }

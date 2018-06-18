@@ -841,6 +841,7 @@ a:active {
 .app .app-page {
   padding: 30px 15px;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .app-auth {
@@ -873,6 +874,7 @@ a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 14px;
 }
 
 .app-auth-form__error {
@@ -973,7 +975,7 @@ a:active {
 
 .app-auth-form-subscribe__keyword {
   display: inline-block;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: bold;
   color: var(--content-primary-color);
 }
@@ -987,10 +989,14 @@ a:active {
 
 .app-auth-form-price {
   max-width: 500px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .app-auth-form-disclaimer {
   max-width: 500px;
+  line-height: 20px;
+  font-size: 14px;
 }
 
 .app-unsubscribe__title {

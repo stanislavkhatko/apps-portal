@@ -15,8 +15,10 @@
             <label for="msisdn" class="app-auth-form__label">@lang('portal.msisdn')</label>
 
             <div class="app-auth-form-input">
+                @if(Config::get('currentPortal')->phonecode)
                 <input type="hidden" name="phonecode" value="{{ Config::get('currentPortal')->phonecode }}">
                 <span class="app-auth-form__phonecode" >{{ Config::get('currentPortal')->phonecode }}</span>
+                @endif
                 <input class="app-auth-form__msisdn" autofocus placeholder="@lang('portal.msisdn_format')" name="msisdn"
                        value="{{ old('msisdn') }}" required min="6"/>
             </div>
