@@ -916,7 +916,7 @@ a:active {
   background-color: var(--content-bg-color);
   border: 2px solid var(--button-bg-color);
   font-weight: lighter;
-  padding: 7px 10px 7px 50px;
+  padding: 7px 10px 7px 55px;
   text-align: left;
 }
 
