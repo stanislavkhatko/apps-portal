@@ -5,7 +5,7 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-$black: #4b5356;
+$black: #545617;
 $helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 @import "~flag-icon-css/sass/flag-icon";
@@ -17,6 +17,11 @@ $helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 //.fr-wrapper a[href*="froala"] {
 //  display: none !important;
 //}
+
+.form-control::placeholder {
+  color: #c7cacd;
+  opacity: 1;
+}
 
 // Header and navbar menu
 .navbar-brand {
@@ -276,22 +281,6 @@ body {
 .description {
   font-size: 13px;
   font-weight: 100;
-}
-
-.form-control::-webkit-input-placeholder {
-  color: $black;
-}
-
-.form-control:-moz-placeholder {
-  color: $black;
-}
-
-.form-control::-moz-placeholder {
-  color: $black;
-}
-
-.form-control:-ms-input-placeholder {
-  color: $black;
 }
 
 .filter_wrapper {
