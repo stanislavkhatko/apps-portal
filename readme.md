@@ -65,11 +65,17 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    cp .env.example .env && lando php artisan key:generate
    ```
-3. run migrations and seeders
+3. Run or restart lando
+    ```sh
+   lando start
+   lando rebuild
+   lando stop
+    ```
+4. run migrations and seeders
    ```sh
    lando php artisan migrate:refresh && lando php artisan db:seed
    ```
-4. Visit https://apps-platform.lndo.site/ from the link in terminal to open the app.
+5. Visit https://apps-platform.lndo.site/ from the link in terminal to open the app.
 
 
 
