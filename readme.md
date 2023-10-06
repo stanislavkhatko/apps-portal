@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/git@github.com:stanislavkhatko/apps-portal.git">
-    <img src="public/img/home.png" alt="Logo" width="80" height="80">
+    <img src="public/favicon.ico" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Mobile apps marketplace</h3>
@@ -31,7 +31,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[//]: # ([![Platform screen shot][product-screenshot]]&#40;https://example.com&#41;)
 
 
 ### Built With
@@ -57,30 +57,23 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/git@github.com:stanislavkhatko/apps-portal.git.git
    ```
-3. Install NPM packages
+2. Install lando from https://lando.dev/ and run in terminal 
    ```sh
-   npm install
+   cp .env.example .env && lando php artisan key:generate
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. run migrations and seeders
+   ```sh
+   lando php artisan migrate:refresh && lando php artisan db:seed
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+4. Visit https://apps-platform.lndo.site/ from the link in terminal to open the app.
 
 
-## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+
 
 See the [open issues](https://github.com/git@github.com:stanislavkhatko/apps-portal.git/issues) for a full list of proposed features (and known issues).
 

@@ -13,7 +13,7 @@ class ContentPortalTableSeeder extends Seeder
     public function run()
     {
         ContentPortal::create([
-            'title' => 'Test portal 1',
+            'title' => 'Portal 1',
             'slug' => 'test1',
             'host' => '',
             'domain' => 'adportal.test',
@@ -21,7 +21,7 @@ class ContentPortalTableSeeder extends Seeder
         ]);
 
         ContentPortal::create([
-            'title' => 'Test portal 2',
+            'title' => 'Portal 2',
             'slug' => 'test2',
             'host' => '',
             'domain' => 'adportal.test',

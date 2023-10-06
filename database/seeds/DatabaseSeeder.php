@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CountriesTableSeeder::class);
         $this->call(LanguagesTableSeeder::class);
         $this->call(PortalThemeTableSeeder::class);
-//        $this->call(ContentPortalTableSeeder::class);
+        $this->call(ContentPortalTableSeeder::class);
     }
 }
