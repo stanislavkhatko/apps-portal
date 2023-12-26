@@ -33,13 +33,14 @@
 
 [//]: # ([![Platform screen shot][product-screenshot]]&#40;https://example.com&#41;)
 
-
 ### Built With
 
 * [![Vue][Vue.js]][Vue-url]
 * [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
+
+Most frontend code is located in `resources` folder, while most backend written at `app` directory.
 
 
 ## Getting Started
